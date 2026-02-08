@@ -621,6 +621,10 @@ Code Review       |████████████████████�
 -- ======================================
 -- DATABASE SCHEMA: CoachMaster (SQLite)
 -- ======================================
+-- NOTE: SQLite has no native DATETIME type. Timestamps are stored as TEXT
+-- in 'YYYY-MM-DD HH:MM:SS' format via datetime('now'). Use SQLite's
+-- built-in datetime functions (e.g., datetime(), date(), strftime())
+-- for comparisons and queries on these columns.
 
 -- 1. USERS TABLE
 CREATE TABLE users (
