@@ -1,0 +1,1131 @@
+openapi: 3.0.0
+info:
+  title: CoachMaster - MVP API
+  version: 1.0.0
+  description: |
+    Reduced API specification for CoachMaster MVP (1 week, 2 developers)
+    
+    **Authentication:** All endpoints except /auth/register and /auth/login require JWT token in Authorization header
+    
+    **Roles:**
+    - admin: Full access to all endpoints
+    - instructor: Access to their batches, attendance marking
+    - student: Access to their own data only
+
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Local development server
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+        role:
+          type: string
+          enum: [admin, instructor, student]
+        phone:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    
+    Course:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        total_fee:
+          type: number
+          format: decimal
+        created_at:
+          type: string
+          format: date-time
+    
+    Batch:
+      type: object
+      properties:
+        id:
+          type: integer
+        course_id:
+          type: integer
+        instructor_id:
+          type: integer
+        batch_name:
+          type: string
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        schedule_time:
+          type: string
+          description: "e.g., Mon-Fri 9AM-11AM"
+        created_at:
+          type: string
+          format: date-time
+    
+    Enrollment:
+      type: object
+      properties:
+        id:
+          type: integer
+        student_id:
+          type: integer
+        batch_id:
+          type: integer
+        enrollment_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [active, completed, dropped]
+    
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+        student_id:
+          type: integer
+        amount:
+          type: number
+          format: decimal
+        payment_date:
+          type: string
+          format: date
+        payment_mode:
+          type: string
+          enum: [cash, card, upi, bank_transfer]
+        notes:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    
+    Attendance:
+      type: object
+      properties:
+        id:
+          type: integer
+        batch_id:
+          type: integer
+        student_id:
+          type: integer
+        date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [present, absent]
+        marked_by:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+
+paths:
+  # ==================== AUTHENTICATION ====================
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register a new user
+      description: Create a new user account (admin, instructor, or student)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - full_name
+                - role
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 6
+                full_name:
+                  type: string
+                role:
+                  type: string
+                  enum: [admin, instructor, student]
+                phone:
+                  type: string
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid input or email already exists
+
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login user
+      description: Authenticate user and return JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          description: Invalid credentials
+
+  /auth/logout:
+    post:
+      tags:
+        - Authentication
+      summary: Logout user
+      description: Invalidate the current JWT token
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /auth/me:
+    get:
+      tags:
+        - Authentication
+      summary: Get current user info
+      description: Returns the currently authenticated user's information
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Current user info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+
+  # ==================== USER MANAGEMENT ====================
+  /users:
+    get:
+      tags:
+        - Users
+      summary: List all users
+      description: Get list of all users (admin only). Can filter by role.
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [admin, instructor, student]
+          description: Filter users by role
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '403':
+          description: Forbidden (admin only)
+
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get user by ID
+      description: Get details of a specific user
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+    
+    put:
+      tags:
+        - Users
+      summary: Update user profile
+      description: Update user information (own profile or admin can update any)
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '403':
+          description: Forbidden
+        '404':
+          description: User not found
+
+  # ==================== COURSES ====================
+  /courses:
+    get:
+      tags:
+        - Courses
+      summary: List all courses
+      description: Get list of all courses
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: List of courses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  courses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Course'
+    
+    post:
+      tags:
+        - Courses
+      summary: Create a new course
+      description: Create a new course (admin only)
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - total_fee
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                total_fee:
+                  type: number
+                  format: decimal
+      responses:
+        '201':
+          description: Course created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+        '403':
+          description: Forbidden (admin only)
+
+  /courses/{id}:
+    get:
+      tags:
+        - Courses
+      summary: Get course by ID
+      description: Get details of a specific course
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Course details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+        '404':
+          description: Course not found
+    
+    put:
+      tags:
+        - Courses
+      summary: Update course
+      description: Update course information (admin only)
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                total_fee:
+                  type: number
+                  format: decimal
+      responses:
+        '200':
+          description: Course updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+        '403':
+          description: Forbidden (admin only)
+        '404':
+          description: Course not found
+
+  # ==================== BATCHES ====================
+  /batches:
+    get:
+      tags:
+        - Batches
+      summary: List all batches
+      description: Get list of all batches. Instructors see only their batches.
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: course_id
+          in: query
+          schema:
+            type: integer
+          description: Filter by course ID
+      responses:
+        '200':
+          description: List of batches
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  batches:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Batch'
+    
+    post:
+      tags:
+        - Batches
+      summary: Create a new batch
+      description: Create a new batch (admin only)
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - course_id
+                - instructor_id
+                - batch_name
+                - start_date
+                - schedule_time
+              properties:
+                course_id:
+                  type: integer
+                instructor_id:
+                  type: integer
+                batch_name:
+                  type: string
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                schedule_time:
+                  type: string
+      responses:
+        '201':
+          description: Batch created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Batch'
+        '403':
+          description: Forbidden (admin only)
+
+  /batches/{id}:
+    get:
+      tags:
+        - Batches
+      summary: Get batch by ID
+      description: Get details of a specific batch
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Batch details with course and instructor info
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Batch'
+                  - type: object
+                    properties:
+                      course:
+                        $ref: '#/components/schemas/Course'
+                      instructor:
+                        $ref: '#/components/schemas/User'
+        '404':
+          description: Batch not found
+    
+    put:
+      tags:
+        - Batches
+      summary: Update batch
+      description: Update batch information (admin only)
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                batch_name:
+                  type: string
+                instructor_id:
+                  type: integer
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                schedule_time:
+                  type: string
+      responses:
+        '200':
+          description: Batch updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Batch'
+        '403':
+          description: Forbidden (admin only)
+        '404':
+          description: Batch not found
+
+  /batches/{id}/students:
+    get:
+      tags:
+        - Batches
+      summary: Get students in a batch
+      description: Get list of all students enrolled in a specific batch
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of students in the batch
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  students:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/User'
+                        - type: object
+                          properties:
+                            enrollment_id:
+                              type: integer
+                            enrollment_date:
+                              type: string
+                              format: date
+                            enrollment_status:
+                              type: string
+        '404':
+          description: Batch not found
+
+  # ==================== ENROLLMENTS ====================
+  /enrollments:
+    post:
+      tags:
+        - Enrollments
+      summary: Enroll student in a batch
+      description: Enroll a student in a batch (admin only). One student can only be in one batch.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - student_id
+                - batch_id
+              properties:
+                student_id:
+                  type: integer
+                batch_id:
+                  type: integer
+      responses:
+        '201':
+          description: Student enrolled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+        '400':
+          description: Student already enrolled in a batch
+        '403':
+          description: Forbidden (admin only)
+
+  /students/{id}/enrollment:
+    get:
+      tags:
+        - Enrollments
+      summary: Get student enrollment info
+      description: Get enrollment information for a specific student
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Enrollment information with batch and course details
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Enrollment'
+                  - type: object
+                    properties:
+                      batch:
+                        $ref: '#/components/schemas/Batch'
+                      course:
+                        $ref: '#/components/schemas/Course'
+        '404':
+          description: No enrollment found for this student
+
+  # ==================== PAYMENTS ====================
+  /payments:
+    post:
+      tags:
+        - Payments
+      summary: Record a payment
+      description: Record a fee payment for a student (admin only)
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - student_id
+                - amount
+                - payment_date
+              properties:
+                student_id:
+                  type: integer
+                amount:
+                  type: number
+                  format: decimal
+                payment_date:
+                  type: string
+                  format: date
+                payment_mode:
+                  type: string
+                  enum: [cash, card, upi, bank_transfer]
+                  default: cash
+                notes:
+                  type: string
+      responses:
+        '201':
+          description: Payment recorded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '403':
+          description: Forbidden (admin only)
+
+  /students/{id}/payments:
+    get:
+      tags:
+        - Payments
+      summary: Get student payment history
+      description: Get all payments made by a student
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of payments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payment'
+                  total_paid:
+                    type: number
+                    format: decimal
+
+  /students/{id}/fee-status:
+    get:
+      tags:
+        - Payments
+      summary: Get student fee status
+      description: Get fee status including total fee, paid amount, and balance
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Fee status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  student_id:
+                    type: integer
+                  student_name:
+                    type: string
+                  total_fee:
+                    type: number
+                    format: decimal
+                  total_paid:
+                    type: number
+                    format: decimal
+                  balance:
+                    type: number
+                    format: decimal
+                  course_name:
+                    type: string
+        '404':
+          description: Student not enrolled in any batch
+
+  # ==================== ATTENDANCE ====================
+  /attendance:
+    post:
+      tags:
+        - Attendance
+      summary: Mark attendance
+      description: Mark attendance for students in a batch (instructor or admin)
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - batch_id
+                - date
+                - attendance_records
+              properties:
+                batch_id:
+                  type: integer
+                date:
+                  type: string
+                  format: date
+                attendance_records:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - student_id
+                      - status
+                    properties:
+                      student_id:
+                        type: integer
+                      status:
+                        type: string
+                        enum: [present, absent]
+      responses:
+        '201':
+          description: Attendance marked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  records_created:
+                    type: integer
+        '403':
+          description: Forbidden (instructor/admin only)
+
+  /batches/{id}/attendance:
+    get:
+      tags:
+        - Attendance
+      summary: Get batch attendance
+      description: Get attendance records for a batch, optionally filtered by date
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Filter by specific date
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Filter from start date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Filter to end date
+      responses:
+        '200':
+          description: Attendance records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  batch_id:
+                    type: integer
+                  batch_name:
+                    type: string
+                  attendance:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/Attendance'
+                        - type: object
+                          properties:
+                            student_name:
+                              type: string
+
+  /students/{id}/attendance:
+    get:
+      tags:
+        - Attendance
+      summary: Get student attendance summary
+      description: Get attendance summary for a specific student
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Attendance summary
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  student_id:
+                    type: integer
+                  student_name:
+                    type: string
+                  total_classes:
+                    type: integer
+                  present_count:
+                    type: integer
+                  absent_count:
+                    type: integer
+                  attendance_percentage:
+                    type: number
+                    format: float
+                  recent_attendance:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          format: date
+                        status:
+                          type: string
+
+  # ==================== DASHBOARDS ====================
+  /dashboard/admin:
+    get:
+      tags:
+        - Dashboard
+      summary: Admin dashboard
+      description: Get overview statistics for admin (admin only)
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Admin dashboard data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_students:
+                    type: integer
+                  total_instructors:
+                    type: integer
+                  total_courses:
+                    type: integer
+                  total_batches:
+                    type: integer
+                  total_revenue:
+                    type: number
+                    format: decimal
+                  recent_enrollments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        student_name:
+                          type: string
+                        batch_name:
+                          type: string
+                        enrollment_date:
+                          type: string
+                          format: date
+        '403':
+          description: Forbidden (admin only)
+
+  /dashboard/instructor:
+    get:
+      tags:
+        - Dashboard
+      summary: Instructor dashboard
+      description: Get overview for instructor (instructor only)
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Instructor dashboard data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instructor_name:
+                    type: string
+                  total_batches:
+                    type: integer
+                  total_students:
+                    type: integer
+                  my_batches:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        batch_id:
+                          type: integer
+                        batch_name:
+                          type: string
+                        course_name:
+                          type: string
+                        student_count:
+                          type: integer
+                        schedule_time:
+                          type: string
+        '403':
+          description: Forbidden (instructor only)
+
+  /dashboard/student:
+    get:
+      tags:
+        - Dashboard
+      summary: Student dashboard
+      description: Get overview for student (student only)
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Student dashboard data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  student_name:
+                    type: string
+                  enrolled_batch:
+                    type: object
+                    properties:
+                      batch_id:
+                        type: integer
+                      batch_name:
+                        type: string
+                      course_name:
+                        type: string
+                      instructor_name:
+                        type: string
+                      schedule_time:
+                        type: string
+                  attendance_summary:
+                    type: object
+                    properties:
+                      total_classes:
+                        type: integer
+                      present_count:
+                        type: integer
+                      attendance_percentage:
+                        type: number
+                  fee_status:
+                    type: object
+                    properties:
+                      total_fee:
+                        type: number
+                      paid:
+                        type: number
+                      balance:
+                        type: number
+        '403':
+          description: Forbidden (student only)
