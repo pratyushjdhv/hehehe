@@ -1,258 +1,282 @@
+# CoachMaster — Small Business Operations Platform for Exam Coaching Institute
 
-Small Business Operations Platform — Exam Coaching Institute
-Complete Project Document (All Milestones)
+> **Complete Project Document (All Milestones)**
 
+---
 
-═══════════════════════════════════════════════════════
-MILESTONE 1: IDENTIFY USER REQUIREMENTS
-═══════════════════════════════════════════════════════
+## Milestone 1: Identify User Requirements
 
+### 1. Identification of Users
 
-1. Identification of Users
-1.1 Primary Users
+#### 1.1 Primary Users
 
-User Role	Description
-Institute Owner / Admin	Runs the institute. Manages finances, oversees operations, hires instructors, sets fee structures, monitors overall performance. Makes strategic decisions (new batches, new courses, pricing changes).
-Instructor / Faculty	Teaches classes/batches. Needs to view their schedule, mark attendance, upload study material, create and grade tests, track student progress.
-Student	Enrolls in courses/batches. Attends classes, takes tests, views results, pays fees, accesses study material, raises queries or doubts.
+| User Role | Description |
+| --- | --- |
+| **Institute Owner / Admin** | Runs the institute. Manages finances, oversees operations, hires instructors, sets fee structures, monitors overall performance. Makes strategic decisions (new batches, new courses, pricing changes). |
+| **Instructor / Faculty** | Teaches classes/batches. Needs to view their schedule, mark attendance, upload study material, create and grade tests, track student progress. |
+| **Student** | Enrolls in courses/batches. Attends classes, takes tests, views results, pays fees, accesses study material, raises queries or doubts. |
 
-1.2 Secondary Users
+#### 1.2 Secondary Users
 
-User Role	Description
-Front-Desk / Receptionist	First point of contact. Handles walk-in enquiries, new admissions, fee collection receipts, general coordination between students/parents and instructors.
-Parent / Guardian	Monitors ward's attendance, fee dues, test performance. Communicates with the institute regarding progress or concerns.
-Batch Manager / Coordinator	(In larger coaching centers) Coordinates batch scheduling, resolves room/time conflicts, handles instructor substitutions, manages test scheduling across batches.
+| User Role | Description |
+| --- | --- |
+| **Front-Desk / Receptionist** | First point of contact. Handles walk-in enquiries, new admissions, fee collection receipts, general coordination between students/parents and instructors. |
+| **Parent / Guardian** | Monitors ward's attendance, fee dues, test performance. Communicates with the institute regarding progress or concerns. |
+| **Batch Manager / Coordinator** | (In larger coaching centers) Coordinates batch scheduling, resolves room/time conflicts, handles instructor substitutions, manages test scheduling across batches. |
 
-1.3 Tertiary Users
+#### 1.3 Tertiary Users
 
-User Role	Description
-External Content Vendor / Partner	Supplies question banks, study materials, or mock test papers. Needs limited access to upload content or receive payment information.
-Accountant / Auditor	Reviews financial records — fee collections, instructor payments, expenses — for compliance and tax filing. Needs read-only access to financial reports.
-IT Support / System Administrator	Maintains the platform, manages user accounts, handles backups, resolves technical issues.
+| User Role | Description |
+| --- | --- |
+| **External Content Vendor / Partner** | Supplies question banks, study materials, or mock test papers. Needs limited access to upload content or receive payment information. |
+| **Accountant / Auditor** | Reviews financial records — fee collections, instructor payments, expenses — for compliance and tax filing. Needs read-only access to financial reports. |
+| **IT Support / System Administrator** | Maintains the platform, manages user accounts, handles backups, resolves technical issues. |
+### 2. User Research — Interviews & Observation Studies
 
+#### 2.1 Research Methodology
 
+Semi-structured interviews conducted with:
 
-2. User Research — Interviews & Observation Studies
-2.1 Research Methodology
+- 2 coaching institute owners (one GATE coaching, one JEE coaching)
+- 3 instructors (across different subjects)
+- 5 students (enrolled in various exam preparation batches)
+- 1 front-desk receptionist
+- 2 parents
 
-Semi-structured interviews conducted with: 2 coaching institute owners (one GATE coaching, one JEE coaching) 
-3 instructors (across different subjects) 
-5 students (enrolled in various exam preparation batches) 
-1 front-desk receptionist 
-2 parents 
-Observation study conducted at a local GATE coaching center over 2 days, observing: Morning batch operations (attendance, class flow) 
-Fee collection process at reception 
-Instructor's preparation routine and post-class activities 
-How schedule changes are communicated 
-2.2 Interview Protocol
+Observation study conducted at a local GATE coaching center over 2 days, observing:
 
-Key principle followed: We did NOT suggest features or ask "Would X be useful?" Instead, we asked open-ended questions about their daily routine, frustrations, and workarounds.
+- Morning batch operations (attendance, class flow)
+- Fee collection process at reception
+- Instructor's preparation routine and post-class activities
+- How schedule changes are communicated
 
+#### 2.2 Interview Protocol
 
-Sample Questions Asked:
-For Owner/Admin:
+**Key principle followed:** We did NOT suggest features or ask "Would X be useful?" Instead, we asked open-ended questions about their daily routine, frustrations, and workarounds.
 
-"Walk me through a typical day at your institute." 
-"What tasks consume most of your time that you wish took less?" 
-"How do you currently track which students have paid and which haven't?" 
-"When an instructor calls in sick, what happens next?" 
-"How do you decide when to open a new batch?" 
-For Instructor:
+**Sample Questions Asked:**
 
-"How do you keep track of what you've covered in each batch?" 
-"How do you share notes or materials with students?" 
-"What happens when two batches need the same room at the same time?" 
-"How do you currently know which students are falling behind?" 
-For Student:
+**For Owner/Admin:**
 
-"How do you find out about schedule changes?" 
-"If you miss a class, how do you catch up?" 
-"How do you know your standing compared to other students?" 
-"What frustrates you most about the way things work at your coaching center?" 
-For Front-Desk:
+- "Walk me through a typical day at your institute."
+- "What tasks consume most of your time that you wish took less?"
+- "How do you currently track which students have paid and which haven't?"
+- "When an instructor calls in sick, what happens next?"
+- "How do you decide when to open a new batch?"
 
-"How many enquiries do you handle per day and how do you track them?" 
-"What's the process when a parent calls asking about their child's performance?" 
-"How do you currently issue fee receipts?" 
-For Parent:
-
-"How do you find out if your child attended class today?" 
-"How are you informed about fee dues?" 
-"How do you track your child's progress in tests?" 
-2.3 Key Pain Points Identified
-Pain Points — Institute Owner / Admin
+**For Instructor:**
 
-ID	Pain Point	Evidence / Quote
-PP-O1	No unified view of finances: Fee collection tracked in Excel sheets by receptionist, instructor salaries managed in a separate register. Reconciliation is a manual, error-prone monthly ordeal.	"Every month I spend two full days just matching who paid, who didn't, and how much we owe instructors."
-PP-O2	Schedule conflicts are discovered too late: Room double-bookings happen because scheduling is done in a physical register. Conflicts surface only when two batches show up at the same room.	"Last week, two batches collided. It was embarrassing — students had to wait while we figured it out."
-PP-O3	No data-driven decisions: Owner doesn't know which batch is profitable, which instructor gets best results, or which course has declining enrollment — all decisions are gut-based.	"I feel like I'm flying blind. I don't know which batches to shut down and which to expand."
-PP-O4	Enquiry follow-ups are lost: Walk-in and phone enquiries are noted on paper. No systematic follow-up process — potential students slip through.	"We get 20 enquiries a day. Honestly, I have no idea how many we convert."
-PP-O5	Instructor substitution is chaotic: When a teacher is absent, the owner manually calls other instructors to find a replacement. There's no visibility into who's available.	"I end up calling 5-6 people. Sometimes no one picks up and we have to cancel the class."
+- "How do you keep track of what you've covered in each batch?"
+- "How do you share notes or materials with students?"
+- "What happens when two batches need the same room at the same time?"
+- "How do you currently know which students are falling behind?"
 
-Pain Points — Instructor
+**For Student:**
 
-ID	Pain Point	Evidence / Quote
-PP-I1	Attendance is manual and unreliable: Instructors pass around a paper register. Students sign for friends. No way to verify.	"Attendance is a joke. I see 30 signatures but only 20 faces."
-PP-I2	Material sharing is fragmented: Some use WhatsApp groups, some email, some Google Drive. Students from different batches get confused about which material is for them.	"I have 8 WhatsApp groups for 4 batches. Students in Batch A accidentally get Batch B's material."
-PP-I3	No structured test management: Tests are conducted on paper, graded manually, and results are announced verbally or via WhatsApp. No historical tracking.	"I grade 60 papers every weekend. I can't even tell you how a student performed 3 months ago."
-PP-I4	Syllabus tracking is ad-hoc: No formal way to track how much syllabus has been covered per batch. Handover to a substitute instructor is nearly impossible.	"When I was sick for a week, the substitute had no idea what I'd already covered."
-PP-I5	Doubt resolution is chaotic: Students send doubts via WhatsApp at all hours. No prioritization, no tracking of resolved vs. unresolved doubts.	"I get 50 messages a day. Some are doubts, some are 'good morning' messages. I miss important ones."
+- "How do you find out about schedule changes?"
+- "If you miss a class, how do you catch up?"
+- "How do you know your standing compared to other students?"
+- "What frustrates you most about the way things work at your coaching center?"
 
-Pain Points — Student
+**For Front-Desk:**
 
-ID	Pain Point	Evidence / Quote
-PP-S1	Schedule changes communicated unreliably: Students learn about class cancellations or room changes through WhatsApp — messages get buried.	"I traveled an hour to class only to find out it was cancelled. The message was sent in a group I had muted."
-PP-S2	No visibility into own progress: Students don't have a consolidated view of their test scores, attendance, or syllabus progress.	"I don't know if I'm improving or not. My test papers are scattered somewhere."
-PP-S3	Fee receipts are informal: Students pay cash, get a handwritten receipt (if at all). Disputes arise about whether fees were paid.	"I paid ₹15,000 last month but the office says I still owe ₹5,000. I can't find my receipt."
-PP-S4	Missed classes are hard to make up: No recorded lectures, no notes repository. If you miss a class, you're on your own.	"If I miss a class, I borrow someone's notes. The quality depends on who I ask."
-PP-S5	Enrollment / batch changes are cumbersome: Switching from a weekday to a weekend batch requires talking to 3 people, and there's no guarantee a seat is available.	"I wanted to switch batches. It took 2 weeks of back and forth."
+- "How many enquiries do you handle per day and how do you track them?"
+- "What's the process when a parent calls asking about their child's performance?"
+- "How do you currently issue fee receipts?"
 
-Pain Points — Front-Desk / Receptionist
+**For Parent:**
 
-ID	Pain Point	Evidence / Quote
-PP-F1	Enquiry management is all on paper: Enquiries are logged in a register. No systematic follow-up or conversion tracking.	"I write down names and numbers. Whether someone follows up is anyone's guess."
-PP-F2	Fee tracking is error-prone: Multiple payment modes (cash, UPI, cheque) make reconciliation difficult. Partial payments are especially hard to track.	"Partial payments are a nightmare. I have to flip through pages to find previous entries."
-PP-F3	Answering parent queries takes too long: When a parent calls, the receptionist has to physically find the instructor or check multiple registers to provide information.	"A parent called asking about their child's attendance. It took me 20 minutes to find the register."
+- "How do you find out if your child attended class today?"
+- "How are you informed about fee dues?"
+- "How do you track your child's progress in tests?"
 
-Pain Points — Parent
+#### 2.3 Key Pain Points Identified
 
-ID	Pain Point	Evidence / Quote
-PP-P1	Zero visibility: Parents have no way to check attendance, fee status, or test results without calling the institute.	"I'm paying ₹50,000 a year and I have no idea if my son is even going to class."
-PP-P2	Communication is one-directional: Parents only hear from the institute when there's a problem. No proactive updates.	"I only get a call when fees are due. Never about how my daughter is doing."
-
-2.4 Observation Study Findings
-Location: ABC GATE Coaching Center, [City]
-Duration: 2 days (8 AM – 6 PM)
-
-Observation	Impact
-Receptionist spent ~40% of time on phone answering repetitive queries (fee status, schedule, batch availability)	High — reduces time for actual operational tasks
-Instructor arrived to find room occupied by another batch; spent 15 minutes resolving	Medium — class started late, students frustrated
-Student paid fee via UPI but receptionist didn't update ledger until end of day; student was marked as "unpaid" in the interim	High — trust issue, potential conflicts
-Whiteboard schedule was outdated by 3 days; students were confused about timing	High — unreliable communication
-Owner manually counted occupied seats to determine if a new batch could be opened	Medium — no capacity planning tools
-
-
-
-3. User Stories (SMART Guidelines)
-
-SMART: Specific, Measurable, Achievable, Relevant, Time-bound
-(Time-bound is reflected in sprint assignment; stories are estimated with story points)
-
-
-3.1 User Stories — Institute Owner / Admin
-
-US-ID	User Story	Acceptance Criteria	Story Points
-US-O01	As an institute owner, I want to view a dashboard showing total revenue, pending fees, active students, and batch occupancy, so that I can make informed decisions about institute operations without manually checking spreadsheets.	Dashboard loads within 3 seconds. Shows data for current month by default with filter options for custom date range. All numbers match underlying records.	8
-US-O02	As an institute owner, I want to create and configure new courses (e.g., GATE-CSE 2025, JEE Mains Crash Course) with details like duration, fee structure, and maximum capacity, so that all downstream operations (enrollment, scheduling, billing) use consistent, centralized course information.	Course created with name, description, exam type, duration (start/end date), fee amount, installment options, and max capacity. Validation prevents duplicate course names.	5
-US-O03	As an institute owner, I want to create batches under a course with specific timing, room, and instructor assignments, so that scheduling is centralized and conflicts are prevented automatically.	Batch created with batch code, course association, days of week, start/end time, room, and instructor. System prevents room or instructor double-booking at the same time slot.	8
-US-O04	As an institute owner, I want to view a report of all enquiries and their conversion status (enquiry → enrolled, enquiry → lost), so that I can measure marketing effectiveness and improve follow-up processes.	Report shows total enquiries, converted, pending, lost — filterable by date range, exam type, and source (walk-in, phone, online). Conversion rate calculated automatically.	5
-US-O05	As an institute owner, I want to receive alerts when a batch exceeds 90% capacity, so that I can plan to open a new batch before students are turned away.	Alert generated (in-app notification) when enrollment in any batch crosses 90% of max capacity. Alert includes batch name, current count, and max capacity.	3
-US-O06	As an institute owner, I want to assign substitute instructors to classes when the regular instructor is unavailable, so that classes are not cancelled and students are not inconvenienced.	Owner can view available instructors for a given time slot and subject. Substitution is logged with reason. Students are notified of the instructor change.	5
-US-O07	As an institute owner, I want to generate monthly financial reports showing fee collections (by payment mode), pending fees, and instructor payment dues, so that I can share accurate financial data with my accountant without manual compilation.	Report generated as downloadable PDF/CSV. Totals match individual transaction records. Report includes breakdowns by course, batch, and payment mode.	8
-US-O08	As an institute owner, I want to manage user accounts (create, deactivate, reset passwords) for instructors, front-desk staff, and students, so that access to the platform is controlled and secure.	Admin can create users with role assignment. Deactivated users cannot log in. Password reset sends a reset link/token. Role-based access control enforced across all pages.	5
-
-3.2 User Stories — Instructor
-
-US-ID	User Story	Acceptance Criteria	Story Points
-US-I01	As an instructor, I want to view my weekly and monthly class schedule (batch, subject, room, timing), so that I can plan my preparation and avoid confusion about where I need to be.	Schedule displays in calendar and list view. Shows batch name, subject, room number, timing. Reflects any substitution changes. Updated in real-time.	5
-US-I02	As an instructor, I want to mark attendance for students in my batch digitally (present/absent/late), so that attendance records are accurate, tamper-proof, and available for reporting.	Attendance can be marked for a specific batch on a specific date. Student list auto-populated from batch enrollment. Once submitted, attendance is locked (only admin can edit). Late marking is supported with a cutoff time.	5
-US-I03	As an instructor, I want to upload study materials (PDFs, links, notes) tagged to a specific batch and topic, so that students receive the right materials for their batch without confusion.	Upload supports PDF, DOCX, image files (max 10 MB each). Each upload tagged with batch, subject, and topic. Students in the tagged batch can view/download. Materials listed chronologically with search by topic.	5
-US-I04	As an instructor, I want to create a test with questions (MCQ, subjective), assign it to a batch, set a deadline, and have MCQs auto-graded, so that test management is efficient and I only manually grade subjective answers.	Test creation supports MCQ (with correct answer marking) and subjective questions. Test assigned to specific batch(es). Deadline enforced — late submissions flagged. MCQ auto-graded on submission. Subjective answers queued for manual grading.	13
-US-I05	As an instructor, I want to view a student-wise performance report showing all test scores and attendance over time, so that I can identify struggling students early and provide targeted support.	Report shows each student's test scores (with trend), attendance percentage, and rank within batch. Filterable by date range. Visual chart (line graph) for score trends.	8
-US-I06	As an instructor, I want to update the syllabus tracker for my batch (mark topics as "covered", "in-progress", or "pending"), so that substitute instructors and students know exactly where the batch stands.	Syllabus for each batch-subject combination displayed as a checklist. Instructor can update status. Timestamp recorded for each status change. Visible to students and other instructors.	5
-US-I07	As an instructor, I want to respond to student doubts in a structured Q&A forum (organized by batch and subject), so that my responses are visible to all students with similar doubts and I don't repeat answers across WhatsApp messages.	Forum organized by batch → subject → topic. Students post doubts (text + optional image). Instructor can reply. Replies visible to all batch students. Doubt marked as "resolved" or "unresolved".	8
-US-I08	As an instructor, I want to mark my leave/unavailability for specific dates, so that the admin can arrange a substitute in advance and students are informed proactively.	Instructor submits leave request with dates and reason. Admin receives notification. Status: Pending → Approved/Rejected. If approved, substitution workflow triggered.	3
-
-3.3 User Stories — Student
-
-US-ID	User Story	Acceptance Criteria	Story Points
-US-S01	As a student, I want to view my class schedule (batch timings, subjects, room, instructor), so that I know exactly where and when to attend classes without relying on WhatsApp messages.	Schedule displays in calendar and list view. Reflects real-time changes (substitution, cancellation). Shows room and instructor for each session.	3
-US-S02	As a student, I want to view my attendance record (subject-wise and overall), so that I can track my regularity and ensure I meet any minimum attendance requirements.	Attendance shown as percentage overall and per subject. Calendar view highlights present (green), absent (red), late (yellow) days. Updated within 24 hours of class.	3
-US-S03	As a student, I want to access and download study materials uploaded by my instructors, so that I have all relevant resources in one place and can study even after missing a class.	Materials listed per batch and subject. Filter by topic, date. Download supported. Only materials for enrolled batches visible.	3
-US-S04	As a student, I want to take assigned tests online (MCQs) and view my results and correct answers after the deadline, so that I can assess my preparation and learn from mistakes.	Student sees list of assigned tests with deadlines. Can attempt MCQ tests online (one attempt). Results (score, percentage, rank in batch) visible after deadline. Correct answers shown for MCQs after deadline.	8
-US-S05	As a student, I want to view my fee payment history and any pending dues with breakdowns, so that I have a clear record of what I've paid and what's outstanding, without needing to call the institute.	Fee section shows: total course fee, amount paid (with transaction dates and modes), pending amount, next installment due date. Receipt downloadable as PDF for each payment.	5
-US-S06	As a student, I want to receive notifications for schedule changes, new materials, upcoming tests, and fee reminders, so that I stay informed without actively checking the platform repeatedly.	In-app notifications for: class cancellation, room change, new material upload, test published, fee due in 7 days. Notification history viewable. Mark as read supported.	5
-US-S07	As a student, I want to post doubts in a batch-specific Q&A forum and view responses from instructors, so that I can get my doubts resolved in a structured manner and benefit from doubts raised by peers.	Student can post doubt with text and optional image. Tagged to subject and topic. Can view all doubts and replies in their batch forum. Can search doubts.	5
-US-S08	As a student, I want to view my performance dashboard showing test scores over time, attendance trend, and batch rank, so that I can track my progress and identify areas needing improvement.	Dashboard shows: test score trend (line chart), subject-wise average scores, attendance percentage, batch rank (current and trend). Data updates after each test result.	8
-US-S09	As a student, I want to request a batch change (e.g., weekday to weekend), so that I can switch to a more convenient schedule if my circumstances change.	Student submits batch change request with preferred batch and reason. Admin reviews and approves/rejects. If approved, enrollment updated automatically. Student notified of decision.	3
-
-3.4 User Stories — Front-Desk / Receptionist
-
-US-ID	User Story	Acceptance Criteria	Story Points
-US-F01	As a receptionist, I want to log new enquiries (name, phone, exam interest, source) and set follow-up reminders, so that no potential student is forgotten and conversion tracking is possible.	Enquiry form captures: name, phone, email, exam type, preferred batch timing, source (walk-in/phone/online/referral), notes. Follow-up date field with reminder notification. Status: New → Contacted → Enrolled / Lost.	5
-US-F02	As a receptionist, I want to enroll a new student by selecting a course and batch, entering student details, and recording the initial fee payment, so that the enrollment process is completed in one smooth workflow without needing multiple registers.	Enrollment flow: select course → select batch (shows available capacity) → enter student details (name, phone, email, parent contact, address) → record payment (amount, mode, receipt number). Student account created automatically. Confirmation displayed.	8
-US-F03	As a receptionist, I want to record fee payments (full or partial) against a student's account and generate a receipt, so that all financial transactions are tracked accurately and receipt disputes are eliminated.	Payment recorded with: student ID, amount, mode (cash/UPI/card/cheque), date, remarks. Running balance updated. Printable receipt generated with unique receipt number, institute name, student name, amount, date, mode.	5
-US-F04	As a receptionist, I want to search for a student by name, phone number, or batch and view their profile (enrolled courses, attendance, fee status), so that I can quickly answer queries from students or parents without flipping through registers.	Search by name (partial match), phone, batch, or student ID. Profile shows: enrolled batches, attendance summary, fee status (paid/pending), and contact information. Results returned in under 2 seconds.	5
-US-F05	As a receptionist, I want to view today's class schedule and any changes (cancellations, room changes, instructor substitutions), so that I can inform walk-in students and parents accurately.	Today's schedule displayed with all batches, timings, rooms, instructors. Changes highlighted (color-coded). Updated in real-time.	3
-
-3.5 User Stories — Parent
-
-US-ID	User Story	Acceptance Criteria	Story Points
-US-P01	As a parent, I want to view my ward's attendance record, so that I can verify they are attending classes regularly without calling the institute.	Parent logs in with linked account. Sees ward's attendance (overall and per subject). Calendar view. Data updated daily.	3
-US-P02	As a parent, I want to view my ward's test scores and batch rank, so that I can monitor their academic progress and intervene if needed.	Parent dashboard shows ward's test scores (list and trend chart), batch rank, and subject-wise performance. Updated after each test result.	3
-US-P03	As a parent, I want to view fee payment status and upcoming due dates, so that I can ensure timely payments and avoid disputes.	Fee section shows: total fee, paid amount, pending amount, installment schedule, last payment date. Receipt download available.	3
-US-P04	As a parent, I want to receive notifications about my ward's attendance irregularities (e.g., absent for 3 consecutive days) and upcoming fee deadlines, so that I'm proactively informed about important matters.	Notification triggered if ward absent ≥3 consecutive days. Fee reminder sent 7 days before due date and on due date. In-app and optional email notification.	3
-
-
-
-═══════════════════════════════════════════════════════
-MILESTONE 2: SCHEDULING AND DESIGN
-═══════════════════════════════════════════════════════
-
-
-4. Project Schedule
-4.1 Sprint Plan
-
-Sprint	Duration	Focus	Key User Stories
-Sprint 0	Week 1–2	Project setup, architecture, DB design, UI wireframes	Infrastructure setup
-Sprint 1	Week 3–4	Authentication, User Management, Course & Batch Management	US-O02, US-O03, US-O08, US-F04
-Sprint 2	Week 5–6	Enrollment, Fee Management, Enquiry Management	US-F01, US-F02, US-F03, US-S05, US-O07
-Sprint 3	Week 7–8	Scheduling, Attendance, Syllabus Tracker	US-I01, US-I02, US-I06, US-S01, US-S02, US-O06
-Sprint 4	Week 9–10	Tests, Materials, Doubts Forum, Notifications	US-I03, US-I04, US-I07, US-S03, US-S04, US-S06, US-S07
-Sprint 5	Week 11–12	Dashboards, Reports, Parent Portal, Polish	US-O01, US-O04, US-O05, US-I05, US-S08, US-P01–P04
-
-4.2 Gantt Chart (Text Representation)
-
-text
-Week:    1    2    3    4    5    6    7    8    9   10   11   12
-         |----|----|----|----|----|----|----|----|----|----|----| 
-Sprint 0 |████████|
-Sprint 1           |████████|
-Sprint 2                     |████████|
-Sprint 3                               |████████|
-Sprint 4                                         |████████|
-Sprint 5                                                   |████████|
-UI/UX    |████████████████████████████████████████████████████████████|
-Testing        |████████████████████████████████████████████████████████|
-Code Review          |████████████████████████████████████████████████████|
-
-4.3 Scrum Meeting Schedule
-
-Meeting	Frequency	Day/Time	Duration	Participants
-Sprint Planning	Bi-weekly (sprint start)	Monday 10:00 AM	60 min	All team members
-Daily Standup	Daily (weekdays)	9:30 AM	15 min	All team members
-Sprint Review	Bi-weekly (sprint end)	Friday 3:00 PM	45 min	All team members + stakeholders
-Sprint Retrospective	Bi-weekly (sprint end)	Friday 4:00 PM	30 min	All team members
-Backlog Grooming	Weekly	Wednesday 2:00 PM	30 min	Product Owner + 2 devs
-
-4.4 Project Scheduling Tool
-Tool Used: Jira (with Scrum board)
-
-Board Type: Scrum Board 
-Backlog: All user stories added with story points 
-Sprints: Created per schedule above 
-Labels: backend, frontend, database, testing, devops 
-Epics: Authentication, Course Management, Enrollment & Fees, Scheduling & Attendance, Tests & Materials, Dashboards & Reports, Parent Portal 
-Additional Tools:
-
-Trello: Used for Kanban board for daily task tracking (To Do → In Progress → Code Review → Testing → Done) 
-GitHub Projects: Linked with pull requests and issues 
-
-
-5. Design of Components
-5.1 System Architecture (High-Level)
-
-text
+**Pain Points — Institute Owner / Admin**
+
+| ID | Pain Point | Evidence / Quote |
+| --- | --- | --- |
+| PP-O1 | No unified view of finances: Fee collection tracked in Excel sheets by receptionist, instructor salaries managed in a separate register. Reconciliation is a manual, error-prone monthly ordeal. | "Every month I spend two full days just matching who paid, who didn't, and how much we owe instructors." |
+| PP-O2 | Schedule conflicts are discovered too late: Room double-bookings happen because scheduling is done in a physical register. | "Last week, two batches collided. It was embarrassing — students had to wait while we figured it out." |
+| PP-O3 | No data-driven decisions: Owner doesn't know which batch is profitable, which instructor gets best results, or which course has declining enrollment. | "I feel like I'm flying blind. I don't know which batches to shut down and which to expand." |
+| PP-O4 | Enquiry follow-ups are lost: Walk-in and phone enquiries are noted on paper. No systematic follow-up process. | "We get 20 enquiries a day. Honestly, I have no idea how many we convert." |
+| PP-O5 | Instructor substitution is chaotic: When a teacher is absent, the owner manually calls other instructors to find a replacement. | "I end up calling 5-6 people. Sometimes no one picks up and we have to cancel the class." |
+
+**Pain Points — Instructor**
+
+| ID | Pain Point | Evidence / Quote |
+| --- | --- | --- |
+| PP-I1 | Attendance is manual and unreliable: Instructors pass around a paper register. Students sign for friends. | "Attendance is a joke. I see 30 signatures but only 20 faces." |
+| PP-I2 | Material sharing is fragmented: Some use WhatsApp groups, some email, some Google Drive. | "I have 8 WhatsApp groups for 4 batches. Students in Batch A accidentally get Batch B's material." |
+| PP-I3 | No structured test management: Tests are conducted on paper, graded manually, and results are announced verbally. | "I grade 60 papers every weekend. I can't even tell you how a student performed 3 months ago." |
+| PP-I4 | Syllabus tracking is ad-hoc: No formal way to track how much syllabus has been covered per batch. | "When I was sick for a week, the substitute had no idea what I'd already covered." |
+| PP-I5 | Doubt resolution is chaotic: Students send doubts via WhatsApp at all hours. No prioritization. | "I get 50 messages a day. Some are doubts, some are 'good morning' messages. I miss important ones." |
+
+**Pain Points — Student**
+
+| ID | Pain Point | Evidence / Quote |
+| --- | --- | --- |
+| PP-S1 | Schedule changes communicated unreliably: Students learn about cancellations through WhatsApp — messages get buried. | "I traveled an hour to class only to find out it was cancelled. The message was sent in a group I had muted." |
+| PP-S2 | No visibility into own progress: No consolidated view of test scores, attendance, or syllabus progress. | "I don't know if I'm improving or not. My test papers are scattered somewhere." |
+| PP-S3 | Fee receipts are informal: Students pay cash, get a handwritten receipt (if at all). Disputes arise. | "I paid ₹15,000 last month but the office says I still owe ₹5,000. I can't find my receipt." |
+| PP-S4 | Missed classes are hard to make up: No recorded lectures, no notes repository. | "If I miss a class, I borrow someone's notes. The quality depends on who I ask." |
+| PP-S5 | Enrollment / batch changes are cumbersome: Switching batches requires talking to 3 people. | "I wanted to switch batches. It took 2 weeks of back and forth." |
+
+**Pain Points — Front-Desk / Receptionist**
+
+| ID | Pain Point | Evidence / Quote |
+| --- | --- | --- |
+| PP-F1 | Enquiry management is all on paper: No systematic follow-up or conversion tracking. | "I write down names and numbers. Whether someone follows up is anyone's guess." |
+| PP-F2 | Fee tracking is error-prone: Multiple payment modes make reconciliation difficult. | "Partial payments are a nightmare. I have to flip through pages to find previous entries." |
+| PP-F3 | Answering parent queries takes too long: Receptionist has to physically find registers. | "A parent called asking about their child's attendance. It took me 20 minutes to find the register." |
+
+**Pain Points — Parent**
+
+| ID | Pain Point | Evidence / Quote |
+| --- | --- | --- |
+| PP-P1 | Zero visibility: Parents have no way to check attendance, fee status, or test results without calling. | "I'm paying ₹50,000 a year and I have no idea if my son is even going to class." |
+| PP-P2 | Communication is one-directional: Parents only hear from the institute when there's a problem. | "I only get a call when fees are due. Never about how my daughter is doing." |
+
+#### 2.4 Observation Study Findings
+
+**Location:** ABC GATE Coaching Center, [City]  
+**Duration:** 2 days (8 AM – 6 PM)
+
+| Observation | Impact |
+| --- | --- |
+| Receptionist spent ~40% of time on phone answering repetitive queries (fee status, schedule, batch availability) | High — reduces time for actual operational tasks |
+| Instructor arrived to find room occupied by another batch; spent 15 minutes resolving | Medium — class started late, students frustrated |
+| Student paid fee via UPI but receptionist didn't update ledger until end of day; student was marked as "unpaid" in the interim | High — trust issue, potential conflicts |
+| Whiteboard schedule was outdated by 3 days; students were confused about timing | High — unreliable communication |
+| Owner manually counted occupied seats to determine if a new batch could be opened | Medium — no capacity planning tools |
+
+### 3. User Stories (SMART Guidelines)
+
+**SMART:** Specific, Measurable, Achievable, Relevant, Time-bound  
+*(Time-bound is reflected in sprint assignment; stories are estimated with story points)*
+
+#### 3.1 User Stories — Institute Owner / Admin
+
+| US-ID | User Story | Acceptance Criteria | SP |
+| --- | --- | --- | --- |
+| US-O01 | As an institute owner, I want to view a dashboard showing total revenue, pending fees, active students, and batch occupancy, so that I can make informed decisions without manually checking spreadsheets. | Dashboard loads within 3 seconds. Shows data for current month by default with filter options. All numbers match underlying records. | 8 |
+| US-O02 | As an institute owner, I want to create and configure new courses with details like duration, fee structure, and maximum capacity, so that all downstream operations use consistent, centralized course information. | Course created with name, description, exam type, duration, fee amount, installment options, and max capacity. Validation prevents duplicate course names. | 5 |
+| US-O03 | As an institute owner, I want to create batches under a course with specific timing, room, and instructor assignments, so that scheduling is centralized and conflicts are prevented automatically. | Batch created with batch code, course association, days of week, start/end time, room, and instructor. System prevents room or instructor double-booking. | 8 |
+| US-O04 | As an institute owner, I want to view a report of all enquiries and their conversion status, so that I can measure marketing effectiveness and improve follow-up processes. | Report shows total enquiries, converted, pending, lost — filterable by date range, exam type, and source. Conversion rate calculated automatically. | 5 |
+| US-O05 | As an institute owner, I want to receive alerts when a batch exceeds 90% capacity, so that I can plan to open a new batch before students are turned away. | Alert generated when enrollment crosses 90% of max capacity. Alert includes batch name, current count, and max capacity. | 3 |
+| US-O06 | As an institute owner, I want to assign substitute instructors when the regular instructor is unavailable, so that classes are not cancelled. | Owner can view available instructors for a given time slot and subject. Substitution is logged with reason. Students are notified. | 5 |
+| US-O07 | As an institute owner, I want to generate monthly financial reports showing fee collections, pending fees, and instructor payment dues. | Report generated as downloadable PDF/CSV. Totals match individual transaction records. Includes breakdowns by course, batch, and payment mode. | 8 |
+| US-O08 | As an institute owner, I want to manage user accounts (create, deactivate, reset passwords) for all staff and students. | Admin can create users with role assignment. Deactivated users cannot log in. Password reset sends a reset link/token. RBAC enforced. | 5 |
+
+#### 3.2 User Stories — Instructor
+
+| US-ID | User Story | Acceptance Criteria | SP |
+| --- | --- | --- | --- |
+| US-I01 | As an instructor, I want to view my weekly and monthly class schedule, so that I can plan my preparation and avoid confusion. | Schedule displays in calendar and list view. Shows batch name, subject, room, timing. Reflects substitution changes. | 5 |
+| US-I02 | As an instructor, I want to mark attendance for students digitally (present/absent/late), so that attendance records are accurate and tamper-proof. | Attendance marked for a specific batch on a specific date. Student list auto-populated. Once submitted, locked (only admin can edit). | 5 |
+| US-I03 | As an instructor, I want to upload study materials tagged to a specific batch and topic. | Upload supports PDF, DOCX, image files (max 10 MB). Tagged with batch, subject, and topic. Listed chronologically with search. | 5 |
+| US-I04 | As an instructor, I want to create a test with questions (MCQ, subjective), assign it to a batch, set a deadline, and have MCQs auto-graded. | Test creation supports MCQ and subjective. Deadline enforced. MCQ auto-graded. Subjective answers queued for manual grading. | 13 |
+| US-I05 | As an instructor, I want to view a student-wise performance report showing all test scores and attendance over time. | Report shows each student's scores (with trend), attendance percentage, and rank within batch. Filterable by date range. | 8 |
+| US-I06 | As an instructor, I want to update the syllabus tracker for my batch. | Syllabus displayed as a checklist. Instructor can update status. Timestamp recorded. Visible to students and other instructors. | 5 |
+| US-I07 | As an instructor, I want to respond to student doubts in a structured Q&A forum organized by batch and subject. | Forum organized by batch → subject → topic. Students post doubts (text + optional image). Replies visible to all batch students. | 8 |
+| US-I08 | As an instructor, I want to mark my leave/unavailability, so that the admin can arrange a substitute. | Leave request with dates and reason. Admin receives notification. If approved, substitution workflow triggered. | 3 |
+
+#### 3.3 User Stories — Student
+
+| US-ID | User Story | Acceptance Criteria | SP |
+| --- | --- | --- | --- |
+| US-S01 | As a student, I want to view my class schedule, so that I know where and when to attend classes. | Schedule displays in calendar and list view. Reflects real-time changes. Shows room and instructor. | 3 |
+| US-S02 | As a student, I want to view my attendance record (subject-wise and overall). | Attendance shown as percentage overall and per subject. Calendar view highlights present/absent/late days. | 3 |
+| US-S03 | As a student, I want to access and download study materials uploaded by my instructors. | Materials listed per batch and subject. Filter by topic, date. Only enrolled batch materials visible. | 3 |
+| US-S04 | As a student, I want to take assigned tests online and view my results after the deadline. | Student sees assigned tests with deadlines. One attempt for MCQs. Results visible after deadline. | 8 |
+| US-S05 | As a student, I want to view my fee payment history and pending dues with breakdowns. | Shows total fee, paid amount, pending amount, next installment due date. Receipt downloadable as PDF. | 5 |
+| US-S06 | As a student, I want to receive notifications for schedule changes, new materials, upcoming tests, and fee reminders. | In-app notifications for class cancellation, room change, new material, test published, fee due. | 5 |
+| US-S07 | As a student, I want to post doubts in a batch-specific Q&A forum and view responses from instructors. | Post doubt with text and optional image. Tagged to subject and topic. Can search doubts. | 5 |
+| US-S08 | As a student, I want to view my performance dashboard showing test scores, attendance trend, and batch rank. | Dashboard shows test score trend, subject-wise averages, attendance percentage, batch rank. | 8 |
+| US-S09 | As a student, I want to request a batch change. | Submit request with preferred batch and reason. Admin reviews. If approved, enrollment updated. | 3 |
+
+#### 3.4 User Stories — Front-Desk / Receptionist
+
+| US-ID | User Story | Acceptance Criteria | SP |
+| --- | --- | --- | --- |
+| US-F01 | As a receptionist, I want to log new enquiries and set follow-up reminders. | Enquiry form: name, phone, email, exam type, preferred timing, source, notes. Follow-up date with reminder. | 5 |
+| US-F02 | As a receptionist, I want to enroll a new student by selecting a course and batch, entering details, and recording initial payment. | Select course → select batch → enter student details → record payment. Student account created automatically. | 8 |
+| US-F03 | As a receptionist, I want to record fee payments (full or partial) and generate a receipt. | Payment recorded with amount, mode, date, remarks. Balance updated. Printable receipt with unique number. | 5 |
+| US-F04 | As a receptionist, I want to search for a student and view their profile. | Search by name, phone, batch, or student ID. Shows enrolled batches, attendance, fee status, contact info. | 5 |
+| US-F05 | As a receptionist, I want to view today's class schedule and any changes. | Today's schedule with all batches, timings, rooms, instructors. Changes highlighted. Real-time. | 3 |
+
+#### 3.5 User Stories — Parent
+
+| US-ID | User Story | Acceptance Criteria | SP |
+| --- | --- | --- | --- |
+| US-P01 | As a parent, I want to view my ward's attendance record. | Parent sees ward's attendance (overall and per subject). Calendar view. Data updated daily. | 3 |
+| US-P02 | As a parent, I want to view my ward's test scores and batch rank. | Dashboard shows test scores, batch rank, and subject-wise performance. | 3 |
+| US-P03 | As a parent, I want to view fee payment status and upcoming due dates. | Shows total fee, paid, pending, installment schedule, last payment date. Receipt download. | 3 |
+| US-P04 | As a parent, I want to receive notifications about attendance irregularities and fee deadlines. | Notification triggered if ward absent ≥3 consecutive days. Fee reminder 7 days before and on due date. | 3 |
+
+---
+
+## Milestone 2: Scheduling and Design
+
+### 4. Project Schedule
+
+#### 4.1 Sprint Plan (1-Week Deadline)
+
+| Sprint | Duration | Focus | Key User Stories |
+| --- | --- | --- | --- |
+| Sprint 0 | Day 1 (Mon) | Project setup, architecture, DB design, UI wireframes | Infrastructure setup |
+| Sprint 1 | Day 2–3 (Tue–Wed) | Authentication, User Management, Course & Batch Management | US-O02, US-O03, US-O08, US-F04 |
+| Sprint 2 | Day 4 (Thu) | Enrollment, Fee Management, Enquiry Management | US-F01, US-F02, US-F03, US-S05, US-O07 |
+| Sprint 3 | Day 5 (Fri) | Scheduling, Attendance, Syllabus Tracker | US-I01, US-I02, US-I06, US-S01, US-S02, US-O06 |
+| Sprint 4 | Day 6 (Sat) | Tests, Materials, Doubts Forum, Notifications | US-I03, US-I04, US-I07, US-S03, US-S04, US-S06, US-S07 |
+| Sprint 5 | Day 7 (Sun) | Dashboards, Reports, Parent Portal, Polish & Final Testing | US-O01, US-O04, US-O05, US-I05, US-S08, US-P01–P04 |
+
+#### 4.2 Gantt Chart
+
+```
+Day:       Mon    Tue    Wed    Thu    Fri    Sat    Sun
+           |------|------|------|------|------|------|
+Sprint 0   |██████|
+Sprint 1          |█████████████|
+Sprint 2                        |██████|
+Sprint 3                               |██████|
+Sprint 4                                      |██████|
+Sprint 5                                             |██████|
+UI/UX      |█████████████████████████████████████████████████|
+Testing          |███████████████████████████████████████████|
+Code Review       |██████████████████████████████████████████|
+```
+
+#### 4.3 Scrum Meeting Schedule
+
+| Meeting | Frequency | Day/Time | Duration | Participants |
+| --- | --- | --- | --- | --- |
+| Sprint Planning | Daily (start of sprint) | Morning 10:00 AM | 30 min | All team members |
+| Daily Standup | Daily | 9:30 AM | 15 min | All team members |
+| Sprint Review | End of each sprint | Evening 5:00 PM | 30 min | All team members + stakeholders |
+| Sprint Retrospective | End of each sprint | Evening 5:30 PM | 15 min | All team members |
+| Backlog Grooming | Mid-week | Wednesday 2:00 PM | 20 min | Product Owner + 2 devs |
+
+#### 4.4 Project Scheduling Tool
+
+**Tool Used:** Jira (with Scrum board)
+
+- **Board Type:** Scrum Board
+- **Backlog:** All user stories added with story points
+- **Sprints:** Created per schedule above
+- **Labels:** `backend`, `frontend`, `database`, `testing`, `devops`
+- **Epics:** Authentication, Course Management, Enrollment & Fees, Scheduling & Attendance, Tests & Materials, Dashboards & Reports, Parent Portal
+
+**Additional Tools:**
+
+- **Trello:** Kanban board for daily task tracking (To Do → In Progress → Code Review → Testing → Done)
+- **GitHub Projects:** Linked with pull requests and issues
+
+### 5. Design of Components
+
+#### 5.1 System Architecture (High-Level)
+
+```
 ┌───────────────────────────────────────────────────────────┐
 │                      FRONTEND (Vue 3)                     │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐     │
@@ -282,69 +306,79 @@ text
 └────────────────────────┬──────────────────────────────────┘
                          │
 ┌────────────────────────┴──────────────────────────────────┐
-│                  DATABASE (PostgreSQL / SQLite)            │
+│                      DATABASE (SQLite)                    │
 │  Users, Courses, Batches, Enrollments, Fees, Attendance,  │
 │  Tests, Questions, Submissions, Materials, Doubts,        │
 │  Enquiries, Notifications, Schedules                      │
 └───────────────────────────────────────────────────────────┘
+```
 
-5.2 Component Descriptions
-Component 1: Authentication & Authorization Service
+#### 5.2 Component Descriptions
 
-Responsibility: User registration, login, logout, JWT token management, role-based access control (RBAC). 
-Key Entities: User, Role, Token 
-APIs: POST /auth/login, POST /auth/register, POST /auth/logout, GET /auth/me 
-Design Pattern: Token-based authentication with middleware for role verification. 
-Component 2: User Management Service
+**Component 1: Authentication & Authorization Service**
 
-Responsibility: CRUD operations for all user types (admin, instructor, student, front-desk, parent). Profile management, account activation/deactivation. 
-Key Entities: User, InstructorProfile, StudentProfile, ParentProfile 
-APIs: GET/POST/PUT/DELETE /users, GET /users/{id}, PUT /users/{id}/status 
-Component 3: Course & Batch Management Service
+- **Responsibility:** User registration, login, logout, JWT token management, role-based access control (RBAC).
+- **Key Entities:** User, Role, Token
+- **APIs:** `POST /auth/login`, `POST /auth/register`, `POST /auth/logout`, `GET /auth/me`
+- **Design Pattern:** Token-based authentication with middleware for role verification.
 
-Responsibility: Create/update/delete courses and batches. Manage batch-instructor and batch-room assignments. Prevent scheduling conflicts. 
-Key Entities: Course, Batch, Room, BatchSchedule 
-APIs: CRUD /courses, CRUD /batches, GET /batches/{id}/schedule, POST /batches/{id}/assign-instructor 
-Component 4: Enrollment & Fee Management Service
+**Component 2: User Management Service**
 
-Responsibility: Student enrollment into batches. Fee structure management, payment recording, receipt generation, pending fee tracking, installment management. 
-Key Entities: Enrollment, FeeStructure, Payment, Receipt 
-APIs: POST /enrollments, GET /students/{id}/fees, POST /payments, GET /payments/{id}/receipt 
-Component 5: Scheduling & Attendance Service
+- **Responsibility:** CRUD operations for all user types. Profile management, account activation/deactivation.
+- **Key Entities:** User, InstructorProfile, StudentProfile, ParentProfile
+- **APIs:** `GET/POST/PUT/DELETE /users`, `GET /users/{id}`, `PUT /users/{id}/status`
 
-Responsibility: Class schedule display (by batch, instructor, room). Attendance marking and reporting. Leave management for instructors. Substitution management. 
-Key Entities: Schedule, Attendance, LeaveRequest, Substitution 
-APIs: GET /schedule, POST /attendance, GET /students/{id}/attendance, POST /leaves, POST /substitutions 
-Component 6: Test & Material Management Service
+**Component 3: Course & Batch Management Service**
 
-Responsibility: Test creation (MCQ + subjective), test assignment to batches, student test submission, auto-grading for MCQs, manual grading for subjective. Study material upload and organization. 
-Key Entities: Test, Question, TestSubmission, Answer, Material 
-APIs: CRUD /tests, POST /tests/{id}/submit, GET /tests/{id}/results, CRUD /materials 
-Component 7: Doubts & Communication Service
+- **Responsibility:** Create/update/delete courses and batches. Manage batch-instructor and batch-room assignments. Prevent scheduling conflicts.
+- **Key Entities:** Course, Batch, Room, BatchSchedule
+- **APIs:** `CRUD /courses`, `CRUD /batches`, `GET /batches/{id}/schedule`, `POST /batches/{id}/assign-instructor`
 
-Responsibility: Batch-wise Q&A forum. Doubt posting, instructor responses. Doubt resolution tracking. 
-Key Entities: Doubt, DoubtResponse 
-APIs: CRUD /doubts, POST /doubts/{id}/respond, PUT /doubts/{id}/resolve 
-Component 8: Notification Service
+**Component 4: Enrollment & Fee Management Service**
 
-Responsibility: In-app notifications for schedule changes, new materials, test publications, fee reminders, attendance alerts. Notification preferences. 
-Key Entities: Notification, NotificationPreference 
-APIs: GET /notifications, PUT /notifications/{id}/read, POST /notifications (internal) 
-Component 9: Enquiry Management Service
+- **Responsibility:** Student enrollment into batches. Fee structure management, payment recording, receipt generation, pending fee tracking.
+- **Key Entities:** Enrollment, FeeStructure, Payment, Receipt
+- **APIs:** `POST /enrollments`, `GET /students/{id}/fees`, `POST /payments`, `GET /payments/{id}/receipt`
 
-Responsibility: Log walk-in/phone/online enquiries. Set follow-up reminders. Track conversion status. 
-Key Entities: Enquiry, FollowUp 
-APIs: CRUD /enquiries, POST /enquiries/{id}/follow-up, GET /enquiries/report 
-Component 10: Dashboard & Reporting Service
+**Component 5: Scheduling & Attendance Service**
 
-Responsibility: Aggregated views — owner dashboard (revenue, enrollment stats), instructor dashboard (performance summaries), student dashboard (progress tracking), parent dashboard. 
-Key Entities: Aggregated views (no new entities — queries across existing tables) 
-APIs: GET /dashboard/admin, GET /dashboard/instructor, GET /dashboard/student, GET /reports/financial, GET /reports/attendance 
+- **Responsibility:** Class schedule display. Attendance marking and reporting. Leave management. Substitution management.
+- **Key Entities:** Schedule, Attendance, LeaveRequest, Substitution
+- **APIs:** `GET /schedule`, `POST /attendance`, `GET /students/{id}/attendance`, `POST /leaves`, `POST /substitutions`
 
+**Component 6: Test & Material Management Service**
 
-6. Class Diagram
+- **Responsibility:** Test creation (MCQ + subjective), test assignment, student submission, auto-grading for MCQs. Study material upload.
+- **Key Entities:** Test, Question, TestSubmission, Answer, Material
+- **APIs:** `CRUD /tests`, `POST /tests/{id}/submit`, `GET /tests/{id}/results`, `CRUD /materials`
 
-text
+**Component 7: Doubts & Communication Service**
+
+- **Responsibility:** Batch-wise Q&A forum. Doubt posting, instructor responses. Resolution tracking.
+- **Key Entities:** Doubt, DoubtResponse
+- **APIs:** `CRUD /doubts`, `POST /doubts/{id}/respond`, `PUT /doubts/{id}/resolve`
+
+**Component 8: Notification Service**
+
+- **Responsibility:** In-app notifications for schedule changes, new materials, test publications, fee reminders, attendance alerts.
+- **Key Entities:** Notification, NotificationPreference
+- **APIs:** `GET /notifications`, `PUT /notifications/{id}/read`, `POST /notifications` (internal)
+
+**Component 9: Enquiry Management Service**
+
+- **Responsibility:** Log walk-in/phone/online enquiries. Set follow-up reminders. Track conversion status.
+- **Key Entities:** Enquiry, FollowUp
+- **APIs:** `CRUD /enquiries`, `POST /enquiries/{id}/follow-up`, `GET /enquiries/report`
+
+**Component 10: Dashboard & Reporting Service**
+
+- **Responsibility:** Aggregated views — owner, instructor, student, and parent dashboards.
+- **Key Entities:** Aggregated views (no new entities — queries across existing tables)
+- **APIs:** `GET /dashboard/admin`, `GET /dashboard/instructor`, `GET /dashboard/student`, `GET /reports/financial`, `GET /reports/attendance`
+
+### 6. Class Diagram
+
+```
 ┌─────────────────────────────┐
 │           User              │
 ├─────────────────────────────┤
@@ -561,311 +595,316 @@ text
 │ - updated_by: int (FK)   │
 │ - updated_at: datetime   │
 └──────────────────────────┘
+```
 
-Key Relationships:
+**Key Relationships:**
 
-User 1 ── * Enrollment (student enrolls in multiple batches) 
-Course 1 ── * Batch (each course has multiple batches) 
-Batch 1 ── * BatchSchedule (multiple time slots per batch) 
-Batch 1 ── * Enrollment (multiple students per batch) 
-Enrollment 1 ── * Payment (multiple payments per enrollment) 
-BatchSchedule 1 ── * Attendance (attendance per schedule session) 
-Test 1 ── * Question (multiple questions per test) 
-Test 1 ── * TestSubmission (one per student) 
-TestSubmission 1 ── * Answer (one per question) 
-Batch 1 ── * Material (multiple materials per batch) 
-Batch 1 ── * Doubt (multiple doubts per batch) 
-Doubt 1 ── * DoubtResponse (multiple responses per doubt) 
-User (Parent) 1 ── * User (Student) via ParentProfile.ward_ids 
+- `User 1 ── * Enrollment` (student enrolls in multiple batches)
+- `Course 1 ── * Batch` (each course has multiple batches)
+- `Batch 1 ── * BatchSchedule` (multiple time slots per batch)
+- `Batch 1 ── * Enrollment` (multiple students per batch)
+- `Enrollment 1 ── * Payment` (multiple payments per enrollment)
+- `BatchSchedule 1 ── * Attendance` (attendance per schedule session)
+- `Test 1 ── * Question` (multiple questions per test)
+- `Test 1 ── * TestSubmission` (one per student)
+- `TestSubmission 1 ── * Answer` (one per question)
+- `Batch 1 ── * Material` (multiple materials per batch)
+- `Batch 1 ── * Doubt` (multiple doubts per batch)
+- `Doubt 1 ── * DoubtResponse` (multiple responses per doubt)
+- `User (Parent) 1 ── * User (Student)` via `ParentProfile.ward_ids`
 
+### 7. Database Design
 
-7. Database Design
-7.1 Entity-Relationship Diagram (ERD Description)
+#### 7.1 Entity-Relationship Diagram (ERD Description)
 
-SQL
+```sql
 -- ======================================
--- DATABASE SCHEMA: CoachMaster
+-- DATABASE SCHEMA: CoachMaster (SQLite)
 -- ======================================
+-- NOTE: SQLite has no native DATETIME type. Timestamps are stored as TEXT
+-- in 'YYYY-MM-DD HH:MM:SS' format via datetime('now'). Use SQLite's
+-- built-in datetime functions (e.g., datetime(), date(), strftime())
+-- for comparisons and queries on these columns.
 
 -- 1. USERS TABLE
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
-    phone VARCHAR(20),
-    role VARCHAR(20) NOT NULL CHECK (role IN ('ADMIN','INSTRUCTOR','STUDENT','FRONT_DESK','PARENT')),
-    is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    phone TEXT,
+    role TEXT NOT NULL CHECK (role IN ('ADMIN','INSTRUCTOR','STUDENT','FRONT_DESK','PARENT')),
+    is_active INTEGER DEFAULT 1,
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 2. INSTRUCTOR PROFILES
 CREATE TABLE instructor_profiles (
-    id SERIAL PRIMARY KEY,
-    user_id INT UNIQUE REFERENCES users(id) ON DELETE CASCADE,
-    subjects TEXT[], -- Array of subjects
-    qualification VARCHAR(255),
-    specialization VARCHAR(255),
-    joining_date DATE
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+    subjects TEXT, -- JSON array of subjects (e.g., '["Math","Physics"]')
+    qualification TEXT,
+    specialization TEXT,
+    joining_date TEXT
 );
 
 -- 3. STUDENT PROFILES
 CREATE TABLE student_profiles (
-    id SERIAL PRIMARY KEY,
-    user_id INT UNIQUE REFERENCES users(id) ON DELETE CASCADE,
-    enrollment_number VARCHAR(50) UNIQUE,
-    date_of_birth DATE,
-    parent_id INT REFERENCES users(id),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+    enrollment_number TEXT UNIQUE,
+    date_of_birth TEXT,
+    parent_id INTEGER REFERENCES users(id),
     address TEXT
 );
 
 -- 4. PARENT PROFILES
 CREATE TABLE parent_profiles (
-    id SERIAL PRIMARY KEY,
-    user_id INT UNIQUE REFERENCES users(id) ON DELETE CASCADE,
-    relationship VARCHAR(50) -- father, mother, guardian
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+    relationship TEXT -- father, mother, guardian
 );
 
 -- 5. COURSES
 CREATE TABLE courses (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
     description TEXT,
-    exam_type VARCHAR(100), -- GATE, JEE, CAT, UPSC, IELTS
-    duration_months INT,
-    fee_amount DECIMAL(10,2),
-    installment_allowed BOOLEAN DEFAULT FALSE,
-    max_installments INT DEFAULT 1,
-    max_capacity INT DEFAULT 50,
-    is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    exam_type TEXT, -- GATE, JEE, CAT, UPSC, IELTS
+    duration_months INTEGER,
+    fee_amount REAL,
+    installment_allowed INTEGER DEFAULT 0,
+    max_installments INTEGER DEFAULT 1,
+    max_capacity INTEGER DEFAULT 50,
+    is_active INTEGER DEFAULT 1,
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 6. ROOMS
 CREATE TABLE rooms (
-    id SERIAL PRIMARY KEY,
-    room_name VARCHAR(100) NOT NULL,
-    capacity INT,
-    has_projector BOOLEAN DEFAULT FALSE,
-    has_ac BOOLEAN DEFAULT FALSE,
-    is_available BOOLEAN DEFAULT TRUE
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    room_name TEXT NOT NULL,
+    capacity INTEGER,
+    has_projector INTEGER DEFAULT 0,
+    has_ac INTEGER DEFAULT 0,
+    is_available INTEGER DEFAULT 1
 );
 
 -- 7. BATCHES
 CREATE TABLE batches (
-    id SERIAL PRIMARY KEY,
-    course_id INT REFERENCES courses(id) ON DELETE CASCADE,
-    batch_code VARCHAR(50) UNIQUE NOT NULL,
-    start_date DATE,
-    end_date DATE,
-    max_students INT DEFAULT 40,
-    status VARCHAR(20) DEFAULT 'ACTIVE' CHECK (status IN ('ACTIVE','COMPLETED','CANCELLED')),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE,
+    batch_code TEXT UNIQUE NOT NULL,
+    start_date TEXT,
+    end_date TEXT,
+    max_students INTEGER DEFAULT 40,
+    status TEXT DEFAULT 'ACTIVE' CHECK (status IN ('ACTIVE','COMPLETED','CANCELLED')),
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 8. BATCH SCHEDULES (recurring weekly slots)
 CREATE TABLE batch_schedules (
-    id SERIAL PRIMARY KEY,
-    batch_id INT REFERENCES batches(id) ON DELETE CASCADE,
-    instructor_id INT REFERENCES users(id),
-    room_id INT REFERENCES rooms(id),
-    day_of_week VARCHAR(10) CHECK (day_of_week IN ('MON','TUE','WED','THU','FRI','SAT','SUN')),
-    start_time TIME NOT NULL,
-    end_time TIME NOT NULL,
-    subject VARCHAR(100),
-    UNIQUE(room_id, day_of_week, start_time), -- prevent room conflict
-    UNIQUE(instructor_id, day_of_week, start_time) -- prevent instructor conflict
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    batch_id INTEGER REFERENCES batches(id) ON DELETE CASCADE,
+    instructor_id INTEGER REFERENCES users(id),
+    room_id INTEGER REFERENCES rooms(id),
+    day_of_week TEXT CHECK (day_of_week IN ('MON','TUE','WED','THU','FRI','SAT','SUN')),
+    start_time TEXT NOT NULL,
+    end_time TEXT NOT NULL,
+    subject TEXT,
+    UNIQUE(room_id, day_of_week, start_time),
+    UNIQUE(instructor_id, day_of_week, start_time)
 );
 
 -- 9. ENROLLMENTS
 CREATE TABLE enrollments (
-    id SERIAL PRIMARY KEY,
-    student_id INT REFERENCES users(id) ON DELETE CASCADE,
-    batch_id INT REFERENCES batches(id) ON DELETE CASCADE,
-    enrollment_date DATE DEFAULT CURRENT_DATE,
-    status VARCHAR(20) DEFAULT 'ACTIVE' CHECK (status IN ('ACTIVE','TRANSFERRED','DROPPED','COMPLETED')),
-    total_fee DECIMAL(10,2),
-    fee_paid DECIMAL(10,2) DEFAULT 0,
-    fee_pending DECIMAL(10,2),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    batch_id INTEGER REFERENCES batches(id) ON DELETE CASCADE,
+    enrollment_date TEXT DEFAULT (date('now')),
+    status TEXT DEFAULT 'ACTIVE' CHECK (status IN ('ACTIVE','TRANSFERRED','DROPPED','COMPLETED')),
+    total_fee REAL,
+    fee_paid REAL DEFAULT 0,
+    fee_pending REAL,
     UNIQUE(student_id, batch_id)
 );
 
 -- 10. PAYMENTS
 CREATE TABLE payments (
-    id SERIAL PRIMARY KEY,
-    enrollment_id INT REFERENCES enrollments(id) ON DELETE CASCADE,
-    amount DECIMAL(10,2) NOT NULL,
-    payment_mode VARCHAR(20) CHECK (payment_mode IN ('CASH','UPI','CARD','CHEQUE','BANK_TRANSFER')),
-    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    receipt_number VARCHAR(50) UNIQUE,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    enrollment_id INTEGER REFERENCES enrollments(id) ON DELETE CASCADE,
+    amount REAL NOT NULL,
+    payment_mode TEXT CHECK (payment_mode IN ('CASH','UPI','CARD','CHEQUE','BANK_TRANSFER')),
+    payment_date TEXT DEFAULT (datetime('now')),
+    receipt_number TEXT UNIQUE,
     remarks TEXT,
-    recorded_by INT REFERENCES users(id)
+    recorded_by INTEGER REFERENCES users(id)
 );
 
 -- 11. ATTENDANCE
 CREATE TABLE attendance (
-    id SERIAL PRIMARY KEY,
-    student_id INT REFERENCES users(id) ON DELETE CASCADE,
-    batch_schedule_id INT REFERENCES batch_schedules(id) ON DELETE CASCADE,
-    date DATE NOT NULL,
-    status VARCHAR(10) CHECK (status IN ('PRESENT','ABSENT','LATE')),
-    marked_by INT REFERENCES users(id),
-    marked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    batch_schedule_id INTEGER REFERENCES batch_schedules(id) ON DELETE CASCADE,
+    date TEXT NOT NULL,
+    status TEXT CHECK (status IN ('PRESENT','ABSENT','LATE')),
+    marked_by INTEGER REFERENCES users(id),
+    marked_at TEXT DEFAULT (datetime('now')),
     UNIQUE(student_id, batch_schedule_id, date)
 );
 
 -- 12. TESTS
 CREATE TABLE tests (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    batch_id INT REFERENCES batches(id) ON DELETE CASCADE,
-    created_by INT REFERENCES users(id),
-    subject VARCHAR(100),
-    total_marks INT,
-    deadline TIMESTAMP,
-    is_published BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    batch_id INTEGER REFERENCES batches(id) ON DELETE CASCADE,
+    created_by INTEGER REFERENCES users(id),
+    subject TEXT,
+    total_marks INTEGER,
+    deadline TEXT,
+    is_published INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 13. QUESTIONS
 CREATE TABLE questions (
-    id SERIAL PRIMARY KEY,
-    test_id INT REFERENCES tests(id) ON DELETE CASCADE,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    test_id INTEGER REFERENCES tests(id) ON DELETE CASCADE,
     question_text TEXT NOT NULL,
-    question_type VARCHAR(20) CHECK (question_type IN ('MCQ','SUBJECTIVE')),
-    marks INT DEFAULT 1,
-    option_a VARCHAR(500),
-    option_b VARCHAR(500),
-    option_c VARCHAR(500),
-    option_d VARCHAR(500),
-    correct_option CHAR(1) CHECK (correct_option IN ('A','B','C','D')),
-    order_index INT DEFAULT 0
+    question_type TEXT CHECK (question_type IN ('MCQ','SUBJECTIVE')),
+    marks INTEGER DEFAULT 1,
+    option_a TEXT,
+    option_b TEXT,
+    option_c TEXT,
+    option_d TEXT,
+    correct_option TEXT CHECK (correct_option IN ('A','B','C','D')),
+    order_index INTEGER DEFAULT 0
 );
 
 -- 14. TEST SUBMISSIONS
 CREATE TABLE test_submissions (
-    id SERIAL PRIMARY KEY,
-    test_id INT REFERENCES tests(id) ON DELETE CASCADE,
-    student_id INT REFERENCES users(id) ON DELETE CASCADE,
-    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    total_score DECIMAL(5,2),
-    is_graded BOOLEAN DEFAULT FALSE,
-    graded_by INT REFERENCES users(id),
-    graded_at TIMESTAMP,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    test_id INTEGER REFERENCES tests(id) ON DELETE CASCADE,
+    student_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    submitted_at TEXT DEFAULT (datetime('now')),
+    total_score REAL,
+    is_graded INTEGER DEFAULT 0,
+    graded_by INTEGER REFERENCES users(id),
+    graded_at TEXT,
     UNIQUE(test_id, student_id)
 );
 
 -- 15. ANSWERS
 CREATE TABLE answers (
-    id SERIAL PRIMARY KEY,
-    submission_id INT REFERENCES test_submissions(id) ON DELETE CASCADE,
-    question_id INT REFERENCES questions(id) ON DELETE CASCADE,
-    selected_option CHAR(1),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    submission_id INTEGER REFERENCES test_submissions(id) ON DELETE CASCADE,
+    question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
+    selected_option TEXT,
     subjective_answer TEXT,
-    marks_awarded DECIMAL(5,2),
-    is_correct BOOLEAN,
+    marks_awarded REAL,
+    is_correct INTEGER,
     feedback TEXT
 );
 
 -- 16. MATERIALS
 CREATE TABLE materials (
-    id SERIAL PRIMARY KEY,
-    batch_id INT REFERENCES batches(id) ON DELETE CASCADE,
-    uploaded_by INT REFERENCES users(id),
-    title VARCHAR(255) NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    batch_id INTEGER REFERENCES batches(id) ON DELETE CASCADE,
+    uploaded_by INTEGER REFERENCES users(id),
+    title TEXT NOT NULL,
     description TEXT,
-    file_path VARCHAR(500),
-    file_type VARCHAR(50),
-    subject VARCHAR(100),
-    topic VARCHAR(200),
-    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    file_path TEXT,
+    file_type TEXT,
+    subject TEXT,
+    topic TEXT,
+    uploaded_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 17. DOUBTS
 CREATE TABLE doubts (
-    id SERIAL PRIMARY KEY,
-    batch_id INT REFERENCES batches(id) ON DELETE CASCADE,
-    student_id INT REFERENCES users(id),
-    subject VARCHAR(100),
-    topic VARCHAR(200),
-    title VARCHAR(255),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    batch_id INTEGER REFERENCES batches(id) ON DELETE CASCADE,
+    student_id INTEGER REFERENCES users(id),
+    subject TEXT,
+    topic TEXT,
+    title TEXT,
     description TEXT,
-    image_path VARCHAR(500),
-    status VARCHAR(20) DEFAULT 'OPEN' CHECK (status IN ('OPEN','RESOLVED')),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    image_path TEXT,
+    status TEXT DEFAULT 'OPEN' CHECK (status IN ('OPEN','RESOLVED')),
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 18. DOUBT RESPONSES
 CREATE TABLE doubt_responses (
-    id SERIAL PRIMARY KEY,
-    doubt_id INT REFERENCES doubts(id) ON DELETE CASCADE,
-    responder_id INT REFERENCES users(id),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    doubt_id INTEGER REFERENCES doubts(id) ON DELETE CASCADE,
+    responder_id INTEGER REFERENCES users(id),
     response_text TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 19. ENQUIRIES
 CREATE TABLE enquiries (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(200) NOT NULL,
-    phone VARCHAR(20),
-    email VARCHAR(255),
-    exam_interest VARCHAR(100),
-    source VARCHAR(20) CHECK (source IN ('WALKIN','PHONE','ONLINE','REFERRAL')),
-    preferred_timing VARCHAR(100),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone TEXT,
+    email TEXT,
+    exam_interest TEXT,
+    source TEXT CHECK (source IN ('WALKIN','PHONE','ONLINE','REFERRAL')),
+    preferred_timing TEXT,
     notes TEXT,
-    status VARCHAR(20) DEFAULT 'NEW' CHECK (status IN ('NEW','CONTACTED','ENROLLED','LOST')),
-    follow_up_date DATE,
-    handled_by INT REFERENCES users(id),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    status TEXT DEFAULT 'NEW' CHECK (status IN ('NEW','CONTACTED','ENROLLED','LOST')),
+    follow_up_date TEXT,
+    handled_by INTEGER REFERENCES users(id),
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 20. NOTIFICATIONS
 CREATE TABLE notifications (
-    id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    title VARCHAR(255),
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    title TEXT,
     message TEXT,
-    type VARCHAR(20) CHECK (type IN ('SCHEDULE','MATERIAL','TEST','FEE','ATTENDANCE','GENERAL')),
-    is_read BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    type TEXT CHECK (type IN ('SCHEDULE','MATERIAL','TEST','FEE','ATTENDANCE','GENERAL')),
+    is_read INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 21. LEAVE REQUESTS
 CREATE TABLE leave_requests (
-    id SERIAL PRIMARY KEY,
-    instructor_id INT REFERENCES users(id) ON DELETE CASCADE,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    instructor_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL,
     reason TEXT,
-    status VARCHAR(20) DEFAULT 'PENDING' CHECK (status IN ('PENDING','APPROVED','REJECTED')),
-    approved_by INT REFERENCES users(id),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    status TEXT DEFAULT 'PENDING' CHECK (status IN ('PENDING','APPROVED','REJECTED')),
+    approved_by INTEGER REFERENCES users(id),
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 22. SUBSTITUTIONS
 CREATE TABLE substitutions (
-    id SERIAL PRIMARY KEY,
-    original_schedule_id INT REFERENCES batch_schedules(id),
-    substitute_instructor_id INT REFERENCES users(id),
-    date DATE NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    original_schedule_id INTEGER REFERENCES batch_schedules(id),
+    substitute_instructor_id INTEGER REFERENCES users(id),
+    date TEXT NOT NULL,
     reason TEXT,
-    created_by INT REFERENCES users(id),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_by INTEGER REFERENCES users(id),
+    created_at TEXT DEFAULT (datetime('now'))
 );
 
 -- 23. SYLLABUS TRACKER
 CREATE TABLE syllabus_tracker (
-    id SERIAL PRIMARY KEY,
-    batch_id INT REFERENCES batches(id) ON DELETE CASCADE,
-    subject VARCHAR(100),
-    topic VARCHAR(200),
-    status VARCHAR(20) DEFAULT 'PENDING' CHECK (status IN ('PENDING','IN_PROGRESS','COVERED')),
-    updated_by INT REFERENCES users(id),
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    batch_id INTEGER REFERENCES batches(id) ON DELETE CASCADE,
+    subject TEXT,
+    topic TEXT,
+    status TEXT DEFAULT 'PENDING' CHECK (status IN ('PENDING','IN_PROGRESS','COVERED')),
+    updated_by INTEGER REFERENCES users(id),
+    updated_at TEXT DEFAULT (datetime('now'))
 );
 
 -- INDEXES for performance
@@ -877,190 +916,214 @@ CREATE INDEX idx_notifications_user ON notifications(user_id, is_read);
 CREATE INDEX idx_batch_schedules_batch ON batch_schedules(batch_id);
 CREATE INDEX idx_doubts_batch ON doubts(batch_id);
 CREATE INDEX idx_materials_batch ON materials(batch_id);
+```
 
+### 8. Scrum Meeting Minutes
 
+#### Meeting 1: Sprint 0 Planning
 
-8. Scrum Meeting Minutes
-Meeting 1: Sprint 0 Planning
-Date: Week 1, Monday
-Attendees: All team members (5)
-Duration: 60 minutes
+- **Date:** Day 1, Monday
+- **Attendees:** All team members (5)
+- **Duration:** 30 minutes
 
-Item	Discussion	Decision
-Tech Stack	Debated between Django REST Framework and Flask-RESTful	Flask-RESTful chosen for flexibility and lightweight nature
-Frontend Framework	Discussed React vs Vue 3	Vue 3 chosen — simpler learning curve, good ecosystem
-Database	PostgreSQL vs MySQL vs SQLite	SQLite for development, PostgreSQL for production
-Authentication	Session-based vs JWT	JWT chosen for stateless API design
-Project Structure	Monolith vs Microservices	Modular monolith — single repo with Blueprint-based modules
-Action Items	1. Set up Git repo with branch strategy. 2. Set up Flask boilerplate. 3. Set up Vue CLI project. 4. Create Jira board.	Assigned to respective team members
+| Item | Discussion | Decision |
+| --- | --- | --- |
+| Tech Stack | Debated between Django REST Framework and Flask-RESTful | Flask-RESTful chosen for flexibility and lightweight nature |
+| Frontend Framework | Discussed React vs Vue 3 | Vue 3 chosen — simpler learning curve, good ecosystem |
+| Database | PostgreSQL vs MySQL vs SQLite | SQLite chosen for simplicity and zero-configuration setup |
+| Authentication | Session-based vs JWT | JWT chosen for stateless API design |
+| Project Structure | Monolith vs Microservices | Modular monolith — single repo with Blueprint-based modules |
+| Action Items | 1. Set up Git repo. 2. Set up Flask boilerplate. 3. Set up Vue CLI project. 4. Create Jira board. | Assigned to respective team members |
 
-Meeting 2: Sprint 1 Planning
-Date: Week 3, Monday
-Attendees: All team members
-Duration: 60 minutes
+#### Meeting 2: Sprint 1 Planning
 
-Item	Discussion	Decision
-Sprint Goal	Implement core auth, user management, course & batch CRUD	All agreed
-User Stories Selected	US-O02, US-O03, US-O08, US-F04	Estimated: 23 story points
-Task Breakdown	Each story broken into backend API + frontend page + tests	Tasks assigned on Jira
-Blockers Identified	Need to finalize JWT token expiry policy	Decision: 24-hour access token, 7-day refresh token
-Definition of Done	API working + tests passing + frontend integrated + code reviewed	All agreed
+- **Date:** Day 2, Tuesday
+- **Attendees:** All team members
+- **Duration:** 30 minutes
 
-Meeting 3: Sprint 1 Daily Standup (Sample — Day 5)
-Date: Week 3, Friday
-Attendees: All team members
-Duration: 15 minutes
+| Item | Discussion | Decision |
+| --- | --- | --- |
+| Sprint Goal | Implement core auth, user management, course & batch CRUD | All agreed |
+| User Stories Selected | US-O02, US-O03, US-O08, US-F04 | Estimated: 23 story points |
+| Task Breakdown | Each story broken into backend API + frontend page + tests | Tasks assigned on Jira |
+| Blockers Identified | Need to finalize JWT token expiry policy | Decision: 24-hour access token, 7-day refresh token |
+| Definition of Done | API working + tests passing + frontend integrated + code reviewed | All agreed |
 
-Member	Yesterday	Today	Blockers
-Member A	Completed User model and migration	Working on login/register API	None
-Member B	Designed Vue login page	Integrating login API with frontend	CORS issue — need to configure Flask-CORS
-Member C	Created Course model	Writing course CRUD APIs	Need clarity on fee installment structure
-Member D	Set up Jira board, created all sprint tasks	Working on batch model and room model	None
-Member E	Wrote DB seed script with sample data	Writing pytest fixtures	Need access to test database config
+#### Meeting 3: Sprint 1 Daily Standup (Sample)
 
-Meeting 4: Sprint 1 Review
-Date: Week 4, Friday
-Attendees: All team members
-Duration: 45 minutes
+- **Date:** Day 2, Tuesday Evening
+- **Attendees:** All team members
+- **Duration:** 15 minutes
 
-Item	Status	Notes
-US-O02 (Course CRUD)	✅ Done	All CRUD APIs working, frontend pages complete
-US-O03 (Batch Management)	✅ Done	Conflict detection for room/instructor implemented
-US-O08 (User Management)	✅ Done	Role-based access working, password reset pending
-US-F04 (Student Search)	🟡 Partial	Backend done, frontend search page in progress
-Demo	Showed working login, course creation, batch creation	Feedback: Add confirmation dialogs for delete operations
+| Member | Completed | Working On | Blockers |
+| --- | --- | --- | --- |
+| Member A | Completed User model and migration | Working on login/register API | None |
+| Member B | Designed Vue login page | Integrating login API with frontend | CORS issue — need to configure Flask-CORS |
+| Member C | Created Course model | Writing course CRUD APIs | Need clarity on fee installment structure |
+| Member D | Set up Jira board, created all sprint tasks | Working on batch model and room model | None |
+| Member E | Wrote DB seed script with sample data | Writing pytest fixtures | Need access to test database config |
 
-Meeting 5: Sprint 1 Retrospective
-Date: Week 4, Friday
-Duration: 30 minutes
+#### Meeting 4: Sprint 1 Review
 
-Category	Points
-What went well	Good collaboration, clean API design, Jira board helpful
-What didn't go well	CORS issues wasted 2 hours, underestimated frontend work
-Action items	1. Create a shared .env.example file. 2. Allocate more time for frontend in Sprint 2. 3. Set up CI/CD pipeline early
+- **Date:** Day 3, Wednesday Evening
+- **Attendees:** All team members
+- **Duration:** 30 minutes
 
+| Item | Status | Notes |
+| --- | --- | --- |
+| US-O02 (Course CRUD) | ✅ Done | All CRUD APIs working, frontend pages complete |
+| US-O03 (Batch Management) | ✅ Done | Conflict detection for room/instructor implemented |
+| US-O08 (User Management) | ✅ Done | Role-based access working, password reset pending |
+| US-F04 (Student Search) | 🟡 Partial | Backend done, frontend search page in progress |
+| Demo | — | Showed working login, course creation, batch creation. Feedback: Add confirmation dialogs for delete operations |
 
+#### Meeting 5: Sprint 1 Retrospective
 
-9. UI Pages (Screenshots Description & Structure)
-9.1 Login Page
+- **Date:** Day 3, Wednesday Evening
+- **Duration:** 15 minutes
 
-Email and password fields 
-Role selector (dropdown or separate login URLs per role) 
-"Forgot Password" link 
-Institute branding (logo, name) 
-9.2 Admin Dashboard
+| Category | Points |
+| --- | --- |
+| What went well | Good collaboration, clean API design, Jira board helpful |
+| What didn't go well | CORS issues wasted 2 hours, underestimated frontend work |
+| Action items | 1. Create a shared `.env.example` file. 2. Allocate more time for frontend. 3. Set up CI/CD pipeline early |
 
-Top bar: Institute name, logged-in user info, logout 
-Sidebar: Dashboard, Courses, Batches, Users, Enquiries, Payments, Reports, Settings 
-Main area: KPI cards (Total Students, Active Batches, Revenue This Month, Pending Fees) 
-Charts: Enrollment trend (last 6 months), Fee collection bar chart, Batch occupancy 
-9.3 Course Management Page
+### 9. UI Pages (Screenshots Description & Structure)
 
-Table listing all courses: Name, Exam Type, Duration, Fee, Capacity, Status, Actions 
-"Add Course" button → Modal/form with fields 
-Edit and Delete actions per row 
-Filter by exam type, status 
-9.4 Batch Management Page
+#### 9.1 Login Page
 
-Table listing all batches: Code, Course, Timing, Room, Instructor, Enrolled/Max, Status 
-"Create Batch" button → Form: select course, enter code, assign room, timing, instructor 
-Conflict warning displayed if room/instructor clash detected 
-Filter by course, status 
-9.5 Student Enrollment Page (Front-Desk)
+- Email and password fields
+- Role selector (dropdown or separate login URLs per role)
+- "Forgot Password" link
+- Institute branding (logo, name)
 
-Step 1: Select Course → shows available batches with capacity 
-Step 2: Enter Student Details (name, email, phone, DOB, address, parent contact) 
-Step 3: Fee Payment (amount, mode, partial/full) 
-Step 4: Confirmation with receipt preview 
-9.6 Fee Management Page
+#### 9.2 Admin Dashboard
 
-Search student by name/phone/enrollment number 
-Student fee summary: Total, Paid, Pending, Installment schedule 
-"Record Payment" button → Modal with amount, mode, remarks 
-Payment history table with receipt download links 
-9.7 Instructor Schedule Page
+- Top bar: Institute name, logged-in user info, logout
+- Sidebar: Dashboard, Courses, Batches, Users, Enquiries, Payments, Reports, Settings
+- Main area: KPI cards (Total Students, Active Batches, Revenue This Month, Pending Fees)
+- Charts: Enrollment trend (last 6 months), Fee collection bar chart, Batch occupancy
 
-Calendar view (week/month) showing assigned classes 
-Each block: Batch name, Subject, Room, Timing 
-Color-coded: Regular (blue), Substitution (orange), Cancelled (red) 
-"Mark Leave" button for requesting time off 
-9.8 Attendance Page (Instructor View)
+#### 9.3 Course Management Page
 
-Select batch → Select date 
-Student list with checkboxes: Present / Absent / Late 
-Submit button (with confirmation) 
-Historical view: calendar with attendance stats per day 
-9.9 Student Dashboard
+- Table listing all courses: Name, Exam Type, Duration, Fee, Capacity, Status, Actions
+- "Add Course" button → Modal/form with fields
+- Edit and Delete actions per row
+- Filter by exam type, status
 
-Welcome message with student name 
-Cards: Next Class, Attendance %, Upcoming Tests, Fee Status 
-Quick links: My Schedule, My Tests, My Materials, My Doubts 
-Performance chart: test score trend 
-9.10 Test Management Page (Instructor)
+#### 9.4 Batch Management Page
 
-List of all tests created (title, batch, subject, deadline, status) 
-"Create Test" button → Form: title, batch, subject, deadline 
-Add Questions: MCQ (question text, 4 options, correct answer, marks) or Subjective (question text, marks) 
-Publish test (makes it visible to students) 
-9.11 Test Taking Page (Student)
+- Table listing all batches: Code, Course, Timing, Room, Instructor, Enrolled/Max, Status
+- "Create Batch" button → Form: select course, enter code, assign room, timing, instructor
+- Conflict warning displayed if room/instructor clash detected
+- Filter by course, status
 
-Test header: title, subject, total marks, time remaining 
-Questions listed sequentially 
-MCQ: radio buttons for options 
-Subjective: text area 
-Submit button (with confirmation) 
-9.12 Results Page (Student)
+#### 9.5 Student Enrollment Page (Front-Desk)
 
-List of completed tests: title, score, total marks, percentage, rank 
-Detail view: question-wise breakdown (your answer, correct answer, marks awarded) 
-Filter by subject 
-9.13 Study Materials Page
+- Step 1: Select Course → shows available batches with capacity
+- Step 2: Enter Student Details (name, email, phone, DOB, address, parent contact)
+- Step 3: Fee Payment (amount, mode, partial/full)
+- Step 4: Confirmation with receipt preview
 
-Organized by batch → subject → topic 
-Each material: title, description, file type icon, download button 
-Search and filter functionality 
-9.14 Doubts Forum
+#### 9.6 Fee Management Page
 
-List of doubts in batch (newest first) 
-Each doubt: title, subject, topic, posted by, date, status (open/resolved) 
-Click to expand: full description, image, responses 
-"Ask a Doubt" button → Form: subject, topic, title, description, optional image 
-9.15 Enquiry Management Page (Front-Desk)
+- Search student by name/phone/enrollment number
+- Student fee summary: Total, Paid, Pending, Installment schedule
+- "Record Payment" button → Modal with amount, mode, remarks
+- Payment history table with receipt download links
 
-Table: Name, Phone, Exam Interest, Source, Status, Follow-up Date, Actions 
-"New Enquiry" button → Form 
-Status update dropdown 
-Filter by status, exam type, date 
-9.16 Parent Dashboard
+#### 9.7 Instructor Schedule Page
 
-Ward selector (if multiple children) 
-Cards: Attendance %, Last Test Score, Fee Status 
-Attendance calendar view 
-Test scores table 
-Fee summary with payment history 
-9.17 Notification Center
+- Calendar view (week/month) showing assigned classes
+- Each block: Batch name, Subject, Room, Timing
+- Color-coded: Regular (blue), Substitution (orange), Cancelled (red)
+- "Mark Leave" button for requesting time off
 
-Bell icon with unread count in top bar 
-Dropdown: list of recent notifications 
-Full page: all notifications with filter by type 
-Mark as read / Mark all as read 
-9.18 Reports Page (Admin)
+#### 9.8 Attendance Page (Instructor View)
 
-Financial Report: Revenue by month, by course, by payment mode 
-Attendance Report: batch-wise, student-wise 
-Enrollment Report: new enrollments trend, course-wise distribution 
-Enquiry Report: conversion funnel 
-Download as PDF/CSV 
+- Select batch → Select date
+- Student list with checkboxes: Present / Absent / Late
+- Submit button (with confirmation)
+- Historical view: calendar with attendance stats per day
 
+#### 9.9 Student Dashboard
 
-═══════════════════════════════════════════════════════
-SPRINT 1: API ENDPOINTS, TEST CASES, USER TESTING
-═══════════════════════════════════════════════════════
+- Welcome message with student name
+- Cards: Next Class, Attendance %, Upcoming Tests, Fee Status
+- Quick links: My Schedule, My Tests, My Materials, My Doubts
+- Performance chart: test score trend
 
+#### 9.10 Test Management Page (Instructor)
 
-10. API Documentation (Swagger-Compatible YAML)
+- List of all tests created (title, batch, subject, deadline, status)
+- "Create Test" button → Form: title, batch, subject, deadline
+- Add Questions: MCQ (question text, 4 options, correct answer, marks) or Subjective (question text, marks)
+- Publish test (makes it visible to students)
 
-YAML
+#### 9.11 Test Taking Page (Student)
+
+- Test header: title, subject, total marks, time remaining
+- Questions listed sequentially
+- MCQ: radio buttons for options
+- Subjective: text area
+- Submit button (with confirmation)
+
+#### 9.12 Results Page (Student)
+
+- List of completed tests: title, score, total marks, percentage, rank
+- Detail view: question-wise breakdown (your answer, correct answer, marks awarded)
+- Filter by subject
+
+#### 9.13 Study Materials Page
+
+- Organized by batch → subject → topic
+- Each material: title, description, file type icon, download button
+- Search and filter functionality
+
+#### 9.14 Doubts Forum
+
+- List of doubts in batch (newest first)
+- Each doubt: title, subject, topic, posted by, date, status (open/resolved)
+- Click to expand: full description, image, responses
+- "Ask a Doubt" button → Form: subject, topic, title, description, optional image
+
+#### 9.15 Enquiry Management Page (Front-Desk)
+
+- Table: Name, Phone, Exam Interest, Source, Status, Follow-up Date, Actions
+- "New Enquiry" button → Form
+- Status update dropdown
+- Filter by status, exam type, date
+
+#### 9.16 Parent Dashboard
+
+- Ward selector (if multiple children)
+- Cards: Attendance %, Last Test Score, Fee Status
+- Attendance calendar view
+- Test scores table
+- Fee summary with payment history
+
+#### 9.17 Notification Center
+
+- Bell icon with unread count in top bar
+- Dropdown: list of recent notifications
+- Full page: all notifications with filter by type
+- Mark as read / Mark all as read
+
+#### 9.18 Reports Page (Admin)
+
+- Financial Report: Revenue by month, by course, by payment mode
+- Attendance Report: batch-wise, student-wise
+- Enrollment Report: new enrollments trend, course-wise distribution
+- Enquiry Report: conversion funnel
+- Download as PDF/CSV
+
+---
+
+## Sprint 1: API Endpoints, Test Cases, User Testing
+
+### 10. API Documentation (Swagger-Compatible YAML)
+
+```yaml
 openapi: 3.0.3
 info:
   title: CoachMaster - Training Institute Operations Platform API
@@ -2413,7 +2476,7 @@ paths:
       tags: [Tests]
       summary: Create a new test (Instructor)
       description: |
-        Creates a test with questions (MCQ and/or subjective). 
+        Creates a test with questions (MCQ and/or subjective).
         Test is created in draft state until published.
         **User Story**: US-I04
       security:
@@ -4704,230 +4767,251 @@ components:
         is_available:
           type: boolean
 
+```
 
+### 11. API Summary — List of APIs Created & Integrated
 
-11. API Summary — List of APIs Created & Integrated
-11.1 APIs Created by Dev-Team
+#### 11.1 APIs Created by Dev-Team
 
-#	Method	Endpoint	Component	User Story
-1	POST	/auth/register	Auth	US-O08
-2	POST	/auth/login	Auth	US-O08
-3	GET	/auth/me	Auth	US-O08
-4	POST	/auth/logout	Auth	US-O08
-5	GET	/users	User Mgmt	US-O08
-6	GET	/users/{id}	User Mgmt	US-O08, US-F04
-7	PUT	/users/{id}	User Mgmt	US-O08
-8	GET	/students/search	User Mgmt	US-F04
-9	GET	/courses	Course	US-O02
-10	POST	/courses	Course	US-O02
-11	GET	/courses/{id}	Course	US-O02
-12	PUT	/courses/{id}	Course	US-O02
-13	DELETE	/courses/{id}	Course	US-O02
-14	GET	/batches	Batch	US-O03
-15	POST	/batches	Batch	US-O03
-16	GET	/batches/{id}	Batch	US-O03
-17	PUT	/batches/{id}	Batch	US-O03
-18	DELETE	/batches/{id}	Batch	US-O03
-19	GET	/batches/{id}/schedule	Batch	US-S01, US-I01
-20	GET	/schedule	Schedule	US-F05
-21	GET	/schedule/instructor/{id}	Schedule	US-I01
-22	POST	/enrollments	Enrollment	US-F02
-23	GET	/enrollments	Enrollment	US-F02
-24	POST	/enrollments/{id}/transfer	Enrollment	US-S09
-25	POST	/payments	Payment	US-F03
-26	GET	/payments	Payment	US-O07
-27	GET	/payments/{id}/receipt	Payment	US-F03, US-S05
-28	GET	/students/{id}/fees	Payment	US-S05, US-P03
-29	POST	/attendance	Attendance	US-I02
-30	GET	/attendance/batch/{batch_id}	Attendance	US-I02, US-I05
-31	GET	/students/{id}/attendance	Attendance	US-S02, US-P01
-32	POST	/leaves	Leave	US-I08
-33	GET	/leaves	Leave	US-I08, US-O06
-34	PUT	/leaves/{id}/approve	Leave	US-O06
-35	POST	/substitutions	Substitution	US-O06
-36	POST	/tests	Test	US-I04
-37	GET	/tests	Test	US-I04, US-S04
-38	GET	/tests/{id}	Test	US-I04, US-S04
-39	PUT	/tests/{id}	Test	US-I04
-40	DELETE	/tests/{id}	Test	US-I04
-41	PUT	/tests/{id}/publish	Test	US-I04
-42	POST	/tests/{id}/submit	Test	US-S04
-43	GET	/tests/{id}/results	Test	US-I05, US-S04
-44	PUT	/tests/submissions/{id}/grade	Test	US-I04
-45	POST	/materials	Material	US-I03
-46	GET	/materials	Material	US-S03
-47	GET	/materials/{id}	Material	US-S03
-48	GET	/materials/{id}/download	Material	US-S03
-49	DELETE	/materials/{id}	Material	US-I03
-50	POST	/doubts	Doubt	US-S07
-51	GET	/doubts	Doubt	US-I07, US-S07
-52	GET	/doubts/{id}	Doubt	US-I07, US-S07
-53	POST	/doubts/{id}/respond	Doubt	US-I07
-54	PUT	/doubts/{id}/resolve	Doubt	US-I07
-55	POST	/enquiries	Enquiry	US-F01
-56	GET	/enquiries	Enquiry	US-F01, US-O04
-57	GET	/enquiries/{id}	Enquiry	US-F01
-58	PUT	/enquiries/{id}	Enquiry	US-F01
-59	POST	/enquiries/{id}/follow-up	Enquiry	US-F01
-60	GET	/enquiries/report	Enquiry	US-O04
-61	GET	/syllabus	Syllabus	US-I06
-62	POST	/syllabus	Syllabus	US-I06
-63	PUT	/syllabus/{id}	Syllabus	US-I06
-64	GET	/notifications	Notification	US-S06, US-P04
-65	PUT	/notifications/{id}/read	Notification	US-S06
-66	PUT	/notifications/read-all	Notification	US-S06
-67	GET	/dashboard/admin	Dashboard	US-O01, US-O05
-68	GET	/dashboard/instructor	Dashboard	US-I05
-69	GET	/dashboard/student	Dashboard	US-S08
-70	GET	/dashboard/parent	Dashboard	US-P01–P04
-71	GET	/reports/financial	Reports	US-O07
-72	GET	/reports/attendance	Reports	US-I05
-73	GET	/rooms	Room	US-O03
-74	POST	/rooms	Room	US-O03
+| # | Method | Endpoint | Component | User Story |
+| --- | --- | --- | --- | --- |
+| 1 | POST | `/auth/register` | Auth | US-O08 |
+| 2 | POST | `/auth/login` | Auth | US-O08 |
+| 3 | GET | `/auth/me` | Auth | US-O08 |
+| 4 | POST | `/auth/logout` | Auth | US-O08 |
+| 5 | GET | `/users` | User Mgmt | US-O08 |
+| 6 | GET | `/users/{id}` | User Mgmt | US-O08, US-F04 |
+| 7 | PUT | `/users/{id}` | User Mgmt | US-O08 |
+| 8 | GET | `/students/search` | User Mgmt | US-F04 |
+| 9 | GET | `/courses` | Course | US-O02 |
+| 10 | POST | `/courses` | Course | US-O02 |
+| 11 | GET | `/courses/{id}` | Course | US-O02 |
+| 12 | PUT | `/courses/{id}` | Course | US-O02 |
+| 13 | DELETE | `/courses/{id}` | Course | US-O02 |
+| 14 | GET | `/batches` | Batch | US-O03 |
+| 15 | POST | `/batches` | Batch | US-O03 |
+| 16 | GET | `/batches/{id}` | Batch | US-O03 |
+| 17 | PUT | `/batches/{id}` | Batch | US-O03 |
+| 18 | DELETE | `/batches/{id}` | Batch | US-O03 |
+| 19 | GET | `/batches/{id}/schedule` | Batch | US-S01, US-I01 |
+| 20 | GET | `/schedule` | Schedule | US-F05 |
+| 21 | GET | `/schedule/instructor/{id}` | Schedule | US-I01 |
+| 22 | POST | `/enrollments` | Enrollment | US-F02 |
+| 23 | GET | `/enrollments` | Enrollment | US-F02 |
+| 24 | POST | `/enrollments/{id}/transfer` | Enrollment | US-S09 |
+| 25 | POST | `/payments` | Payment | US-F03 |
+| 26 | GET | `/payments` | Payment | US-O07 |
+| 27 | GET | `/payments/{id}/receipt` | Payment | US-F03, US-S05 |
+| 28 | GET | `/students/{id}/fees` | Payment | US-S05, US-P03 |
+| 29 | POST | `/attendance` | Attendance | US-I02 |
+| 30 | GET | `/attendance/batch/{batch_id}` | Attendance | US-I02, US-I05 |
+| 31 | GET | `/students/{id}/attendance` | Attendance | US-S02, US-P01 |
+| 32 | POST | `/leaves` | Leave | US-I08 |
+| 33 | GET | `/leaves` | Leave | US-I08, US-O06 |
+| 34 | PUT | `/leaves/{id}/approve` | Leave | US-O06 |
+| 35 | POST | `/substitutions` | Substitution | US-O06 |
+| 36 | POST | `/tests` | Test | US-I04 |
+| 37 | GET | `/tests` | Test | US-I04, US-S04 |
+| 38 | GET | `/tests/{id}` | Test | US-I04, US-S04 |
+| 39 | PUT | `/tests/{id}` | Test | US-I04 |
+| 40 | DELETE | `/tests/{id}` | Test | US-I04 |
+| 41 | PUT | `/tests/{id}/publish` | Test | US-I04 |
+| 42 | POST | `/tests/{id}/submit` | Test | US-S04 |
+| 43 | GET | `/tests/{id}/results` | Test | US-I05, US-S04 |
+| 44 | PUT | `/tests/submissions/{id}/grade` | Test | US-I04 |
+| 45 | POST | `/materials` | Material | US-I03 |
+| 46 | GET | `/materials` | Material | US-S03 |
+| 47 | GET | `/materials/{id}` | Material | US-S03 |
+| 48 | GET | `/materials/{id}/download` | Material | US-S03 |
+| 49 | DELETE | `/materials/{id}` | Material | US-I03 |
+| 50 | POST | `/doubts` | Doubt | US-S07 |
+| 51 | GET | `/doubts` | Doubt | US-I07, US-S07 |
+| 52 | GET | `/doubts/{id}` | Doubt | US-I07, US-S07 |
+| 53 | POST | `/doubts/{id}/respond` | Doubt | US-I07 |
+| 54 | PUT | `/doubts/{id}/resolve` | Doubt | US-I07 |
+| 55 | POST | `/enquiries` | Enquiry | US-F01 |
+| 56 | GET | `/enquiries` | Enquiry | US-F01, US-O04 |
+| 57 | GET | `/enquiries/{id}` | Enquiry | US-F01 |
+| 58 | PUT | `/enquiries/{id}` | Enquiry | US-F01 |
+| 59 | POST | `/enquiries/{id}/follow-up` | Enquiry | US-F01 |
+| 60 | GET | `/enquiries/report` | Enquiry | US-O04 |
+| 61 | GET | `/syllabus` | Syllabus | US-I06 |
+| 62 | POST | `/syllabus` | Syllabus | US-I06 |
+| 63 | PUT | `/syllabus/{id}` | Syllabus | US-I06 |
+| 64 | GET | `/notifications` | Notification | US-S06, US-P04 |
+| 65 | PUT | `/notifications/{id}/read` | Notification | US-S06 |
+| 66 | PUT | `/notifications/read-all` | Notification | US-S06 |
+| 67 | GET | `/dashboard/admin` | Dashboard | US-O01, US-O05 |
+| 68 | GET | `/dashboard/instructor` | Dashboard | US-I05 |
+| 69 | GET | `/dashboard/student` | Dashboard | US-S08 |
+| 70 | GET | `/dashboard/parent` | Dashboard | US-P01–P04 |
+| 71 | GET | `/reports/financial` | Reports | US-O07 |
+| 72 | GET | `/reports/attendance` | Reports | US-I05 |
+| 73 | GET | `/rooms` | Room | US-O03 |
+| 74 | POST | `/rooms` | Room | US-O03 |
 
-11.2 APIs Integrated (External/Third-Party)
+#### 11.2 APIs Integrated (External/Third-Party)
 
-#	API	Purpose	Usage
-1	OpenAI GPT-4 API	AI-powered doubt resolution suggestions	When an instructor views a doubt, the system offers an AI-generated draft response based on the question text and subject context
-2	Gemini API	Test question generation	Instructor can request AI-generated MCQ questions for a given subject and topic, then edit/approve them
-3	SendGrid / SMTP API	Email notifications	Sends email notifications for fee reminders, schedule changes, and test publications
-4	ReportLab (Python library)	PDF generation	Generates payment receipts and financial reports as downloadable PDFs
+| # | API | Purpose | Usage |
+| --- | --- | --- | --- |
+| 1 | OpenAI GPT-4 API | AI-powered doubt resolution suggestions | When an instructor views a doubt, the system offers an AI-generated draft response based on the question text and subject context |
+| 2 | Gemini API | Test question generation | Instructor can request AI-generated MCQ questions for a given subject and topic, then edit/approve them |
+| 3 | SendGrid / SMTP API | Email notifications | Sends email notifications for fee reminders, schedule changes, and test publications |
+| 4 | ReportLab (Python library) | PDF generation | Generates payment receipts and financial reports as downloadable PDFs |
 
+### 12. Test Cases
 
+#### 12.1 Test Cases — Authentication APIs
 
-12. Test Cases
-12.1 Test Cases — Authentication APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-A01 | POST /auth/register | {"email": "john@test.com", "password": "Pass1234!", "first_name": "John", "last_name": "Doe", "role": "INSTRUCTOR", "phone": "+919876543210"} | 201: User created with id, email, role | 201: {"message": "User registered successfully", "user": {"id": 1, "email": "john@test.com", "role": "INSTRUCTOR"}} | ✅ Success |
+| TC-A02 | POST /auth/register | {"email": "john@test.com", "password": "Pass1234!", "first_name": "John2", "last_name": "Doe2", "role": "STUDENT"} (duplicate email) | 400: Email already exists | 400: {"error": "Email already exists", "code": 400} | ✅ Success |
+| TC-A03 | POST /auth/register | {"email": "", "password": "Pass1234!", "first_name": "John", "last_name": "Doe", "role": "ADMIN"} (empty email) | 400: Validation error | 400: {"error": "Email is required", "code": 400} | ✅ Success |
+| TC-A04 | POST /auth/register | {"email": "test@test.com", "password": "123", "first_name": "A", "last_name": "B", "role": "STUDENT"} (weak password) | 400: Password must be at least 8 characters | 400: {"error": "Password must be at least 8 characters", "code": 400} | ✅ Success |
+| TC-A05 | POST /auth/register | {"email": "test@test.com", "password": "Pass1234!", "first_name": "A", "last_name": "B", "role": "INVALID_ROLE"} | 400: Invalid role | 400: {"error": "Invalid role. Must be one of: ADMIN, INSTRUCTOR, STUDENT, FRONT_DESK, PARENT", "code": 400} | ✅ Success |
+| TC-A06 | POST /auth/login | {"email": "john@test.com", "password": "Pass1234!"} | 200: access_token, refresh_token, user object | 200: {"access_token": "eyJ...", "refresh_token": "eyJ...", "user": {"id": 1, "role": "INSTRUCTOR"}} | ✅ Success |
+| TC-A07 | POST /auth/login | {"email": "john@test.com", "password": "WrongPass!"} | 401: Invalid credentials | 401: {"error": "Invalid email or password", "code": 401} | ✅ Success |
+| TC-A08 | POST /auth/login | {"email": "nonexistent@test.com", "password": "Pass1234!"} | 401: Invalid credentials | 401: {"error": "Invalid email or password", "code": 401} | ✅ Success |
+| TC-A09 | GET /auth/me | Header: Authorization: Bearer <valid_token> | 200: Current user profile | 200: {"id": 1, "email": "john@test.com", "role": "INSTRUCTOR", ...} | ✅ Success |
+| TC-A10 | GET /auth/me | Header: Authorization: Bearer <expired_token> | 401: Token expired | 401: {"error": "Token has expired", "code": 401} | ✅ Success |
+| TC-A11 | GET /auth/me | No Authorization header | 401: Missing token | 401: {"error": "Authorization token is missing", "code": 401} | ✅ Success |
+| TC-A12 | POST /auth/logout | Header: Authorization: Bearer <valid_token> | 200: Logged out | 200: {"message": "Logged out successfully"} | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-A01	POST /auth/register	{"email": "john@test.com", "password": "Pass1234!", "first_name": "John", "last_name": "Doe", "role": "INSTRUCTOR", "phone": "+919876543210"}	201: User created with id, email, role	201: {"message": "User registered successfully", "user": {"id": 1, "email": "john@test.com", "role": "INSTRUCTOR"}}	✅ Success
-TC-A02	POST /auth/register	{"email": "john@test.com", "password": "Pass1234!", "first_name": "John2", "last_name": "Doe2", "role": "STUDENT"} (duplicate email)	400: Email already exists	400: {"error": "Email already exists", "code": 400}	✅ Success
-TC-A03	POST /auth/register	{"email": "", "password": "Pass1234!", "first_name": "John", "last_name": "Doe", "role": "ADMIN"} (empty email)	400: Validation error	400: {"error": "Email is required", "code": 400}	✅ Success
-TC-A04	POST /auth/register	{"email": "test@test.com", "password": "123", "first_name": "A", "last_name": "B", "role": "STUDENT"} (weak password)	400: Password must be at least 8 characters	400: {"error": "Password must be at least 8 characters", "code": 400}	✅ Success
-TC-A05	POST /auth/register	{"email": "test@test.com", "password": "Pass1234!", "first_name": "A", "last_name": "B", "role": "INVALID_ROLE"}	400: Invalid role	400: {"error": "Invalid role. Must be one of: ADMIN, INSTRUCTOR, STUDENT, FRONT_DESK, PARENT", "code": 400}	✅ Success
-TC-A06	POST /auth/login	{"email": "john@test.com", "password": "Pass1234!"}	200: access_token, refresh_token, user object	200: {"access_token": "eyJ...", "refresh_token": "eyJ...", "user": {"id": 1, "role": "INSTRUCTOR"}}	✅ Success
-TC-A07	POST /auth/login	{"email": "john@test.com", "password": "WrongPass!"}	401: Invalid credentials	401: {"error": "Invalid email or password", "code": 401}	✅ Success
-TC-A08	POST /auth/login	{"email": "nonexistent@test.com", "password": "Pass1234!"}	401: Invalid credentials	401: {"error": "Invalid email or password", "code": 401}	✅ Success
-TC-A09	GET /auth/me	Header: Authorization: Bearer <valid_token>	200: Current user profile	200: {"id": 1, "email": "john@test.com", "role": "INSTRUCTOR", ...}	✅ Success
-TC-A10	GET /auth/me	Header: Authorization: Bearer <expired_token>	401: Token expired	401: {"error": "Token has expired", "code": 401}	✅ Success
-TC-A11	GET /auth/me	No Authorization header	401: Missing token	401: {"error": "Authorization token is missing", "code": 401}	✅ Success
-TC-A12	POST /auth/logout	Header: Authorization: Bearer <valid_token>	200: Logged out	200: {"message": "Logged out successfully"}	✅ Success
+#### 12.2 Test Cases — Course APIs
 
-12.2 Test Cases — Course APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-C01 | POST /courses | {"name": "GATE CSE 2025", "exam_type": "GATE", "fee_amount": 50000, "duration_months": 12, "max_capacity": 50, "installment_allowed": true, "max_installments": 4} (Admin token) | 201: Course created | 201: {"id": 1, "name": "GATE CSE 2025", ...} | ✅ Success |
+| TC-C02 | POST /courses | Same as TC-C01 but with INSTRUCTOR token | 403: Forbidden | 403: {"error": "Only ADMIN can create courses", "code": 403} | ✅ Success |
+| TC-C03 | POST /courses | {"name": "GATE CSE 2025", ...} (duplicate name, Admin token) | 400: Duplicate course name | 400: {"error": "A course with this name already exists", "code": 400} | ✅ Success |
+| TC-C04 | POST /courses | {"name": "", "exam_type": "GATE", "fee_amount": 50000} (empty name) | 400: Name is required | 400: {"error": "Course name is required", "code": 400} | ✅ Success |
+| TC-C05 | POST /courses | {"name": "JEE Crash", "exam_type": "JEE", "fee_amount": -1000} (negative fee) | 400: Invalid fee | 400: {"error": "Fee amount must be positive", "code": 400} | ✅ Success |
+| TC-C06 | GET /courses | Admin token | 200: Array of courses | 200: [{"id": 1, "name": "GATE CSE 2025", ...}] | ✅ Success |
+| TC-C07 | GET /courses?exam_type=GATE | Admin token | 200: Filtered list | 200: Only GATE courses returned | ✅ Success |
+| TC-C08 | GET /courses/1 | Admin token | 200: Course with batch details | 200: {"id": 1, "name": "GATE CSE 2025", "total_batches": 0, ...} | ✅ Success |
+| TC-C09 | GET /courses/999 | Admin token (non-existent ID) | 404: Not found | 404: {"error": "Course not found", "code": 404} | ✅ Success |
+| TC-C10 | PUT /courses/1 | {"fee_amount": 55000} (Admin token) | 200: Updated | 200: {"id": 1, "fee_amount": 55000, ...} | ✅ Success |
+| TC-C11 | DELETE /courses/1 | Admin token, course has active batches | 400: Cannot delete | 400: {"error": "Cannot delete course with active batches", "code": 400} | ✅ Success |
+| TC-C12 | DELETE /courses/2 | Admin token, course has no batches | 200: Deleted | 200: {"message": "Course deleted successfully"} | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-C01	POST /courses	{"name": "GATE CSE 2025", "exam_type": "GATE", "fee_amount": 50000, "duration_months": 12, "max_capacity": 50, "installment_allowed": true, "max_installments": 4} (Admin token)	201: Course created	201: {"id": 1, "name": "GATE CSE 2025", ...}	✅ Success
-TC-C02	POST /courses	Same as TC-C01 but with INSTRUCTOR token	403: Forbidden	403: {"error": "Only ADMIN can create courses", "code": 403}	✅ Success
-TC-C03	POST /courses	{"name": "GATE CSE 2025", ...} (duplicate name, Admin token)	400: Duplicate course name	400: {"error": "A course with this name already exists", "code": 400}	✅ Success
-TC-C04	POST /courses	{"name": "", "exam_type": "GATE", "fee_amount": 50000} (empty name)	400: Name is required	400: {"error": "Course name is required", "code": 400}	✅ Success
-TC-C05	POST /courses	{"name": "JEE Crash", "exam_type": "JEE", "fee_amount": -1000} (negative fee)	400: Invalid fee	400: {"error": "Fee amount must be positive", "code": 400}	✅ Success
-TC-C06	GET /courses	Admin token	200: Array of courses	200: [{"id": 1, "name": "GATE CSE 2025", ...}]	✅ Success
-TC-C07	GET /courses?exam_type=GATE	Admin token	200: Filtered list	200: Only GATE courses returned	✅ Success
-TC-C08	GET /courses/1	Admin token	200: Course with batch details	200: {"id": 1, "name": "GATE CSE 2025", "total_batches": 0, ...}	✅ Success
-TC-C09	GET /courses/999	Admin token (non-existent ID)	404: Not found	404: {"error": "Course not found", "code": 404}	✅ Success
-TC-C10	PUT /courses/1	{"fee_amount": 55000} (Admin token)	200: Updated	200: {"id": 1, "fee_amount": 55000, ...}	✅ Success
-TC-C11	DELETE /courses/1	Admin token, course has active batches	400: Cannot delete	400: {"error": "Cannot delete course with active batches", "code": 400}	✅ Success
-TC-C12	DELETE /courses/2	Admin token, course has no batches	200: Deleted	200: {"message": "Course deleted successfully"}	✅ Success
+#### 12.3 Test Cases — Batch APIs
 
-12.3 Test Cases — Batch APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-B01 | POST /batches | {"course_id": 1, "batch_code": "GATE-CSE-WD-A", "start_date": "2025-03-01", "end_date": "2026-02-28", "max_students": 40, "schedules": [{"day_of_week": "MON", "start_time": "10:00", "end_time": "12:00", "room_id": 1, "instructor_id": 2, "subject": "Data Structures"}]} | 201: Batch created with schedule | 201: {"id": 1, "batch_code": "GATE-CSE-WD-A", ...} | ✅ Success |
+| TC-B02 | POST /batches | Same room + time as TC-B01 (different batch) | 400: Room conflict | 400: {"error": "Room 'A101' is already booked on MON 10:00-12:00", "code": 400} | ✅ Success |
+| TC-B03 | POST /batches | Same instructor + time as TC-B01 (different room) | 400: Instructor conflict | 400: {"error": "Instructor 'Dr. Sharma' has a class on MON 10:00-12:00", "code": 400} | ✅ Success |
+| TC-B04 | POST /batches | {"course_id": 999, "batch_code": "TEST", ...} (invalid course) | 400: Course not found | 400: {"error": "Course not found", "code": 400} | ✅ Success |
+| TC-B05 | POST /batches | Duplicate batch_code | 400: Batch code already exists | 400: {"error": "Batch code already exists", "code": 400} | ✅ Success |
+| TC-B06 | GET /batches?course_id=1 | Admin token | 200: Batches for course 1 | 200: [{"id": 1, "batch_code": "GATE-CSE-WD-A", "current_enrollment": 0, ...}] | ✅ Success |
+| TC-B07 | GET /batches/1/schedule | Admin token | 200: Weekly schedule | 200: [{"day_of_week": "MON", "start_time": "10:00", ...}] | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-B01	POST /batches	{"course_id": 1, "batch_code": "GATE-CSE-WD-A", "start_date": "2025-03-01", "end_date": "2026-02-28", "max_students": 40, "schedules": [{"day_of_week": "MON", "start_time": "10:00", "end_time": "12:00", "room_id": 1, "instructor_id": 2, "subject": "Data Structures"}]}	201: Batch created with schedule	201: {"id": 1, "batch_code": "GATE-CSE-WD-A", ...}	✅ Success
-TC-B02	POST /batches	Same room + time as TC-B01 (different batch)	400: Room conflict	400: {"error": "Room 'A101' is already booked on MON 10:00-12:00", "code": 400}	✅ Success
-TC-B03	POST /batches	Same instructor + time as TC-B01 (different room)	400: Instructor conflict	400: {"error": "Instructor 'Dr. Sharma' has a class on MON 10:00-12:00", "code": 400}	✅ Success
-TC-B04	POST /batches	{"course_id": 999, "batch_code": "TEST", ...} (invalid course)	400: Course not found	400: {"error": "Course not found", "code": 400}	✅ Success
-TC-B05	POST /batches	Duplicate batch_code	400: Batch code already exists	400: {"error": "Batch code already exists", "code": 400}	✅ Success
-TC-B06	GET /batches?course_id=1	Admin token	200: Batches for course 1	200: [{"id": 1, "batch_code": "GATE-CSE-WD-A", "current_enrollment": 0, ...}]	✅ Success
-TC-B07	GET /batches/1/schedule	Admin token	200: Weekly schedule	200: [{"day_of_week": "MON", "start_time": "10:00", ...}]	✅ Success
+#### 12.4 Test Cases — Enrollment APIs
 
-12.4 Test Cases — Enrollment APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-E01 | POST /enrollments | {"student_id": 5, "batch_id": 1, "initial_payment": 15000, "payment_mode": "UPI"} | 201: Enrollment created with payment | 201: {"id": 1, "student_id": 5, "batch_id": 1, "total_fee": 50000, "fee_paid": 15000, "fee_pending": 35000} | ✅ Success |
+| TC-E02 | POST /enrollments | {"student_id": 5, "batch_id": 1} (already enrolled) | 400: Already enrolled | 400: {"error": "Student is already enrolled in this batch", "code": 400} | ✅ Success |
+| TC-E03 | POST /enrollments | Batch at full capacity (40/40) | 400: Batch full | 400: {"error": "Batch is at full capacity (40/40)", "code": 400} | ✅ Success |
+| TC-E04 | POST /enrollments | {"student_id": 999, "batch_id": 1} (invalid student) | 400: Student not found | 400: {"error": "Student not found", "code": 400} | ✅ Success |
+| TC-E05 | POST /enrollments/1/transfer | {"new_batch_id": 2, "reason": "Timing conflict"} | 200: Transfer successful | 200: {"message": "Student transferred successfully"} | ✅ Success |
+| TC-E06 | POST /enrollments/1/transfer | New batch is in a different course | 400: Different course | 400: {"error": "Can only transfer within the same course", "code": 400} | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-E01	POST /enrollments	{"student_id": 5, "batch_id": 1, "initial_payment": 15000, "payment_mode": "UPI"}	201: Enrollment created with payment	201: {"id": 1, "student_id": 5, "batch_id": 1, "total_fee": 50000, "fee_paid": 15000, "fee_pending": 35000}	✅ Success
-TC-E02	POST /enrollments	{"student_id": 5, "batch_id": 1} (already enrolled)	400: Already enrolled	400: {"error": "Student is already enrolled in this batch", "code": 400}	✅ Success
-TC-E03	POST /enrollments	Batch at full capacity (40/40)	400: Batch full	400: {"error": "Batch is at full capacity (40/40)", "code": 400}	✅ Success
-TC-E04	POST /enrollments	{"student_id": 999, "batch_id": 1} (invalid student)	400: Student not found	400: {"error": "Student not found", "code": 400}	✅ Success
-TC-E05	POST /enrollments/1/transfer	{"new_batch_id": 2, "reason": "Timing conflict"}	200: Transfer successful	200: {"message": "Student transferred successfully"}	✅ Success
-TC-E06	POST /enrollments/1/transfer	New batch is in a different course	400: Different course	400: {"error": "Can only transfer within the same course", "code": 400}	✅ Success
+#### 12.5 Test Cases — Payment APIs
 
-12.5 Test Cases — Payment APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-P01 | POST /payments | {"enrollment_id": 1, "amount": 10000, "payment_mode": "CASH", "remarks": "Second installment"} | 201: Payment recorded with receipt | 201: {"id": 1, "receipt_number": "RCP-20250115-001", "amount": 10000, ...} | ✅ Success |
+| TC-P02 | POST /payments | {"enrollment_id": 1, "amount": 100000} (exceeds pending) | 400: Overpayment | 400: {"error": "Payment amount (100000) exceeds pending fee (25000)", "code": 400} | ✅ Success |
+| TC-P03 | POST /payments | {"enrollment_id": 1, "amount": -500, "payment_mode": "CASH"} | 400: Invalid amount | 400: {"error": "Amount must be greater than 0", "code": 400} | ✅ Success |
+| TC-P04 | POST /payments | {"enrollment_id": 999, "amount": 5000, "payment_mode": "UPI"} (invalid enrollment) | 404: Enrollment not found | 404: {"error": "Enrollment not found", "code": 404} | ✅ Success |
+| TC-P05 | GET /students/5/fees | Valid student token | 200: Fee summary with payment history | 200: {"student_id": 5, "enrollments": [{"total_fee": 50000, "fee_paid": 25000, "fee_pending": 25000, "payments": [...]}]} | ✅ Success |
+| TC-P06 | GET /payments/1/receipt | Valid token | 200: PDF receipt download | 200: Binary PDF content with correct headers | ✅ Success |
+| TC-P07 | GET /payments?start_date=2025-01-01&end_date=2025-01-31 | Admin token | 200: Filtered payments list | 200: Only January payments returned | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-P01	POST /payments	{"enrollment_id": 1, "amount": 10000, "payment_mode": "CASH", "remarks": "Second installment"}	201: Payment recorded with receipt	201: {"id": 1, "receipt_number": "RCP-20250115-001", "amount": 10000, ...}	✅ Success
-TC-P02	POST /payments	{"enrollment_id": 1, "amount": 100000} (exceeds pending)	400: Overpayment	400: {"error": "Payment amount (100000) exceeds pending fee (25000)", "code": 400}	✅ Success
-TC-P03	POST /payments	{"enrollment_id": 1, "amount": -500, "payment_mode": "CASH"}	400: Invalid amount	400: {"error": "Amount must be greater than 0", "code": 400}	✅ Success
-TC-P04	POST /payments	{"enrollment_id": 999, "amount": 5000, "payment_mode": "UPI"} (invalid enrollment)	404: Enrollment not found	404: {"error": "Enrollment not found", "code": 404}	✅ Success
-TC-P05	GET /students/5/fees	Valid student token	200: Fee summary with payment history	200: {"student_id": 5, "enrollments": [{"total_fee": 50000, "fee_paid": 25000, "fee_pending": 25000, "payments": [...]}]}	✅ Success
-TC-P06	GET /payments/1/receipt	Valid token	200: PDF receipt download	200: Binary PDF content with correct headers	✅ Success
-TC-P07	GET /payments?start_date=2025-01-01&end_date=2025-01-31	Admin token	200: Filtered payments list	200: Only January payments returned	✅ Success
+#### 12.6 Test Cases — Attendance APIs
 
-12.6 Test Cases — Attendance APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-AT01 | POST /attendance | {"batch_schedule_id": 1, "date": "2025-01-15", "records": [{"student_id": 5, "status": "PRESENT"}, {"student_id": 6, "status": "ABSENT"}, {"student_id": 7, "status": "LATE"}]} | 201: Attendance marked | 201: {"message": "Attendance marked for 3 students", "summary": {"present": 1, "absent": 1, "late": 1}} | ✅ Success |
+| TC-AT02 | POST /attendance | Same batch_schedule_id and date as TC-AT01 | 400: Already marked | 400: {"error": "Attendance already marked for this session on 2025-01-15", "code": 400} | ✅ Success |
+| TC-AT03 | POST /attendance | Future date | 400: Future date | 400: {"error": "Cannot mark attendance for a future date", "code": 400} | ✅ Success |
+| TC-AT04 | POST /attendance | STUDENT role token | 403: Forbidden | 403: {"error": "Only INSTRUCTOR or ADMIN can mark attendance", "code": 403} | ✅ Success |
+| TC-AT05 | GET /students/5/attendance?batch_id=1 | Valid token | 200: Attendance summary | 200: {"student_id": 5, "overall_percentage": 85.5, "batch_wise": [{"batch_code": "GATE-CSE-WD-A", "present": 20, "absent": 3, "late": 1, "percentage": 87.5}]} | ✅ Success |
+| TC-AT06 | GET /attendance/batch/1?start_date=2025-01-01&end_date=2025-01-31 | Instructor token | 200: Batch attendance records | 200: Records for all students in batch for Jan | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-AT01	POST /attendance	{"batch_schedule_id": 1, "date": "2025-01-15", "records": [{"student_id": 5, "status": "PRESENT"}, {"student_id": 6, "status": "ABSENT"}, {"student_id": 7, "status": "LATE"}]}	201: Attendance marked	201: {"message": "Attendance marked for 3 students", "summary": {"present": 1, "absent": 1, "late": 1}}	✅ Success
-TC-AT02	POST /attendance	Same batch_schedule_id and date as TC-AT01	400: Already marked	400: {"error": "Attendance already marked for this session on 2025-01-15", "code": 400}	✅ Success
-TC-AT03	POST /attendance	Future date	400: Future date	400: {"error": "Cannot mark attendance for a future date", "code": 400}	✅ Success
-TC-AT04	POST /attendance	STUDENT role token	403: Forbidden	403: {"error": "Only INSTRUCTOR or ADMIN can mark attendance", "code": 403}	✅ Success
-TC-AT05	GET /students/5/attendance?batch_id=1	Valid token	200: Attendance summary	200: {"student_id": 5, "overall_percentage": 85.5, "batch_wise": [{"batch_code": "GATE-CSE-WD-A", "present": 20, "absent": 3, "late": 1, "percentage": 87.5}]}	✅ Success
-TC-AT06	GET /attendance/batch/1?start_date=2025-01-01&end_date=2025-01-31	Instructor token	200: Batch attendance records	200: Records for all students in batch for Jan	✅ Success
+#### 12.7 Test Cases — Test Management APIs
 
-12.7 Test Cases — Test Management APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-T01 | POST /tests | {"title": "DS Mock Test 1", "batch_id": 1, "subject": "Data Structures", "total_marks": 20, "deadline": "2025-02-15T23:59:00Z", "questions": [{"question_text": "Time complexity of BST search?", "question_type": "MCQ", "marks": 5, "option_a": "O(1)", "option_b": "O(log n)", "option_c": "O(n)", "option_d": "O(n²)", "correct_option": "B"}, {"question_text": "Explain Dijkstra's algorithm", "question_type": "SUBJECTIVE", "marks": 15}]} | 201: Test created | 201: {"id": 1, "title": "DS Mock Test 1", "is_published": false, "question_count": 2} | ✅ Success |
+| TC-T02 | POST /tests | Total marks = 50 but sum of question marks = 20 | 400: Marks mismatch | 400: {"error": "Sum of question marks (20) does not match total_marks (50)", "code": 400} | ✅ Success |
+| TC-T03 | POST /tests | MCQ question without correct_option | 400: Missing correct option | 400: {"error": "MCQ question at index 0 is missing correct_option", "code": 400} | ✅ Success |
+| TC-T04 | PUT /tests/1/publish | Instructor token (test creator) | 200: Published | 200: {"message": "Test published. 35 students notified."} | ✅ Success |
+| TC-T05 | PUT /tests/1/publish | Already published test | 400: Already published | 400: {"error": "Test is already published", "code": 400} | ✅ Success |
+| TC-T06 | POST /tests/1/submit | {"answers": [{"question_id": 1, "selected_option": "B"}, {"question_id": 2, "subjective_answer": "Dijkstra's uses greedy approach..."}]} (Student, before deadline) | 201: Submitted with MCQ auto-grade | 201: {"submission_id": 1, "mcq_score": 5, "total_score": null, "is_fully_graded": false} | ✅ Success |
+| TC-T07 | POST /tests/1/submit | Same student submitting again | 400: Already submitted | 400: {"error": "You have already submitted this test", "code": 400} | ✅ Success |
+| TC-T08 | POST /tests/1/submit | After deadline | 400: Deadline passed | 400: {"error": "Test deadline has passed", "code": 400} | ✅ Success |
+| TC-T09 | PUT /tests/submissions/1/grade | {"grades": [{"answer_id": 2, "marks_awarded": 12, "feedback": "Good explanation but missed negative cycle handling"}]} | 200: Graded | 200: {"total_score": 17, "is_fully_graded": true} | ✅ Success |
+| TC-T10 | PUT /tests/submissions/1/grade | marks_awarded > question marks | 400: Exceeds max | 400: {"error": "Marks awarded (20) exceeds question marks (15)", "code": 400} | ✅ Success |
+| TC-T11 | GET /tests/1/results | Instructor token | 200: Results with stats | 200: {"total_submissions": 30, "average_score": 14.5, "highest_score": 20, ...} | ✅ Success |
+| TC-T12 | GET /tests/1/results | Student token, before deadline | 403: Not available yet | 403: {"error": "Results are available only after the deadline", "code": 403} | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-T01	POST /tests	{"title": "DS Mock Test 1", "batch_id": 1, "subject": "Data Structures", "total_marks": 20, "deadline": "2025-02-15T23:59:00Z", "questions": [{"question_text": "Time complexity of BST search?", "question_type": "MCQ", "marks": 5, "option_a": "O(1)", "option_b": "O(log n)", "option_c": "O(n)", "option_d": "O(n²)", "correct_option": "B"}, {"question_text": "Explain Dijkstra's algorithm", "question_type": "SUBJECTIVE", "marks": 15}]}	201: Test created	201: {"id": 1, "title": "DS Mock Test 1", "is_published": false, "question_count": 2}	✅ Success
-TC-T02	POST /tests	Total marks = 50 but sum of question marks = 20	400: Marks mismatch	400: {"error": "Sum of question marks (20) does not match total_marks (50)", "code": 400}	✅ Success
-TC-T03	POST /tests	MCQ question without correct_option	400: Missing correct option	400: {"error": "MCQ question at index 0 is missing correct_option", "code": 400}	✅ Success
-TC-T04	PUT /tests/1/publish	Instructor token (test creator)	200: Published	200: {"message": "Test published. 35 students notified."}	✅ Success
-TC-T05	PUT /tests/1/publish	Already published test	400: Already published	400: {"error": "Test is already published", "code": 400}	✅ Success
-TC-T06	POST /tests/1/submit	{"answers": [{"question_id": 1, "selected_option": "B"}, {"question_id": 2, "subjective_answer": "Dijkstra's uses greedy approach..."}]} (Student, before deadline)	201: Submitted with MCQ auto-grade	201: {"submission_id": 1, "mcq_score": 5, "total_score": null, "is_fully_graded": false}	✅ Success
-TC-T07	POST /tests/1/submit	Same student submitting again	400: Already submitted	400: {"error": "You have already submitted this test", "code": 400}	✅ Success
-TC-T08	POST /tests/1/submit	After deadline	400: Deadline passed	400: {"error": "Test deadline has passed", "code": 400}	✅ Success
-TC-T09	PUT /tests/submissions/1/grade	{"grades": [{"answer_id": 2, "marks_awarded": 12, "feedback": "Good explanation but missed negative cycle handling"}]}	200: Graded	200: {"total_score": 17, "is_fully_graded": true}	✅ Success
-TC-T10	PUT /tests/submissions/1/grade	marks_awarded > question marks	400: Exceeds max	400: {"error": "Marks awarded (20) exceeds question marks (15)", "code": 400}	✅ Success
-TC-T11	GET /tests/1/results	Instructor token	200: Results with stats	200: {"total_submissions": 30, "average_score": 14.5, "highest_score": 20, ...}	✅ Success
-TC-T12	GET /tests/1/results	Student token, before deadline	403: Not available yet	403: {"error": "Results are available only after the deadline", "code": 403}	✅ Success
+#### 12.8 Test Cases — Enquiry APIs
 
-12.8 Test Cases — Enquiry APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-Q01 | POST /enquiries | {"name": "Rahul Kumar", "phone": "+919876543210", "exam_interest": "GATE-CSE", "source": "WALKIN", "follow_up_date": "2025-01-20"} | 201: Enquiry logged | 201: {"id": 1, "status": "NEW", ...} | ✅ Success |
+| TC-Q02 | POST /enquiries | Missing required field (phone) | 400: Validation error | 400: {"error": "Phone is required", "code": 400} | ✅ Success |
+| TC-Q03 | POST /enquiries/1/follow-up | {"notes": "Called. Interested in weekend batch.", "next_follow_up_date": "2025-01-25", "status_update": "CONTACTED"} | 201: Follow-up logged | 201: {"message": "Follow-up logged"} | ✅ Success |
+| TC-Q04 | GET /enquiries/report?start_date=2025-01-01&end_date=2025-01-31 | Admin token | 200: Report with conversion rate | 200: {"total_enquiries": 45, "by_status": {"new": 10, "contacted": 20, "enrolled": 12, "lost": 3}, "conversion_rate": 26.67} | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-Q01	POST /enquiries	{"name": "Rahul Kumar", "phone": "+919876543210", "exam_interest": "GATE-CSE", "source": "WALKIN", "follow_up_date": "2025-01-20"}	201: Enquiry logged	201: {"id": 1, "status": "NEW", ...}	✅ Success
-TC-Q02	POST /enquiries	Missing required field (phone)	400: Validation error	400: {"error": "Phone is required", "code": 400}	✅ Success
-TC-Q03	POST /enquiries/1/follow-up	{"notes": "Called. Interested in weekend batch.", "next_follow_up_date": "2025-01-25", "status_update": "CONTACTED"}	201: Follow-up logged	201: {"message": "Follow-up logged"}	✅ Success
-TC-Q04	GET /enquiries/report?start_date=2025-01-01&end_date=2025-01-31	Admin token	200: Report with conversion rate	200: {"total_enquiries": 45, "by_status": {"new": 10, "contacted": 20, "enrolled": 12, "lost": 3}, "conversion_rate": 26.67}	✅ Success
+#### 12.9 Test Cases — Doubts Forum APIs
 
-12.9 Test Cases — Doubts Forum APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-D01 | POST /doubts | {"batch_id": 1, "subject": "Data Structures", "topic": "AVL Trees", "title": "Confusion about rotations", "description": "When to do LL vs LR?"} (Student token) | 201: Doubt posted | 201: {"id": 1, "status": "OPEN", ...} | ✅ Success |
+| TC-D02 | POST /doubts/{id}/respond | {"response_text": "LL rotation is when the imbalance is on the left-left path..."} (Instructor token) | 201: Response posted | 201: {"id": 1, "response_text": "LL rotation...", ...} | ✅ Success |
+| TC-D03 | PUT /doubts/1/resolve | Instructor token | 200: Resolved | 200: {"message": "Doubt marked as resolved"} | ✅ Success |
+| TC-D04 | GET /doubts?batch_id=1&status=OPEN | Valid token | 200: Filtered doubts | 200: List of open doubts for batch 1 | ✅ Success |
+| TC-D05 | POST /doubts | Student not enrolled in batch_id | 403: Not authorized | 403: {"error": "You are not enrolled in this batch", "code": 403} | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-D01	POST /doubts	{"batch_id": 1, "subject": "Data Structures", "topic": "AVL Trees", "title": "Confusion about rotations", "description": "When to do LL vs LR?"} (Student token)	201: Doubt posted	201: {"id": 1, "status": "OPEN", ...}	✅ Success
-TC-D02	POST /doubts/{id}/respond	{"response_text": "LL rotation is when the imbalance is on the left-left path..."} (Instructor token)	201: Response posted	201: {"id": 1, "response_text": "LL rotation...", ...}	✅ Success
-TC-D03	PUT /doubts/1/resolve	Instructor token	200: Resolved	200: {"message": "Doubt marked as resolved"}	✅ Success
-TC-D04	GET /doubts?batch_id=1&status=OPEN	Valid token	200: Filtered doubts	200: List of open doubts for batch 1	✅ Success
-TC-D05	POST /doubts	Student not enrolled in batch_id	403: Not authorized	403: {"error": "You are not enrolled in this batch", "code": 403}	✅ Success
+#### 12.10 Test Cases — Notification APIs
 
-12.10 Test Cases — Notification APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-N01 | GET /notifications | Student token | 200: Notifications list with unread count | 200: {"notifications": [...], "unread_count": 5, "total": 12} | ✅ Success |
+| TC-N02 | PUT /notifications/1/read | Valid token | 200: Marked as read | 200: {"message": "Notification marked as read"} | ✅ Success |
+| TC-N03 | PUT /notifications/read-all | Valid token | 200: All marked | 200: {"message": "All notifications marked as read", "count": 5} | ✅ Success |
+| TC-N04 | GET /notifications?type=FEE&is_read=false | Student token | 200: Filtered notifications | 200: Only unread FEE notifications | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-N01	GET /notifications	Student token	200: Notifications list with unread count	200: {"notifications": [...], "unread_count": 5, "total": 12}	✅ Success
-TC-N02	PUT /notifications/1/read	Valid token	200: Marked as read	200: {"message": "Notification marked as read"}	✅ Success
-TC-N03	PUT /notifications/read-all	Valid token	200: All marked	200: {"message": "All notifications marked as read", "count": 5}	✅ Success
-TC-N04	GET /notifications?type=FEE&is_read=false	Student token	200: Filtered notifications	200: Only unread FEE notifications	✅ Success
+#### 12.11 Test Cases — Dashboard APIs
 
-12.11 Test Cases — Dashboard APIs
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| TC-DA01 | GET /dashboard/admin | Admin token | 200: KPIs and charts data | 200: {"total_students": 150, "active_batches": 8, "revenue_this_month": 450000, ...} | ✅ Success |
+| TC-DA02 | GET /dashboard/admin | Student token | 403: Forbidden | 403: {"error": "Admin access required", "code": 403} | ✅ Success |
+| TC-DA03 | GET /dashboard/student | Student token | 200: Student progress data | 200: {"attendance_percentage": 88.5, "test_scores": [...], ...} | ✅ Success |
+| TC-DA04 | GET /dashboard/parent?ward_id=5 | Parent token | 200: Ward's data | 200: {"ward_name": "Amit", "attendance": {...}, "test_performance": [...], ...} | ✅ Success |
+| TC-DA05 | GET /dashboard/parent?ward_id=99 | Parent token, ward not linked | 403: Not your ward | 403: {"error": "Student is not linked to your account", "code": 403} | ✅ Success |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-DA01	GET /dashboard/admin	Admin token	200: KPIs and charts data	200: {"total_students": 150, "active_batches": 8, "revenue_this_month": 450000, ...}	✅ Success
-TC-DA02	GET /dashboard/admin	Student token	403: Forbidden	403: {"error": "Admin access required", "code": 403}	✅ Success
-TC-DA03	GET /dashboard/student	Student token	200: Student progress data	200: {"attendance_percentage": 88.5, "test_scores": [...], ...}	✅ Success
-TC-DA04	GET /dashboard/parent?ward_id=5	Parent token	200: Ward's data	200: {"ward_name": "Amit", "attendance": {...}, "test_performance": [...], ...}	✅ Success
-TC-DA05	GET /dashboard/parent?ward_id=99	Parent token, ward not linked	403: Not your ward	403: {"error": "Student is not linked to your account", "code": 403}	✅ Success
+### 13. Pytest Code
 
+#### `tests/conftest.py`
 
-
-13. Pytest Code
-
-Python
-# ============================================================
-# tests/conftest.py
-# ============================================================
+```python
 import pytest
 from app import create_app
 from app.extensions import db
@@ -4943,7 +5027,7 @@ def app():
     app.config['TESTING'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
     app.config['JWT_SECRET_KEY'] = 'test-secret-key'
-    
+
     with app.app_context():
         db.create_all()
         yield app
@@ -4973,7 +5057,7 @@ def admin_token(client):
     )
     db.session.add(admin)
     db.session.commit()
-    
+
     response = client.post('/api/v1/auth/login', json={
         'email': 'admin@test.com',
         'password': 'Admin123!'
@@ -4994,7 +5078,7 @@ def instructor_token(client):
     )
     db.session.add(instructor)
     db.session.commit()
-    
+
     response = client.post('/api/v1/auth/login', json={
         'email': 'instructor@test.com',
         'password': 'Instructor123!'
@@ -5015,7 +5099,7 @@ def student_token(client):
     )
     db.session.add(student)
     db.session.commit()
-    
+
     response = client.post('/api/v1/auth/login', json={
         'email': 'student@test.com',
         'password': 'Student123!'
@@ -5026,7 +5110,7 @@ def student_token(client):
 @pytest.fixture
 def sample_course(client, admin_token):
     """Create a sample course."""
-    response = client.post('/api/v1/courses', 
+    response = client.post('/api/v1/courses',
         json={
             'name': 'GATE CSE 2025',
             'exam_type': 'GATE',
@@ -5065,7 +5149,7 @@ def sample_batch(client, admin_token, sample_course, sample_room, instructor_tok
         headers={'Authorization': f'Bearer {instructor_token}'}
     )
     instructor_id = json.loads(me_response.data)['id']
-    
+
     response = client.post('/api/v1/batches',
         json={
             'course_id': sample_course['id'],
@@ -5097,9 +5181,11 @@ def sample_batch(client, admin_token, sample_course, sample_room, instructor_tok
     return json.loads(response.data)
 
 
-# ============================================================
-# tests/test_auth.py
-# ============================================================
+```
+
+#### `tests/test_auth.py`
+
+```python
 import json
 import pytest
 
@@ -5251,9 +5337,11 @@ class TestAuthentication:
         assert response.status_code == 200
 
 
-# ============================================================
-# tests/test_courses.py
-# ============================================================
+```
+
+#### `tests/test_courses.py`
+
+```python
 class TestCourses:
     """Test cases for Course Management APIs."""
 
@@ -5359,20 +5447,22 @@ class TestCourses:
         assert data['fee_amount'] == 55000
 
 
-# ============================================================
-# tests/test_batches.py
-# ============================================================
+```
+
+#### `tests/test_batches.py`
+
+```python
 class TestBatches:
     """Test cases for Batch Management APIs."""
 
-    def test_create_batch_success(self, client, admin_token, sample_course, 
+    def test_create_batch_success(self, client, admin_token, sample_course,
                                    sample_room, instructor_token):
         """TC-B01: Create batch with valid schedule."""
         me_resp = client.get('/api/v1/auth/me',
             headers={'Authorization': f'Bearer {instructor_token}'}
         )
         instructor_id = json.loads(me_resp.data)['id']
-        
+
         response = client.post('/api/v1/batches',
             json={
                 'course_id': sample_course['id'],
@@ -5397,7 +5487,7 @@ class TestBatches:
         assert response.status_code == 201
         assert data['batch_code'] == 'GATE-CSE-WE-B'
 
-    def test_create_batch_room_conflict(self, client, admin_token, sample_batch, 
+    def test_create_batch_room_conflict(self, client, admin_token, sample_batch,
                                          sample_course, sample_room, instructor_token):
         """TC-B02: Room conflict detected."""
         # Create another instructor
@@ -5411,7 +5501,7 @@ class TestBatches:
             },
             headers={'Authorization': f'Bearer {admin_token}'}
         )
-        
+
         response = client.post('/api/v1/batches',
             json={
                 'course_id': sample_course['id'],
@@ -5436,7 +5526,7 @@ class TestBatches:
         assert 'room' in json.loads(response.data)['error'].lower() or \
                'booked' in json.loads(response.data)['error'].lower()
 
-    def test_create_batch_duplicate_code(self, client, admin_token, sample_batch, 
+    def test_create_batch_duplicate_code(self, client, admin_token, sample_batch,
                                           sample_course, sample_room):
         """TC-B05: Duplicate batch code fails."""
         response = client.post('/api/v1/batches',
@@ -5463,20 +5553,22 @@ class TestBatches:
         assert len(data) == 2  # MON and WED from sample_batch
 
 
-# ============================================================
-# tests/test_enrollments.py
-# ============================================================
+```
+
+#### `tests/test_enrollments.py`
+
+```python
 class TestEnrollments:
     """Test cases for Enrollment APIs."""
 
-    def test_enroll_student_success(self, client, admin_token, sample_batch, 
+    def test_enroll_student_success(self, client, admin_token, sample_batch,
                                      student_token):
         """TC-E01: Enroll student with initial payment."""
         me_resp = client.get('/api/v1/auth/me',
             headers={'Authorization': f'Bearer {student_token}'}
         )
         student_id = json.loads(me_resp.data)['id']
-        
+
         response = client.post('/api/v1/enrollments',
             json={
                 'student_id': student_id,
@@ -5491,20 +5583,20 @@ class TestEnrollments:
         assert data['fee_paid'] == 15000
         assert data['fee_pending'] == 35000  # 50000 - 15000
 
-    def test_enroll_student_duplicate(self, client, admin_token, sample_batch, 
+    def test_enroll_student_duplicate(self, client, admin_token, sample_batch,
                                        student_token):
         """TC-E02: Cannot enroll same student in same batch twice."""
         me_resp = client.get('/api/v1/auth/me',
             headers={'Authorization': f'Bearer {student_token}'}
         )
         student_id = json.loads(me_resp.data)['id']
-        
+
         # First enrollment
         client.post('/api/v1/enrollments',
             json={'student_id': student_id, 'batch_id': sample_batch['id']},
             headers={'Authorization': f'Bearer {admin_token}'}
         )
-        
+
         # Duplicate enrollment
         response = client.post('/api/v1/enrollments',
             json={'student_id': student_id, 'batch_id': sample_batch['id']},
@@ -5514,13 +5606,15 @@ class TestEnrollments:
         assert 'already enrolled' in json.loads(response.data)['error'].lower()
 
 
-# ============================================================
-# tests/test_payments.py
-# ============================================================
+```
+
+#### `tests/test_payments.py`
+
+```python
 class TestPayments:
     """Test cases for Payment APIs."""
 
-    def test_record_payment_success(self, client, admin_token, sample_batch, 
+    def test_record_payment_success(self, client, admin_token, sample_batch,
                                      student_token):
         """TC-P01: Record a payment successfully."""
         # First enroll the student
@@ -5528,13 +5622,13 @@ class TestPayments:
             headers={'Authorization': f'Bearer {student_token}'}
         )
         student_id = json.loads(me_resp.data)['id']
-        
+
         enroll_resp = client.post('/api/v1/enrollments',
             json={'student_id': student_id, 'batch_id': sample_batch['id']},
             headers={'Authorization': f'Bearer {admin_token}'}
         )
         enrollment_id = json.loads(enroll_resp.data)['id']
-        
+
         # Record payment
         response = client.post('/api/v1/payments',
             json={
@@ -5551,20 +5645,20 @@ class TestPayments:
         assert 'receipt_number' in data
         assert data['receipt_number'].startswith('RCP-')
 
-    def test_record_payment_overpayment(self, client, admin_token, sample_batch, 
+    def test_record_payment_overpayment(self, client, admin_token, sample_batch,
                                          student_token):
         """TC-P02: Payment exceeding pending fee fails."""
         me_resp = client.get('/api/v1/auth/me',
             headers={'Authorization': f'Bearer {student_token}'}
         )
         student_id = json.loads(me_resp.data)['id']
-        
+
         enroll_resp = client.post('/api/v1/enrollments',
             json={'student_id': student_id, 'batch_id': sample_batch['id']},
             headers={'Authorization': f'Bearer {admin_token}'}
         )
         enrollment_id = json.loads(enroll_resp.data)['id']
-        
+
         response = client.post('/api/v1/payments',
             json={
                 'enrollment_id': enrollment_id,
@@ -5589,9 +5683,11 @@ class TestPayments:
         assert response.status_code == 400
 
 
-# ============================================================
-# tests/test_attendance.py
-# ============================================================
+```
+
+#### `tests/test_attendance.py`
+
+```python
 class TestAttendance:
     """Test cases for Attendance APIs."""
 
@@ -5603,19 +5699,19 @@ class TestAttendance:
             headers={'Authorization': f'Bearer {student_token}'}
         )
         student_id = json.loads(me_resp.data)['id']
-        
+
         client.post('/api/v1/enrollments',
             json={'student_id': student_id, 'batch_id': sample_batch['id']},
             headers={'Authorization': f'Bearer {admin_token}'}
         )
-        
+
         # Get batch schedule
         schedule_resp = client.get(
             f'/api/v1/batches/{sample_batch["id"]}/schedule',
             headers={'Authorization': f'Bearer {instructor_token}'}
         )
         schedule_id = json.loads(schedule_resp.data)[0]['id']
-        
+
         # Mark attendance
         response = client.post('/api/v1/attendance',
             json={
@@ -5644,9 +5740,11 @@ class TestAttendance:
         assert response.status_code == 403
 
 
-# ============================================================
-# tests/test_tests.py
-# ============================================================
+```
+
+#### `tests/test_tests.py`
+
+```python
 class TestTestManagement:
     """Test cases for Test Management APIs."""
 
@@ -5710,7 +5808,7 @@ class TestTestManagement:
         assert response.status_code == 400
         assert 'marks' in json.loads(response.data)['error'].lower()
 
-    def test_create_test_mcq_no_correct_option(self, client, instructor_token, 
+    def test_create_test_mcq_no_correct_option(self, client, instructor_token,
                                                  sample_batch):
         """TC-T03: MCQ without correct_option fails."""
         response = client.post('/api/v1/tests',
@@ -6135,9 +6233,11 @@ class TestTestManagement:
         assert 'published' in json.loads(response.data)['error'].lower()
 
 
-# ============================================================
-# tests/test_doubts.py
-# ============================================================
+```
+
+#### `tests/test_doubts.py`
+
+```python
 class TestDoubts:
     """Test cases for Doubts Forum APIs."""
 
@@ -6295,9 +6395,11 @@ class TestDoubts:
         assert response.status_code in [403, 400]
 
 
-# ============================================================
-# tests/test_enquiries.py
-# ============================================================
+```
+
+#### `tests/test_enquiries.py`
+
+```python
 class TestEnquiries:
     """Test cases for Enquiry Management APIs."""
 
@@ -6392,9 +6494,11 @@ class TestEnquiries:
         assert 'by_source' in data
 
 
-# ============================================================
-# tests/test_notifications.py
-# ============================================================
+```
+
+#### `tests/test_notifications.py`
+
+```python
 class TestNotifications:
     """Test cases for Notification APIs."""
 
@@ -6503,9 +6607,11 @@ class TestNotifications:
             assert notif['type'] == 'FEE'
 
 
-# ============================================================
-# tests/test_dashboard.py
-# ============================================================
+```
+
+#### `tests/test_dashboard.py`
+
+```python
 class TestDashboard:
     """Test cases for Dashboard APIs."""
 
@@ -6647,9 +6753,11 @@ class TestDashboard:
         assert 'student_wise' in data
 
 
-# ============================================================
-# tests/test_materials.py
-# ============================================================
+```
+
+#### `tests/test_materials.py`
+
+```python
 class TestMaterials:
     """Test cases for Study Material APIs."""
 
@@ -6782,9 +6890,11 @@ class TestMaterials:
         assert get_resp.status_code == 404
 
 
-# ============================================================
-# tests/test_syllabus.py
-# ============================================================
+```
+
+#### `tests/test_syllabus.py`
+
+```python
 class TestSyllabus:
     """Test cases for Syllabus Tracker APIs."""
 
@@ -6877,9 +6987,11 @@ class TestSyllabus:
         assert response.status_code == 200
 
 
-# ============================================================
-# tests/test_leaves_substitutions.py
-# ============================================================
+```
+
+#### `tests/test_leaves_substitutions.py`
+
+```python
 class TestLeavesAndSubstitutions:
     """Test cases for Leave Request and Substitution APIs."""
 
@@ -6981,9 +7093,11 @@ class TestLeavesAndSubstitutions:
         assert data['substitute_instructor_id'] == sub_id
 
 
-# ============================================================
-# tests/test_rooms.py
-# ============================================================
+```
+
+#### `tests/test_rooms.py`
+
+```python
 class TestRooms:
     """Test cases for Room Management APIs."""
 
@@ -7020,9 +7134,11 @@ class TestRooms:
         assert len(data) >= 1
 
 
-# ============================================================
-# tests/test_student_search.py
-# ============================================================
+```
+
+#### `tests/test_student_search.py`
+
+```python
 class TestStudentSearch:
     """Test cases for Student Search API."""
 
@@ -7062,9 +7178,11 @@ class TestStudentSearch:
         assert response.status_code in [200, 400]  # Either empty results or validation error
 
 
-# ============================================================
-# Run configuration
-# ============================================================
+```
+
+#### `Run configuration`
+
+```python
 # To run all tests:
 #   pytest tests/ -v --tb=short
 #
@@ -7096,11 +7214,11 @@ Student Dashboard	Student	"I like seeing everything in one place. Can I get What
 
 14.2 Key Insights from User Testing
 
-Users strongly value conflict detection in batch scheduling — this was the single most appreciated feature. 
-Receipt generation was seen as a major improvement over handwritten receipts. 
-Mobile responsiveness was requested by all user types — students and parents primarily use phones. 
-Notification preferences — users want to choose how they receive notifications (in-app, email, WhatsApp). 
-Bulk operations — receptionist wants bulk attendance marking and bulk fee reminders. 
+Users strongly value conflict detection in batch scheduling — this was the single most appreciated feature.
+Receipt generation was seen as a major improvement over handwritten receipts.
+Mobile responsiveness was requested by all user types — students and parents primarily use phones.
+Notification preferences — users want to choose how they receive notifications (in-app, email, WhatsApp).
+Bulk operations — receptionist wants bulk attendance marking and bulk fee reminders.
 14.3 Plan for Sprint 2
 Based on user feedback and the original sprint plan:
 
@@ -7118,63 +7236,109 @@ P1	—	Add last payment date to search results	1
 Total			36
 
 
+```
 
-═══════════════════════════════════════════════════════
-SPRINT 2: API ENDPOINTS, TEST CASES, AND USER TESTING
-═══════════════════════════════════════════════════════
-15. Sprint 2 — APIs Implemented
+### 14. User Feedback & Plan for Next Sprint
+
+#### 14.1 User Feedback (Sprint 1)
+
+After completing Sprint 1, we demonstrated the following features to end users:
+
+| Feature Shown | User Type | Feedback | Action |
+| --- | --- | --- | --- |
+| Login & Registration | Owner, Instructor, Student | "Clean and simple. Would like to see a 'Remember Me' option." | Add Remember Me in Sprint 2 |
+| Course Creation | Owner | "Very useful. Can I duplicate an existing course instead of creating from scratch?" | Add 'Duplicate Course' feature to backlog |
+| Batch Creation with Conflict Detection | Owner | "Excellent! This alone saves me hours. Can it also show a visual timetable grid?" | Add timetable grid view in Sprint 3 |
+| Student Search | Receptionist | "Fast and accurate. Can I also see the last payment date in search results?" | Add last payment date to search results |
+| Fee Payment Recording | Receptionist | "Receipt generation is great. Can the receipt have the institute logo?" | Add branding to receipt template |
+| Student Dashboard | Student | "I like seeing everything in one place. Can I get WhatsApp notifications too?" | Evaluate WhatsApp Business API integration |
+
+#### 14.2 Key Insights from User Testing
+
+- Users strongly value conflict detection in batch scheduling — this was the single most appreciated feature.
+- Receipt generation was seen as a major improvement over handwritten receipts.
+- Mobile responsiveness was requested by all user types — students and parents primarily use phones.
+- Notification preferences — users want to choose how they receive notifications (in-app, email, WhatsApp).
+- Bulk operations — receptionist wants bulk attendance marking and bulk fee reminders.
+
+#### 14.3 Plan for Sprint 2
+
+Based on user feedback and the original sprint plan:
+
+| Priority | User Story | Description | SP |
+| --- | --- | --- | --- |
+| P0 | US-I01, US-S01 | Schedule display (calendar + list view) | 5 |
+| P0 | US-I02 | Digital attendance marking | 5 |
+| P0 | US-S02, US-P01 | Attendance viewing for students and parents | 3 |
+| P0 | US-I06 | Syllabus tracker | 5 |
+| P0 | US-O06 | Instructor substitution management | 5 |
+| P0 | US-I08 | Leave management | 3 |
+| P1 | US-F05 | Today's schedule view for front-desk | 3 |
+| P1 | — | Mobile responsiveness improvements | 5 |
+| P1 | — | Add "Remember Me" to login | 1 |
+| P1 | — | Add last payment date to search results | 1 |
+| | | **Total** | **36** |
+
+---
+
+## Sprint 2: API Endpoints, Test Cases, and User Testing
+
+### 15. Sprint 2 — APIs Implemented
+
 Sprint 2 focused on Scheduling, Attendance, Syllabus Tracking, Leave Management, and Substitution workflows.
-15.1 APIs Created in Sprint 2
 
-#	Method	Endpoint	Component	User Story
-1	GET	/schedule/today	Schedule	US-F05
-2	GET	/schedule/instructor/{id}/week	Schedule	US-I01
-3	GET	/schedule/student/{id}/week	Schedule	US-S01
-4	POST	/attendance/bulk	Attendance	US-I02
-5	GET	/attendance/student/{id}/calendar	Attendance	US-S02, US-P01
-6	GET	/attendance/batch/{id}/summary	Attendance	US-I05
-7	POST	/syllabus/bulk	Syllabus	US-I06
-8	GET	/syllabus/batch/{id}/progress	Syllabus	US-I06
-9	PUT	/syllabus/{id}/status	Syllabus	US-I06
-10	POST	/leaves	Leave	US-I08
-11	GET	/leaves	Leave	US-I08, US-O06
-12	PUT	/leaves/{id}/approve	Leave	US-O06
-13	PUT	/leaves/{id}/reject	Leave	US-O06
-14	POST	/substitutions	Substitution	US-O06
-15	GET	/substitutions	Substitution	US-O06
-16	GET	/instructors/available	User Mgmt	US-O06
+#### 15.1 APIs Created in Sprint 2
 
-15.2 Sprint 2 Test Cases
+| # | Method | Endpoint | Component | User Story |
+| --- | --- | --- | --- | --- |
+| 1 | GET | `/schedule/today` | Schedule | US-F05 |
+| 2 | GET | `/schedule/instructor/{id}/week` | Schedule | US-I01 |
+| 3 | GET | `/schedule/student/{id}/week` | Schedule | US-S01 |
+| 4 | POST | `/attendance/bulk` | Attendance | US-I02 |
+| 5 | GET | `/attendance/student/{id}/calendar` | Attendance | US-S02, US-P01 |
+| 6 | GET | `/attendance/batch/{id}/summary` | Attendance | US-I05 |
+| 7 | POST | `/syllabus/bulk` | Syllabus | US-I06 |
+| 8 | GET | `/syllabus/batch/{id}/progress` | Syllabus | US-I06 |
+| 9 | PUT | `/syllabus/{id}/status` | Syllabus | US-I06 |
+| 10 | POST | `/leaves` | Leave | US-I08 |
+| 11 | GET | `/leaves` | Leave | US-I08, US-O06 |
+| 12 | PUT | `/leaves/{id}/approve` | Leave | US-O06 |
+| 13 | PUT | `/leaves/{id}/reject` | Leave | US-O06 |
+| 14 | POST | `/substitutions` | Substitution | US-O06 |
+| 15 | GET | `/substitutions` | Substitution | US-O06 |
+| 16 | GET | `/instructors/available` | User Mgmt | US-O06 |
 
-TC#	API Being Tested	Inputs	Expected Output	Actual Output	Result
-TC-S2-01	GET /schedule/today	Admin token	200: All classes today with room, instructor, batch details	200: List of today's scheduled classes with substitution flags	✅ Success
-TC-S2-02	GET /schedule/instructor/{id}/week	Instructor token	200: Weekly calendar with all assigned classes	200: 7-day schedule with class details	✅ Success
-TC-S2-03	GET /schedule/student/{id}/week	Student token (own schedule)	200: Weekly schedule based on enrolled batches	200: Classes from all enrolled batches	✅ Success
-TC-S2-04	GET /schedule/student/{id}/week	Student token (other student's ID)	403: Cannot view others' schedules	403: {"error": "Access denied"}	✅ Success
-TC-S2-05	POST /attendance/bulk	Instructor token, batch with 30 students	201: All 30 attendance records created	201: {"message": "Attendance marked for 30 students"}	✅ Success
-TC-S2-06	POST /attendance/bulk	Instructor token, duplicate date	400: Attendance already marked	400: {"error": "Attendance already exists for this date"}	✅ Success
-TC-S2-07	POST /attendance/bulk	Student not in batch included	400: Student not enrolled	400: {"error": "Student 15 is not enrolled in this batch"}	✅ Success
-TC-S2-08	GET /attendance/student/{id}/calendar	Student token, date range	200: Calendar data with PRESENT/ABSENT/LATE per date	200: Array with date-status pairs	✅ Success
-TC-S2-09	GET /attendance/batch/{id}/summary	Instructor token	200: Summary with avg attendance per student	200: Student-wise attendance percentages	✅ Success
-TC-S2-10	POST /syllabus/bulk	Admin token, 10 topics	201: 10 syllabus entries created	201: {"message": "10 topics added"}	✅ Success
-TC-S2-11	GET /syllabus/batch/{id}/progress	Instructor token	200: Progress percentage and topic-wise breakdown	200: {"total_topics": 10, "covered": 3, "in_progress": 2, "pending": 5, "progress_percentage": 30.0}	✅ Success
-TC-S2-12	PUT /syllabus/{id}/status	Instructor token, status: "COVERED"	200: Topic status updated	200: {"status": "COVERED", "updated_at": "..."}	✅ Success
-TC-S2-13	PUT /syllabus/999/status	Invalid topic ID	404: Topic not found	404: {"error": "Syllabus topic not found"}	✅ Success
-TC-S2-14	POST /leaves	Instructor token, valid dates	201: Leave request created as PENDING	201: {"id": 1, "status": "PENDING"}	✅ Success
-TC-S2-15	POST /leaves	Start date after end date	400: Invalid date range	400: {"error": "Start date must be before end date"}	✅ Success
-TC-S2-16	POST /leaves	Past dates	400: Cannot request leave for past	400: {"error": "Cannot request leave for past dates"}	✅ Success
-TC-S2-17	PUT /leaves/{id}/approve	Admin token	200: Leave approved, notification sent	200: {"status": "APPROVED"}	✅ Success
-TC-S2-18	PUT /leaves/{id}/approve	Instructor token (not admin)	403: Only admin can approve	403: {"error": "Admin access required"}	✅ Success
-TC-S2-19	POST /substitutions	Admin token, valid data	201: Substitution created, students notified	201: {"id": 1, "substitute_instructor": "Prof. Substitute"}	✅ Success
-TC-S2-20	POST /substitutions	Substitute has conflict at same time	400: Instructor conflict	400: {"error": "Substitute instructor has a conflict"}	✅ Success
-TC-S2-21	GET /instructors/available	Admin token, day=MON, time=10:00	200: List of available instructors	200: Instructors not scheduled at that time	✅ Success
+#### 15.2 Sprint 2 Test Cases
 
-15.3 Sprint 2 Pytest Code
+| TC# | API Being Tested | Inputs | Expected Output | Actual Output | Result |
+| --- | --- | --- | --- | --- | --- |
+| TC-S2-01 | GET /schedule/today | Admin token | 200: All classes today with room, instructor, batch details | 200: List of today's scheduled classes with substitution flags | ✅ Success |
+| TC-S2-02 | GET /schedule/instructor/{id}/week | Instructor token | 200: Weekly calendar with all assigned classes | 200: 7-day schedule with class details | ✅ Success |
+| TC-S2-03 | GET /schedule/student/{id}/week | Student token (own schedule) | 200: Weekly schedule based on enrolled batches | 200: Classes from all enrolled batches | ✅ Success |
+| TC-S2-04 | GET /schedule/student/{id}/week | Student token (other student's ID) | 403: Cannot view others' schedules | 403: {"error": "Access denied"} | ✅ Success |
+| TC-S2-05 | POST /attendance/bulk | Instructor token, batch with 30 students | 201: All 30 attendance records created | 201: {"message": "Attendance marked for 30 students"} | ✅ Success |
+| TC-S2-06 | POST /attendance/bulk | Instructor token, duplicate date | 400: Attendance already marked | 400: {"error": "Attendance already exists for this date"} | ✅ Success |
+| TC-S2-07 | POST /attendance/bulk | Student not in batch included | 400: Student not enrolled | 400: {"error": "Student 15 is not enrolled in this batch"} | ✅ Success |
+| TC-S2-08 | GET /attendance/student/{id}/calendar | Student token, date range | 200: Calendar data with PRESENT/ABSENT/LATE per date | 200: Array with date-status pairs | ✅ Success |
+| TC-S2-09 | GET /attendance/batch/{id}/summary | Instructor token | 200: Summary with avg attendance per student | 200: Student-wise attendance percentages | ✅ Success |
+| TC-S2-10 | POST /syllabus/bulk | Admin token, 10 topics | 201: 10 syllabus entries created | 201: {"message": "10 topics added"} | ✅ Success |
+| TC-S2-11 | GET /syllabus/batch/{id}/progress | Instructor token | 200: Progress percentage and topic-wise breakdown | 200: {"total_topics": 10, "covered": 3, "in_progress": 2, "pending": 5, "progress_percentage": 30.0} | ✅ Success |
+| TC-S2-12 | PUT /syllabus/{id}/status | Instructor token, status: "COVERED" | 200: Topic status updated | 200: {"status": "COVERED", "updated_at": "..."} | ✅ Success |
+| TC-S2-13 | PUT /syllabus/999/status | Invalid topic ID | 404: Topic not found | 404: {"error": "Syllabus topic not found"} | ✅ Success |
+| TC-S2-14 | POST /leaves | Instructor token, valid dates | 201: Leave request created as PENDING | 201: {"id": 1, "status": "PENDING"} | ✅ Success |
+| TC-S2-15 | POST /leaves | Start date after end date | 400: Invalid date range | 400: {"error": "Start date must be before end date"} | ✅ Success |
+| TC-S2-16 | POST /leaves | Past dates | 400: Cannot request leave for past | 400: {"error": "Cannot request leave for past dates"} | ✅ Success |
+| TC-S2-17 | PUT /leaves/{id}/approve | Admin token | 200: Leave approved, notification sent | 200: {"status": "APPROVED"} | ✅ Success |
+| TC-S2-18 | PUT /leaves/{id}/approve | Instructor token (not admin) | 403: Only admin can approve | 403: {"error": "Admin access required"} | ✅ Success |
+| TC-S2-19 | POST /substitutions | Admin token, valid data | 201: Substitution created, students notified | 201: {"id": 1, "substitute_instructor": "Prof. Substitute"} | ✅ Success |
+| TC-S2-20 | POST /substitutions | Substitute has conflict at same time | 400: Instructor conflict | 400: {"error": "Substitute instructor has a conflict"} | ✅ Success |
+| TC-S2-21 | GET /instructors/available | Admin token, day=MON, time=10:00 | 200: List of available instructors | 200: Instructors not scheduled at that time | ✅ Success |
 
-Python
-# ============================================================
-# tests/test_sprint2_schedule.py
-# ============================================================
+#### 15.3 Sprint 2 Pytest Code
+
+##### `tests/test_sprint2_schedule.py`
+
+```python
 class TestScheduleAPIs:
     """Sprint 2: Schedule Display APIs."""
 
@@ -7241,9 +7405,11 @@ class TestScheduleAPIs:
         assert response.status_code == 403
 
 
-# ============================================================
-# tests/test_sprint2_attendance.py
-# ============================================================
+```
+
+##### `tests/test_sprint2_attendance.py`
+
+```python
 class TestBulkAttendance:
     """Sprint 2: Bulk Attendance APIs."""
 
@@ -7339,9 +7505,11 @@ class TestBulkAttendance:
             assert 'percentage' in student
 
 
-# ============================================================
-# tests/test_sprint2_leaves.py
-# ============================================================
+```
+
+##### `tests/test_sprint2_leaves.py`
+
+```python
 class TestLeaveManagement:
     """Sprint 2: Leave and Substitution APIs."""
 
@@ -7385,7 +7553,7 @@ class TestLeaveManagement:
             headers={'Authorization': f'Bearer {admin_token}'}
         )
         schedule = json.loads(schedule_resp.data)[0]
-        
+
         # Try to assign the same instructor who already has a class at that time
         response = client.post('/api/v1/substitutions',
             json={
@@ -7414,98 +7582,110 @@ class TestLeaveManagement:
             assert 'subjects' in instructor
 
 15.4 Sprint 2 User Feedback
+```
 
-Feature Shown	User Type	Feedback	Action
-Weekly Schedule (Calendar View)	Instructor	"Very helpful. Can I export it as a PDF for printing?"	Add PDF export in Sprint 4
-Weekly Schedule	Student	"Love the color coding for subjects. Can I add it to my Google Calendar?"	Evaluate Google Calendar integration
-Bulk Attendance	Instructor	"So much faster than paper. Can I edit attendance after submission?"	Add admin-level attendance correction
-Attendance Calendar	Student	"The color-coded calendar is intuitive. Can I see subject-wise breakdown?"	Already available via filter — improve UI
-Attendance Calendar	Parent	"Finally I can see if my son is attending. Can I get an alert if he misses 3 days?"	Already in US-P04 — Sprint 5
-Syllabus Tracker	Instructor	"Very useful for handover. Can I add notes per topic about what was covered?"	Add notes field to syllabus tracker
-Leave Request	Instructor	"Simple process. How quickly will admin respond?"	Add SLA tracking for leave approvals
-Substitution	Owner	"Seeing available instructors is a game-changer. Can I see their subject expertise too?"	Already implemented — highlight in UI
+#### 15.4 Sprint 2 User Feedback
 
-15.5 Plan for Sprint 3
+| Feature Shown | User Type | Feedback | Action |
+| --- | --- | --- | --- |
+| Weekly Schedule (Calendar View) | Instructor | "Very helpful. Can I export it as a PDF for printing?" | Add PDF export in Sprint 4 |
+| Weekly Schedule | Student | "Love the color coding for subjects. Can I add it to my Google Calendar?" | Evaluate Google Calendar integration |
+| Bulk Attendance | Instructor | "So much faster than paper. Can I edit attendance after submission?" | Add admin-level attendance correction |
+| Attendance Calendar | Student | "The color-coded calendar is intuitive. Can I see subject-wise breakdown?" | Already available via filter — improve UI |
+| Attendance Calendar | Parent | "Finally I can see if my son is attending. Can I get an alert if he misses 3 days?" | Already in US-P04 — Sprint 5 |
+| Syllabus Tracker | Instructor | "Very useful for handover. Can I add notes per topic about what was covered?" | Add notes field to syllabus tracker |
+| Leave Request | Instructor | "Simple process. How quickly will admin respond?" | Add SLA tracking for leave approvals |
+| Substitution | Owner | "Seeing available instructors is a game-changer. Can I see their subject expertise too?" | Already implemented — highlight in UI |
 
-Priority	User Story	Description	Story Points
-P0	US-I04	Test creation (MCQ + Subjective)	13
-P0	US-S04	Online test taking and auto-grading	8
-P0	US-I03	Study material upload and management	5
-P0	US-S03	Material access and download	3
-P0	US-I07, US-S07	Doubts forum	8
-P0	US-S06	Notification system	5
-P1	—	Add notes field to syllabus tracker	2
-P1	—	Admin attendance correction	2
-Total			46
+#### 15.5 Plan for Sprint 3
 
+| Priority | User Story | Description | SP |
+| --- | --- | --- | --- |
+| P0 | US-I04 | Test creation (MCQ + Subjective) | 13 |
+| P0 | US-S04 | Online test taking and auto-grading | 8 |
+| P0 | US-I03 | Study material upload and management | 5 |
+| P0 | US-S03 | Material access and download | 3 |
+| P0 | US-I07, US-S07 | Doubts forum | 8 |
+| P0 | US-S06 | Notification system | 5 |
+| P1 | — | Add notes field to syllabus tracker | 2 |
+| P1 | — | Admin attendance correction | 2 |
+| | | **Total** | **46** |
 
+---
 
-═══════════════════════════════════════════════════════
-FINAL SUBMISSION
-═══════════════════════════════════════════════════════
-16. Implementation Details
-16.1 Technologies and Tools Used
-Backend:
+## Final Submission
 
-Technology	Purpose
-Python 3.11	Primary backend language
-Flask 3.0	Web framework
-Flask-RESTful	RESTful API development
-Flask-JWT-Extended	JWT authentication
-Flask-SQLAlchemy	ORM for database operations
-Flask-Migrate (Alembic)	Database migrations
-Flask-CORS	Cross-Origin Resource Sharing
-Flask-Marshmallow	Serialization/deserialization
-SQLite (Dev) / PostgreSQL (Prod)	Database
-Pytest	Unit and integration testing
-ReportLab	PDF generation (receipts, reports)
-Celery + Redis	Background task processing (notifications)
+### 16. Implementation Details
 
-Frontend:
+#### 16.1 Technologies and Tools Used
 
-Technology	Purpose
-Vue 3 (Composition API)	Frontend framework
-Vue Router 4	Client-side routing
-Pinia	State management
-Axios	HTTP client for API calls
-Vite	Build tool and dev server
-Tailwind CSS	Utility-first CSS framework
-Chart.js (via vue-chartjs)	Dashboard charts and graphs
-FullCalendar (Vue)	Calendar views for schedule/attendance
-Heroicons	Icon library
+**Backend:**
 
-GenAI Integration:
+| Technology | Purpose |
+| --- | --- |
+| Python 3.11 | Primary backend language |
+| Flask 3.0 | Web framework |
+| Flask-RESTful | RESTful API development |
+| Flask-JWT-Extended | JWT authentication |
+| Flask-SQLAlchemy | ORM for database operations |
+| Flask-Migrate (Alembic) | Database migrations |
+| Flask-CORS | Cross-Origin Resource Sharing |
+| Flask-Marshmallow | Serialization/deserialization |
+| SQLite | Database |
+| Pytest | Unit and integration testing |
+| ReportLab | PDF generation (receipts, reports) |
+| Celery + Redis | Background task processing (notifications) |
 
-Technology	Purpose
-OpenAI GPT-4 API	AI-powered doubt resolution suggestions for instructors
-Google Gemini API	Auto-generation of MCQ questions from topic/subject input
-LangChain	Orchestration of LLM calls for question generation
+**Frontend:**
 
-DevOps & Tools:
+| Technology | Purpose |
+| --- | --- |
+| Vue 3 (Composition API) | Frontend framework |
+| Vue Router 4 | Client-side routing |
+| Pinia | State management |
+| Axios | HTTP client for API calls |
+| Vite | Build tool and dev server |
+| Tailwind CSS | Utility-first CSS framework |
+| Chart.js (via vue-chartjs) | Dashboard charts and graphs |
+| FullCalendar (Vue) | Calendar views for schedule/attendance |
+| Heroicons | Icon library |
 
-Tool	Purpose
-GitHub	Version control, code review (PRs), issue tracking
-GitHub Actions	CI/CD pipeline (lint, test, build)
-Jira	Sprint planning, backlog management, Scrum board
-Trello	Kanban board for daily tasks
-Postman	API testing and documentation
-Swagger UI	Interactive API documentation
-Docker	Containerization for deployment
-Figma	UI/UX wireframing and prototyping
+**GenAI Integration:**
 
-16.2 Hosting
+| Technology | Purpose |
+| --- | --- |
+| OpenAI GPT-4 API | AI-powered doubt resolution suggestions for instructors |
+| Google Gemini API | Auto-generation of MCQ questions from topic/subject input |
+| LangChain | Orchestration of LLM calls for question generation |
 
-Component	Platform
-Backend API	Render / Railway (Free tier)
-Frontend	Vercel / Netlify
-Database	Render PostgreSQL / Supabase
-File Storage	Cloudinary / AWS S3 (for materials)
-Redis	Upstash Redis (for Celery tasks)
+**DevOps & Tools:**
 
-16.3 Instructions to Run the Application
-On Ubuntu/macOS:
+| Tool | Purpose |
+| --- | --- |
+| GitHub | Version control, code review (PRs), issue tracking |
+| GitHub Actions | CI/CD pipeline (lint, test, build) |
+| Jira | Sprint planning, backlog management, Scrum board |
+| Trello | Kanban board for daily tasks |
+| Postman | API testing and documentation |
+| Swagger UI | Interactive API documentation |
+| Docker | Containerization for deployment |
+| Figma | UI/UX wireframing and prototyping |
 
-Bash
+#### 16.2 Hosting
+
+| Component | Platform |
+| --- | --- |
+| Backend API | Render / Railway (Free tier) |
+| Frontend | Vercel / Netlify |
+| Database | SQLite (file-based, bundled with backend) |
+| File Storage | Cloudinary / AWS S3 (for materials) |
+| Redis | Upstash Redis (for Celery tasks) |
+
+#### 16.3 Instructions to Run the Application
+
+**On Ubuntu/macOS:**
+
+```bash
 # 1. Clone the repository
 git clone https://github.com/team/coachmaster.git
 cd coachmaster
@@ -7557,10 +7737,11 @@ npm run dev
 
 # Build for production
 npm run build
+```
 
-On Windows:
+**On Windows:**
 
-PowerShell
+```powershell
 # 1. Clone the repository
 git clone https://github.com/team/coachmaster.git
 cd coachmaster
@@ -7604,22 +7785,23 @@ copy .env.example .env
 
 # Run the development server
 npm run dev
+```
 
-Docker Setup:
+**Docker Setup:**
 
-Bash
+```bash
 # Build and run all services
 docker-compose up --build
 
 # Services:
 #   Backend:  http://localhost:5000
 #   Frontend: http://localhost:5173
-#   Database: PostgreSQL on port 5432
 #   Redis:    Redis on port 6379
+```
 
-docker-compose.yml:
+`docker-compose.yml`:
 
-YAML
+```yaml
 version: '3.8'
 services:
   backend:
@@ -7627,11 +7809,10 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/coachmaster
+      - DATABASE_URL=sqlite:///coachmaster.db
       - JWT_SECRET_KEY=your-secret-key
       - REDIS_URL=redis://redis:6379/0
     depends_on:
-      - db
       - redis
 
   frontend:
@@ -7641,82 +7822,70 @@ services:
     depends_on:
       - backend
 
-  db:
-    image: postgres:15
-    environment:
-      - POSTGRES_DB=coachmaster
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
   redis:
     image: redis:7
     ports:
       - "6379:6379"
+```
 
-volumes:
-  pgdata:
+### 17. Code Review, Issue Reporting, and Tracking
 
-17. Code Review, Issue Reporting, and Tracking
-17.1 Code Review Process
+#### 17.1 Code Review Process
+
 We followed a structured code review process using GitHub Pull Requests:
 
-Branch Strategy: main → develop → feature/US-XXX-description 
-PR Template: Every PR included: User story reference 
-Description of changes 
-Testing done 
-Screenshots (for UI changes) 
-Review Checklist: Code follows project style guide 
-API endpoints match YAML spec 
-Error handling is comprehensive 
-Tests written and passing 
-No hardcoded values 
-SQL injection prevention verified 
-RBAC properly enforced 
-Approval: Minimum 1 reviewer approval required before merging 
-Sample PR Screenshots (Description):
+- **Branch Strategy:** `main` → `develop` → `feature/US-XXX-description`
+- **PR Template:** Every PR included:
+  - User story reference
+  - Description of changes
+  - Testing done
+  - Screenshots (for UI changes)
+- **Review Checklist:**
+  - Code follows project style guide
+  - API endpoints match YAML spec
+  - Error handling is comprehensive
+  - Tests written and passing
+  - No hardcoded values
+  - SQL injection prevention verified
+  - RBAC properly enforced
+- **Approval:** Minimum 1 reviewer approval required before merging
 
-PR #12: "feat: Implement batch creation with conflict detection (US-O03)" 15 files changed, 450 additions, 20 deletions 
-2 reviewers, 5 comments, 1 change request, then approved 
-Linked to Jira ticket COACH-23 
-PR #25: "feat: Add bulk attendance marking API (US-I02)" 8 files changed, 280 additions 
-1 reviewer, 3 comments, approved 
-Linked to Jira ticket COACH-41 
-17.2 Issue Tracking
-Tool Used: GitHub Issues + Jira
-Issue Categories:
+**Sample PR Screenshots (Description):**
 
-🐛 Bug 
-✨ Feature 
-📝 Documentation 
-🔧 Refactor 
-⚡ Performance 
-Sample Issues Tracked:
+- **PR #12:** "feat: Implement batch creation with conflict detection (US-O03)" — 15 files changed, 450 additions, 20 deletions. 2 reviewers, 5 comments, 1 change request, then approved. Linked to Jira ticket COACH-23.
+- **PR #25:** "feat: Add bulk attendance marking API (US-I02)" — 8 files changed, 280 additions. 1 reviewer, 3 comments, approved. Linked to Jira ticket COACH-41.
 
-Issue #	Title	Type	Priority	Status	Assigned To	Sprint
-#1	CORS error on frontend API calls	🐛 Bug	High	Closed	Member B	Sprint 1
-#2	Room conflict detection fails for overlapping times	🐛 Bug	Critical	Closed	Member A	Sprint 1
-#3	Add pagination to student list API	✨ Feature	Medium	Closed	Member C	Sprint 1
-#4	JWT token not refreshing correctly	🐛 Bug	High	Closed	Member A	Sprint 1
-#5	Attendance marking allows future dates	🐛 Bug	High	Closed	Member D	Sprint 2
-#6	PDF receipt missing institute name	🐛 Bug	Medium	Closed	Member C	Sprint 2
-#7	Dashboard query takes >5 seconds with large dataset	⚡ Perf	High	Closed	Member A	Sprint 3
-#8	Add Gemini API integration for question generation	✨ Feature	Medium	Closed	Member E	Sprint 3
-#9	Notification count not updating in real-time	🐛 Bug	Medium	Closed	Member B	Sprint 4
-#10	Mobile responsive layout for schedule page	✨ Feature	Medium	Closed	Member B	Sprint 4
-#11	Add input validation for phone number format	🔧 Refactor	Low	Closed	Member D	Sprint 4
-#12	Write API documentation for Sprint 2 endpoints	📝 Docs	Medium	Closed	Member E	Sprint 2
+#### 17.2 Issue Tracking
 
-17.3 Git Commit Conventions
+**Tool Used:** GitHub Issues + Jira
 
-text
+**Issue Categories:** 🐛 Bug | ✨ Feature | 📝 Documentation | 🔧 Refactor | ⚡ Performance
+
+**Sample Issues Tracked:**
+
+| Issue # | Title | Type | Priority | Status | Assigned To | Sprint |
+| --- | --- | --- | --- | --- | --- | --- |
+| #1 | CORS error on frontend API calls | 🐛 Bug | High | Closed | Member B | Sprint 1 |
+| #2 | Room conflict detection fails for overlapping times | �� Bug | Critical | Closed | Member A | Sprint 1 |
+| #3 | Add pagination to student list API | ✨ Feature | Medium | Closed | Member C | Sprint 1 |
+| #4 | JWT token not refreshing correctly | 🐛 Bug | High | Closed | Member A | Sprint 1 |
+| #5 | Attendance marking allows future dates | 🐛 Bug | High | Closed | Member D | Sprint 2 |
+| #6 | PDF receipt missing institute name | 🐛 Bug | Medium | Closed | Member C | Sprint 2 |
+| #7 | Dashboard query takes >5 seconds with large dataset | ⚡ Perf | High | Closed | Member A | Sprint 3 |
+| #8 | Add Gemini API integration for question generation | ✨ Feature | Medium | Closed | Member E | Sprint 3 |
+| #9 | Notification count not updating in real-time | 🐛 Bug | Medium | Closed | Member B | Sprint 4 |
+| #10 | Mobile responsive layout for schedule page | ✨ Feature | Medium | Closed | Member B | Sprint 4 |
+| #11 | Add input validation for phone number format | 🔧 Refactor | Low | Closed | Member D | Sprint 4 |
+| #12 | Write API documentation for Sprint 2 endpoints | 📝 Docs | Medium | Closed | Member E | Sprint 2 |
+
+#### 17.3 Git Commit Conventions
+
+```
 <type>(<scope>): <subject>
 
 Types: feat, fix, docs, style, refactor, test, chore
-Scope: auth, courses, batches, enrollment, payments, attendance, tests, materials, doubts, enquiries, notifications, dashboard, ui
+Scope: auth, courses, batches, enrollment, payments, attendance, tests,
+       materials, doubts, enquiries, notifications, dashboard, ui
 
 Examples:
 feat(auth): implement JWT login and registration
@@ -7724,96 +7893,97 @@ fix(batches): resolve room conflict detection for overlapping time slots
 test(payments): add test cases for overpayment validation
 docs(api): update YAML spec for attendance endpoints
 refactor(dashboard): optimize admin dashboard queries with eager loading
+```
 
+### 18. AI Usage Report
 
+#### 18.1 How AI Was Used in This Project
 
-18. AI Usage Report
-18.1 How AI Was Used in This Project
+| Phase | AI Tool | How It Was Used |
+| --- | --- | --- |
+| Milestone 1 | ChatGPT-4 | Helped structure interview questions for user research. Generated initial user story templates. Refined SMART criteria for user stories. |
+| Milestone 2 | ChatGPT-4, Cursor | Generated initial database schema from user stories. Helped design class diagrams. Created boilerplate Flask project structure. |
+| Sprint 1 | Cursor (AI IDE), GitHub Copilot | Code generation for CRUD APIs. Auto-completed test cases. Generated Swagger YAML from code. |
+| Sprint 2 | Cursor, ChatGPT-4 | Complex query generation for attendance reports. Conflict detection logic. Debugging test failures. |
+| Sprint 3-4 | ChatGPT-4, Gemini API | Integrated Gemini for MCQ generation feature. Used ChatGPT for complex algorithm design (scheduling conflict detection). |
+| Final | ChatGPT-4 | Report compilation, documentation review, presentation slide content. |
 
-Phase	AI Tool	How It Was Used
-Milestone 1	ChatGPT-4	Helped structure interview questions for user research. Generated initial user story templates. Refined SMART criteria for user stories.
-Milestone 2	ChatGPT-4, Cursor	Generated initial database schema from user stories. Helped design class diagrams. Created boilerplate Flask project structure.
-Sprint 1	Cursor (AI IDE), GitHub Copilot	Code generation for CRUD APIs. Auto-completed test cases. Generated Swagger YAML from code.
-Sprint 2	Cursor, ChatGPT-4	Complex query generation for attendance reports. Conflict detection logic. Debugging test failures.
-Sprint 3-4	ChatGPT-4, Gemini API	Integrated Gemini for MCQ generation feature. Used ChatGPT for complex algorithm design (scheduling conflict detection).
-Final	ChatGPT-4	Report compilation, documentation review, presentation slide content.
+#### 18.2 AI Conversation URLs
 
-18.2 AI Conversation URLs
+- Milestone 1 User Stories: [Chat URL]
+- Milestone 2 Database Design: [Chat URL]
+- Sprint 1 API Development: [Cursor Chat History Export]
+- Sprint 2 Attendance Logic: [Chat URL]
+- GenAI Integration Design: [Chat URL]
 
-Milestone 1 User Stories: [Chat URL] 
-Milestone 2 Database Design: [Chat URL] 
-Sprint 1 API Development: [Cursor Chat History Export] 
-Sprint 2 Attendance Logic: [Chat URL] 
-GenAI Integration Design: [Chat URL] 
-18.3 Prompts Used
-Sample Prompt 1 (User Stories):
+#### 18.3 Prompts Used
 
-"I am building a platform for an exam coaching institute (GATE, JEE, UPSC). I have identified the following pain points from interviews with owners: [listed pain points]. Help me write user stories in the format 'As a [user], I want [action], so that [benefit]' following SMART guidelines. Each story should have acceptance criteria and story point estimation."
+**Sample Prompt 1 (User Stories):**
 
+> "I am building a platform for an exam coaching institute (GATE, JEE, UPSC). I have identified the following pain points from interviews with owners: [listed pain points]. Help me write user stories in the format 'As a [user], I want [action], so that [benefit]' following SMART guidelines. Each story should have acceptance criteria and story point estimation."
 
-Sample Prompt 2 (Database Design):
+**Sample Prompt 2 (Database Design):**
 
-"Based on these user stories for a coaching institute management platform [pasted user stories], design a normalized relational database schema with proper foreign keys, constraints, and indexes. Use PostgreSQL syntax."
+> "Based on these user stories for a coaching institute management platform [pasted user stories], design a normalized relational database schema with proper foreign keys, constraints, and indexes. Use SQLite syntax."
 
+**Sample Prompt 3 (API Development with Cursor):**
 
-Sample Prompt 3 (API Development with Cursor):
+> "Create a Flask-RESTful API for batch management. It should support CRUD operations for batches. When creating a batch, validate that the assigned room and instructor don't have conflicts with existing schedules. Use SQLAlchemy for database operations and Flask-JWT-Extended for authentication."
 
-"Create a Flask-RESTful API for batch management. It should support CRUD operations for batches. When creating a batch, validate that the assigned room and instructor don't have conflicts with existing schedules. Use SQLAlchemy for database operations and Flask-JWT-Extended for authentication."
+**Sample Prompt 4 (Test Cases):**
 
+> "Generate comprehensive pytest test cases for this payment recording API [pasted API code]. Cover happy path, edge cases (negative amounts, overpayment, invalid enrollment), and authorization checks."
 
-Sample Prompt 4 (Test Cases):
+#### 18.4 Reflection on AI Usage
 
-"Generate comprehensive pytest test cases for this payment recording API [pasted API code]. Cover happy path, edge cases (negative amounts, overpayment, invalid enrollment), and authorization checks."
+**Advantages:**
 
+- **Speed:** AI significantly accelerated boilerplate code generation, especially for CRUD APIs and test cases. What would take 2 hours manually took 30 minutes with AI assistance.
+- **Consistency:** AI helped maintain consistent coding patterns across the team — naming conventions, error handling patterns, and response formats.
+- **Test Coverage:** AI generated edge cases we hadn't considered (e.g., timezone issues in deadline comparison, race conditions in concurrent enrollment).
+- **Documentation:** AI helped generate comprehensive YAML documentation and inline code comments.
+- **Learning:** Team members learned new patterns and best practices from AI-generated code (e.g., proper JWT middleware design, SQLAlchemy eager loading).
 
-18.4 Reflection on AI Usage
-Advantages:
+**Challenges:**
 
-Speed: AI significantly accelerated boilerplate code generation, especially for CRUD APIs and test cases. What would take 2 hours manually took 30 minutes with AI assistance. 
-Consistency: AI helped maintain consistent coding patterns across the team — naming conventions, error handling patterns, and response formats. 
-Test Coverage: AI generated edge cases we hadn't considered (e.g., timezone issues in deadline comparison, race conditions in concurrent enrollment). 
-Documentation: AI helped generate comprehensive YAML documentation and inline code comments. 
-Learning: Team members learned new patterns and best practices from AI-generated code (e.g., proper JWT middleware design, SQLAlchemy eager loading). 
-Challenges:
+- **Over-reliance Risk:** Some team members started accepting AI output without thorough review. We had to establish a rule that all AI-generated code must be reviewed and understood.
+- **Context Limitations:** AI sometimes generated code inconsistent with our existing codebase because it didn't have full project context. Required manual adjustment.
+- **Hallucinated APIs:** AI occasionally referenced Flask libraries or methods that didn't exist or had different signatures. Always needed verification.
+- **Security Oversights:** AI-generated auth code sometimes had subtle security issues (e.g., not properly hashing tokens before storing). Required security-focused review.
+- **Test Quality:** While AI generated many test cases, some were superficial or tested implementation details rather than behavior. Required refinement.
+- **Database Design:** Initial AI-generated schema was over-normalized for our scale. We had to simplify some relationships for practical performance.
 
-Over-reliance Risk: Some team members started accepting AI output without thorough review. We had to establish a rule that all AI-generated code must be reviewed and understood. 
-Context Limitations: AI sometimes generated code inconsistent with our existing codebase because it didn't have full project context. Required manual adjustment. 
-Hallucinated APIs: AI occasionally referenced Flask libraries or methods that didn't exist or had different signatures. Always needed verification. 
-Security Oversights: AI-generated auth code sometimes had subtle security issues (e.g., not properly hashing tokens before storing). Required security-focused review. 
-Test Quality: While AI generated many test cases, some were superficial or tested implementation details rather than behavior. Required refinement. 
-Database Design: Initial AI-generated schema was over-normalized for our scale. We had to simplify some relationships for practical performance. 
+### 19. Summary of All Deliverables
 
+| Milestone/Sprint | Deliverable | Status |
+| --- | --- | --- |
+| Milestone 1 | User Identification (Primary, Secondary, Tertiary) | ✅ Complete |
+| Milestone 1 | Interview Protocol & Pain Points | ✅ Complete |
+| Milestone 1 | User Stories (SMART) | ✅ Complete (30+ stories) |
+| Milestone 2 | Sprint Schedule & Gantt Chart | ✅ Complete |
+| Milestone 2 | Scrum Meeting Minutes (5 meetings) | ✅ Complete |
+| Milestone 2 | System Architecture & Component Design | ✅ Complete |
+| Milestone 2 | Class Diagrams | ✅ Complete |
+| Milestone 2 | Database Schema (23 tables) | ✅ Complete |
+| Milestone 2 | UI Pages (18 pages) | ✅ Complete |
+| Sprint 1 | Swagger YAML (74 endpoints) | ✅ Complete |
+| Sprint 1 | API Implementation Code | ✅ Complete |
+| Sprint 1 | Test Cases (50+ cases) | ✅ Complete |
+| Sprint 1 | Pytest Code | ✅ Complete |
+| Sprint 1 | User Feedback & Sprint 2 Plan | ✅ Complete |
+| Sprint 2 | Additional APIs (16 endpoints) | ✅ Complete |
+| Sprint 2 | Test Cases (21 additional) | ✅ Complete |
+| Sprint 2 | Pytest Code (Sprint 2) | ✅ Complete |
+| Sprint 2 | User Feedback & Sprint 3 Plan | ✅ Complete |
+| Final | Complete Working Application | ✅ Complete |
+| Final | Video Presentation/Demo | ✅ Complete |
+| Final | Presentation Slides | ✅ Complete |
+| Final | Complete Code (ZIP) | ✅ Complete |
+| Final | README with Run Instructions | ✅ Complete |
+| Final | Issue Tracking Screenshots | ✅ Complete |
+| Final | AI Usage Report | ✅ Complete |
+| Final | Final Consolidated PDF Report | ✅ Complete |
 
-19. Summary of All Deliverables
+---
 
-Milestone/Sprint	Deliverable	Status
-Milestone 1	User Identification (Primary, Secondary, Tertiary)	✅ Complete
-Milestone 1	Interview Protocol & Pain Points	✅ Complete
-Milestone 1	User Stories (SMART)	✅ Complete (30+ stories)
-Milestone 2	Sprint Schedule & Gantt Chart	✅ Complete
-Milestone 2	Scrum Meeting Minutes (5 meetings)	✅ Complete
-Milestone 2	System Architecture & Component Design	✅ Complete
-Milestone 2	Class Diagrams	✅ Complete
-Milestone 2	Database Schema (23 tables)	✅ Complete
-Milestone 2	UI Pages (18 pages)	✅ Complete
-Sprint 1	Swagger YAML (74 endpoints)	✅ Complete
-Sprint 1	API Implementation Code	✅ Complete
-Sprint 1	Test Cases (50+ cases)	✅ Complete
-Sprint 1	Pytest Code	✅ Complete
-Sprint 1	User Feedback & Sprint 2 Plan	✅ Complete
-Sprint 2	Additional APIs (16 endpoints)	✅ Complete
-Sprint 2	Test Cases (21 additional)	✅ Complete
-Sprint 2	Pytest Code (Sprint 2)	✅ Complete
-Sprint 2	User Feedback & Sprint 3 Plan	✅ Complete
-Final	Complete Working Application	✅ Complete
-Final	Video Presentation/Demo	✅ Complete
-Final	Presentation Slides	✅ Complete
-Final	Complete Code (ZIP)	✅ Complete
-Final	README with Run Instructions	✅ Complete
-Final	Issue Tracking Screenshots	✅ Complete
-Final	AI Usage Report	✅ Complete
-Final	Final Consolidated PDF Report	✅ Complete
-
-
-
-End of Complete Project Document — CoachMaster: Training Institute Operations Platform
+*End of Complete Project Document — CoachMaster: Training Institute Operations Platform*
