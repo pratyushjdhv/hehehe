@@ -1,6 +1,33 @@
 # CoachMaster — Small Business Operations Platform for Exam Coaching Institute
 
-> **Complete Project Document (All Milestones)**
+> **⚠️ IMPORTANT: This document contains the COMPLETE/FULL project specification.**  
+> **For the 1-WEEK MVP VERSION (2 developers), see:**
+> - **[MVP_REDUCED_SCOPE.md](MVP_REDUCED_SCOPE.md)** - Simplified feature set (27 APIs instead of 74)
+> - **[API_SPECIFICATION_MVP.yaml](API_SPECIFICATION_MVP.yaml)** - OpenAPI spec for MVP
+> - **[TESTING_SUITE.md](TESTING_SUITE.md)** - Complete test cases
+> - **[BACKEND_IMPLEMENTATION.md](BACKEND_IMPLEMENTATION.md)** - Flask backend code
+> - **[FRONTEND_IMPLEMENTATION.md](FRONTEND_IMPLEMENTATION.md)** - Vue.js frontend code
+> - **[REDUCTION_SUMMARY.md](REDUCTION_SUMMARY.md)** - Comparison of full vs MVP scope
+
+---
+
+## 📋 Quick Summary: MVP vs Full Project
+
+| Aspect | Full Project (Below) | **MVP (1 Week)** |
+|--------|---------------------|------------------|
+| APIs | 74 endpoints | **27 endpoints** |
+| Database Tables | 20+ tables | **6 tables** |
+| Features | 15+ modules | **5 core modules** |
+| User Roles | 9 roles | **3 roles** (admin, instructor, student) |
+| Timeline | 8-12 weeks | **1 week** |
+| Team Size | 4-6 developers | **2 developers** |
+
+**MVP Includes:** Authentication, Courses, Batches, Enrollment, Payments, Attendance, Dashboards  
+**MVP Excludes:** Tests, Materials, Notifications, Enquiries, Doubts, Advanced Reports, Parent Portal
+
+---
+
+> **Complete Project Document (All Milestones) - BELOW**
 
 ---
 
